@@ -69,6 +69,27 @@ export class MapContainer extends React.Component {
          </Map>
       );
    }
+
+render() {
+    return (
+      <Map google={this.props.google} zoom={14} initialCenter={{
+        lat: 40.854885,
+        lng: -88.081807
+      }}
+      zoom={15}>
+
+        <Marker onClick={this.onMarkerClick}
+                name={'187 Margueretta'} />
+
+        <InfoWindow onClose={this.onInfoWindowClose}>
+            <div>
+              <h1>{this.state.selectedPlace.name}</h1>
+            </div>
+        </InfoWindow>
+      </Map>
+    );
+  }
+
 }
 
 export default GoogleApiWrapper({ apiKey: ('AIzaSyAX858sfNr7KcSp6NdszHBoxH8ZDix-nf8') })(MapContainer)
