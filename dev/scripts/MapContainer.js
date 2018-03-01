@@ -44,10 +44,19 @@ export class MapContainer extends React.Component {
                lng: -88.081807
             }}
          >
+            {/* Adding a marker based on specific lag and lng */}
             <Marker 
-               onClick={this.onMarkerClick} 
-               name={''} 
+               onClick={this.onMarkerClick}
+               position= {{
+                  lat: 40.854885,
+                  lng: -88.082807
+               }} 
+               name={'starting location'} 
             />
+            {/* <Marker 
+               onClick={this.onMarkerClick} 
+               name={'The marker that they gave us'} 
+            /> */}
             <InfoWindow 
                onOpen={this.windowHasOpened}
                onClose={this.onInfoWindowClose}
