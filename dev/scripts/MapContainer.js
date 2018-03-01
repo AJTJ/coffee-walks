@@ -9,7 +9,9 @@ export class MapContainer extends React.Component {
       this.state = {
          showingInfoWindow: false,
          activeMarker: {},
-         selectedPlace: {}
+         selectedPlace: {},
+         areaLat: '',
+         areaLng: ''
       }
 
       this.onMarkerClick = this.onMarkerClick.bind(this);
@@ -34,28 +36,41 @@ export class MapContainer extends React.Component {
       }
    }
 
-   render() {
+   componentWillReceiveProps(props) {
+      this.setState({
+         areaLat: this.props.areaLat,
+         areaLng: this.props.areaLng
+      }), () => render();
+   }
+
+
+
+   render(props) {
       return (
          <Map 
             google={this.props.google} 
             zoom={14}
             initialCenter={{
-               lat: 40.854885,
-               lng: -88.081807
+               lat: this.state.areaLat,
+               lng: this.state.areaLng
             }}
          >
             {/* Adding a marker based on specific lag and lng */}
             <Marker 
                onClick={this.onMarkerClick}
                position= {{
-                  lat: 40.854885,
-                  lng: -88.082807
+                  lat: this.state.areaLat,
+                  lng: this.state.areaLng
                }} 
                name={'starting location'} 
             />
             {/* <Marker 
                onClick={this.onMarkerClick} 
-               name={'The marker that they gave us'} 
+               name={'The marker that they gave us'}
+               position= {{
+                  lat: this.state.areaLat,
+                  lng: this.state.areaLng
+               }}
             /> */}
             <InfoWindow 
                onOpen={this.windowHasOpened}
@@ -69,27 +84,6 @@ export class MapContainer extends React.Component {
          </Map>
       );
    }
-
-render() {
-    return (
-      <Map google={this.props.google} zoom={14} initialCenter={{
-        lat: 40.854885,
-        lng: -88.081807
-      }}
-      zoom={15}>
-
-        <Marker onClick={this.onMarkerClick}
-                name={'187 Margueretta'} />
-
-        <InfoWindow onClose={this.onInfoWindowClose}>
-            <div>
-              <h1>{this.state.selectedPlace.name}</h1>
-            </div>
-        </InfoWindow>
-      </Map>
-    );
-  }
-
 }
 
 export default GoogleApiWrapper({ apiKey: ('AIzaSyAX858sfNr7KcSp6NdszHBoxH8ZDix-nf8') })(MapContainer)
