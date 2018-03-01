@@ -15,6 +15,7 @@ class App extends React.Component {
       return (
          <div>
             {/* exact states that the path has to state the path EXACTLY to render in the specific component */}
+            <button></button>
             <MyWalks />
             <MapContainer />
          </div>
