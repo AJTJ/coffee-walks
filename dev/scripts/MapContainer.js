@@ -10,23 +10,18 @@ export class MapContainer extends React.Component {
          selectedPlace: ''
       }
    }
-render() {
-    return (
-      <Map google={this.props.google} zoom={14}>
-
-        <Marker onClick={this.onMarkerClick}
-                name={'187 Margueretta'} />
-
-        <InfoWindow onClose={this.onInfoWindowClose}>
-            <div>
-              <h1>{this.state.selectedPlace.name}</h1>
-            </div>
-        </InfoWindow>
-      </Map>
-    );
-  }
+   render() {
+      return (
+         <Map google={this.props.google} zoom={14}>
+            <Marker onClick={this.onMarkerClick} name={''} />
+            <InfoWindow onClose={this.onInfoWindowClose}>
+               <div>
+                  <h1>{this.state.selectedPlace.name}</h1>
+               </div>
+            </InfoWindow>
+         </Map>
+      );
+   }
 }
 
-export default GoogleApiWrapper({
-  apiKey: ('AIzaSyAX858sfNr7KcSp6NdszHBoxH8ZDix-nf8')
-})(MapContainer)
+export default GoogleApiWrapper({ apiKey: ('AIzaSyAX858sfNr7KcSp6NdszHBoxH8ZDix-nf8') })(MapContainer)
