@@ -78,7 +78,7 @@ class MyWalks extends React.Component {
                 console.log(data);
                 this.setState({
                     nearbyPlaces: data.results
-                }, () => this.props.getNearbyPlaces(this.state.nearbyPlaces))
+                }, () => this.props.getNearbyPlaces(this.state.nearbyPlaces), this.props.getUserAreaLocation(this.state.lat, this.state.lng))
         });
     }  
     

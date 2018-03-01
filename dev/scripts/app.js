@@ -14,9 +14,12 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      nearbyPlaces: []
+      nearbyPlaces: [],
+      lat: "",
+      lng: ""
     }
     this.getNearbyPlaces = this.getNearbyPlaces.bind(this)
+    this.getUserAreaLocation = this.getUserAreaLocation.bind(this)
   }
 
   getNearbyPlaces(nearbyPlaces) {
@@ -25,11 +28,18 @@ class App extends React.Component {
     })
   }
 
+  getUserAreaLocation(lat, lng) {
+    this.setState({
+      lat: lat,
+      lng: lng
+    })
+  }
+
   render() {
     return (
         <div>
           {/* exact states that the path has to state the path EXACTLY to render in the specific component */}
-          <MyWalks getNearbyPlaces={this.getNearbyPlaces} />
+          <MyWalks getNearbyPlaces={this.getNearbyPlaces} getUserAreaLocation={this.getUserAreaLocation} />
           <MapContainer />
         </div>
     )
