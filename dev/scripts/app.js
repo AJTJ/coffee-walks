@@ -40,7 +40,7 @@ class App extends React.Component {
         <div>
           {/* exact states that the path has to state the path EXACTLY to render in the specific component */}
           <MyWalks getNearbyPlaces={this.getNearbyPlaces} getUserAreaLocation={this.getUserAreaLocation} />
-          <MapContainer />
+          <MapContainer areaLat={this.state.lat} areaLng={this.state.lng} />
         </div>
     )
   }
