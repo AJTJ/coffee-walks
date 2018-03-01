@@ -9,7 +9,8 @@ class MyWalks extends React.Component {
         this.state = {
             lat: "",
             lng: "",
-            location: ""
+            location: "",
+            nearbyPlaces: []
         }
         this.handleChange = this.handleChange.bind(this);
         this.setLocation = this.setLocation.bind(this);
@@ -73,26 +74,24 @@ class MyWalks extends React.Component {
                 },
                 xmlToJSON: false
             }
-            }).then((res) => {
-                console.log(res);
-            });
+            }).then(({data}) => {
+                console.log(data);
+                this.setState({
+                    nearbyPlaces: data.results
+                }, () => this.props.getNearbyPlaces(this.state.nearbyPlaces))
+        });
     }  
-      
-    componentDidMount() {
-  
-          
-    }
     
     render() {
         return (
             <div>
                 <form action="" onSubmit={this.setLocation}>
                     <input type="text" value={this.state.location} onChange={this.handleChange} id="location"/>
-                    <input type="submit" value="coffee time-"/>
+                    <input type="submit" value="coffee time"/>
                 </form>
             </div>
         )
-      }
-  }
+    }
+}
 
-  export default MyWalks;
+export default MyWalks;

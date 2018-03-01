@@ -11,11 +11,25 @@ import {
 } from "react-router-dom";
 
 class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      nearbyPlaces: []
+    }
+    this.getNearbyPlaces = this.getNearbyPlaces.bind(this)
+  }
+
+  getNearbyPlaces(nearbyPlaces) {
+    this.setState({
+      nearbyPlaces: nearbyPlaces
+    })
+  }
+
   render() {
     return (
         <div>
           {/* exact states that the path has to state the path EXACTLY to render in the specific component */}
-          <MyWalks />
+          <MyWalks getNearbyPlaces={this.getNearbyPlaces} />
           <MapContainer />
         </div>
     )

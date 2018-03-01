@@ -12,7 +12,11 @@ export class MapContainer extends React.Component {
    }
 render() {
     return (
-      <Map google={this.props.google} zoom={14}>
+      <Map google={this.props.google} zoom={14} initialCenter={{
+        lat: 40.854885,
+        lng: -88.081807
+      }}
+      zoom={15}>
 
         <Marker onClick={this.onMarkerClick}
                 name={'187 Margueretta'} />
