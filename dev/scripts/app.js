@@ -4,6 +4,7 @@ import Qs from 'qs';
 import axios from "axios";
 import MyWalks from "./MyWalks.js";
 import MapContainer from './MapContainer.js';
+import Directions from './Directions.js';
 import {
    BrowserRouter as Router,
    Route,
