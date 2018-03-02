@@ -49,8 +49,8 @@ export class MapContainer extends React.Component {
       return (
          <Map 
             google={this.props.google} 
-            zoom={14}
-            initialCenter={{
+            zoom={13}
+            center={{
                lat: this.state.areaLat,
                lng: this.state.areaLng
             }}
@@ -58,6 +58,7 @@ export class MapContainer extends React.Component {
             {/* Adding a marker based on specific lag and lng */}
             <Marker 
                onClick={this.onMarkerClick}
+               zoom={14}
                position= {{
                   lat: this.state.areaLat,
                   lng: this.state.areaLng
