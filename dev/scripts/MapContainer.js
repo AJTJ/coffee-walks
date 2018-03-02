@@ -12,7 +12,6 @@ export class MapContainer extends React.Component {
          selectedPlace: {},
          areaLat: '',
          areaLng: '',
-         cafeChoices: []
       }
 
       this.onMarkerClick = this.onMarkerClick.bind(this);
@@ -32,7 +31,7 @@ export class MapContainer extends React.Component {
       if (this.state.showingInfoWindow) {
          this.setState({
             showingInfoWindow: false,
-            activeMarker: null
+            activeMarker: {}
          })
       }
    }
@@ -40,7 +39,7 @@ export class MapContainer extends React.Component {
    componentWillReceiveProps(props) {
       this.setState({
          areaLat: this.props.areaLat,
-         areaLng: this.props.areaLng
+         areaLng: this.props.areaLng,
       }), () => render();
    }
 
@@ -82,22 +81,18 @@ export class MapContainer extends React.Component {
             {this.props.nearbyPlaces.map((place) => {
                return (
                   <Marker 
+                     onClick={this.onMarkerClick}
+                     name={place.name}
                      position= {{
                         lat: place.geometry.location.lat,
                         lng: place.geometry.location.lng
                      }}
+                     icon={{
+                        url: this.icon
+                     }}
                   />
                )
             })}
-
-            {/* <Marker 
-               onClick={this.onMarkerClick} 
-               name={'The marker that they gave us'}
-               position= {{
-                  lat: this.state.areaLat,
-                  lng: this.state.areaLng
-               }}
-            /> */}
             <InfoWindow 
                onOpen={this.windowHasOpened}
                onClose={this.onInfoWindowClose}
