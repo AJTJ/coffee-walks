@@ -17,10 +17,12 @@ class App extends React.Component {
     this.state = {
       nearbyPlaces: [],
       lat: "",
-      lng: ""
+      lng: "",
+      testing: false
     }
-    this.getNearbyPlaces = this.getNearbyPlaces.bind(this)
-    this.getUserAreaLocation = this.getUserAreaLocation.bind(this)
+    this.getNearbyPlaces = this.getNearbyPlaces.bind(this);
+    this.getUserAreaLocation = this.getUserAreaLocation.bind(this);
+    this.confirmStart = this.confirmStart.bind(this);
   }
 
   getNearbyPlaces(nearbyPlaces) {
@@ -36,13 +38,21 @@ class App extends React.Component {
     })
   }
 
+  confirmStart() {
+    // console.log(e);
+    console.log("Murder Fish");
+    // this.setState({
+    //   testing: true
+    // })
+  }
+
   render() {
     return (
         <div>
           {/* exact states that the path has to state the path EXACTLY to render in the specific component */}
           <MyWalks getNearbyPlaces={this.getNearbyPlaces} getUserAreaLocation={this.getUserAreaLocation} />
           <Directions />
-          <MapContainer nearbyPlaces={this.state.nearbyPlaces} areaLat={this.state.lat} areaLng={this.state.lng} />
+          <MapContainer nearbyPlaces={this.state.nearbyPlaces} areaLat={this.state.lat} areaLng={this.state.lng} confirmStart={this.confirmStart}  />
 
         </div>
     )

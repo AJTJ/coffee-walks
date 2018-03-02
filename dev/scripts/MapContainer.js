@@ -1,7 +1,7 @@
 import React from 'react';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
-export class MapContainer extends React.Component {
+class MapContainer extends React.Component {
 
    constructor() {
       super()
@@ -16,12 +16,14 @@ export class MapContainer extends React.Component {
 
       this.onMarkerClick = this.onMarkerClick.bind(this);
       this.onMapClicked = this.onMapClicked.bind(this);
+      this.murderFish = this.murderFish.bind(this); 
    }
 
-   onMarkerClick(marker) {
+   onMarkerClick(props,marker, e) {
       //This is just an onclick.
+      console.log("clicked")
       this.setState({
-         selectedPlace: {},
+         selectedPlace: props,
          activeMarker: marker,
          showingInfoWindow: true
       });
@@ -40,17 +42,21 @@ export class MapContainer extends React.Component {
       this.setState({
          areaLat: this.props.areaLat,
          areaLng: this.props.areaLng,
-      }), () => render();
+      }, () => this.render());
    }
 
+   murderFish() {
+      console.log("haaay");
+   }
 
 
    render(props) {
       return (
          //currently sets the Map somewhere when rendered.
          <Map 
+            onClick={this.onMapClicked}
             google={this.props.google} 
-            zoom={13}
+            zoom={15}
             center={{
                lat: this.state.areaLat,
                lng: this.state.areaLng
@@ -80,7 +86,7 @@ export class MapContainer extends React.Component {
 
             {this.props.nearbyPlaces.map((place) => {
                return (
-                  <Marker 
+                  <Marker key={place.place_id}
                      onClick={this.onMarkerClick}
                      name={place.name}
                      position= {{
@@ -97,9 +103,13 @@ export class MapContainer extends React.Component {
                onOpen={this.windowHasOpened}
                onClose={this.onInfoWindowClose}
                visible={this.state.showingInfoWindow}
+               onClick={this.murderFish}
             >
                <div>
-                  <h1 className="placeText">{this.state.selectedPlace.name}</h1>
+                  <h1 className="placeText">     
+                     {this.state.selectedPlace.name}
+                  </h1>
+                  <button>Click Me</button>
                </div>
             </InfoWindow>
          </Map>
