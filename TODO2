@@ -8,3 +8,8 @@ PROCESS
    - repopulate CAFE CHOICES with new center point data.
 
 ... end cafe... directions...
+
+cafe choices: []
+-> fill it with nearbyPlaces
+use it
+-> nearby end CAFEs
