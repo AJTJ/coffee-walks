@@ -11,7 +11,8 @@ export class MapContainer extends React.Component {
          activeMarker: {},
          selectedPlace: {},
          areaLat: '',
-         areaLng: ''
+         areaLng: '',
+         cafeChoices: []
       }
 
       this.onMarkerClick = this.onMarkerClick.bind(this);
@@ -47,6 +48,7 @@ export class MapContainer extends React.Component {
 
    render(props) {
       return (
+         //currently sets the Map somewhere when rendered.
          <Map 
             google={this.props.google} 
             zoom={13}
@@ -58,6 +60,7 @@ export class MapContainer extends React.Component {
             {/* Adding a marker based on specific lag and lng */}
             <Marker 
                onClick={this.onMarkerClick}
+               // GIVE THIS A UNIQUE STYLE
                zoom={14}
                position= {{
                   lat: this.state.areaLat,
@@ -65,6 +68,28 @@ export class MapContainer extends React.Component {
                }} 
                name={'starting location'} 
             />
+            <Marker 
+               className="initialCafes"
+               onClick={this.onMarkerClick}
+               zoom={14}
+               position= {{
+                  lat: 43.6687987,
+                  lng: -79.3978587
+               }} 
+               name={'starting location'}  
+            />
+
+            {this.props.nearbyPlaces.map((place) => {
+               return (
+                  <Marker 
+                     position= {{
+                        lat: place.geometry.location.lat,
+                        lng: place.geometry.location.lng
+                     }}
+                  />
+               )
+            })}
+
             {/* <Marker 
                onClick={this.onMarkerClick} 
                name={'The marker that they gave us'}
