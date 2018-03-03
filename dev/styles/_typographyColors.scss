@@ -1,0 +1,18 @@
+$headerFont: 'Yeseva One', cursive;
+$bodyFont: 'Roboto', sans-serif;
+
+$color1: #473930;
+$color2: #e9e7e3;
+$color3: #fdfdfd;
+$color4: #e6ded2;
+
+h1, h2, h3, h4 {
+   margin: 0;
+   font-family: $headerFont;
+   color: $color1;
+}
+
+p {
+   font-family: $bodyFont;
+   color: $color1;
+}
