@@ -28,7 +28,7 @@ class Directions extends React.Component {
          params: {
             reqUrl: "https://maps.googleapis.com/maps/api/directions/json",
             params: {
-               key: key2,
+               key: key3,
                origin: "43.6687987, -79.3912515",
                destination: "43.650662, -79.358266",
                mode: "walking",

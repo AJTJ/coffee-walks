@@ -1,14 +1,14 @@
 import React from "react"
-import { compose, withProps, withStateHandlers } from "recompose";
-import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps";
+import { compose, withProps, withStateHandlers } from "recompose"
+import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps"
 
 const MyMapComponent = compose(
-   // withProps({
-   //    googleMapURL: "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places",
-   //    loadingElement: <div style={{ height: `100%` }} />,
-   //    containerElement: <div style={{ height: `80vh` }} />,
-   //    mapElement: <div style={{ height: `100%` }} />,
-   // }),
+   withProps({
+      googleMapURL: "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places",
+      loadingElement: <div style={{ height: `100%` }} />,
+      containerElement: <div style={{ height: `80vh` }} />,
+      mapElement: <div style={{ height: `100%` }} />,
+   }),
    withStateHandlers(() => ({
      isOpen: false,
    }), {
@@ -26,15 +26,19 @@ const MyMapComponent = compose(
          lng: props.areaLng 
       }}
    >
-      <Marker 
-         position={{ lat: props.areaLat, lng: props.areaLng }} 
-         onClick={props.onToggleOpen} 
-         // onClick={props.onMarkerClick} 
-      >
-      {props.isOpen && <InfoWindow onCloseClick={props.onToggleOpen}>
-      {/* <FaAnchor /> */}
+   <Marker 
+      position={{ lat: props.areaLat, lng: props.areaLng }} 
+      onClick={props.onToggleOpen} 
+      // onClick={props.onMarkerClick} 
+   >
+      {props.isOpen && 
+      <InfoWindow onCloseClick={props.onToggleOpen}>
+         <div>
+            <p>{props.nearbyPlaces[0].name}</p>
+            <button onClick={props.handleClick} >MurdahFISH</button>
+         </div>
       </InfoWindow>}
-      </Marker>
+   </Marker>
 
       {/* {props.isMarkerShown && 
       props.nearbyPlaces.map((place) => {
@@ -46,6 +50,8 @@ const MyMapComponent = compose(
       })} */}
    </GoogleMap>
 );
+
+{/* <FaAnchor /> */}
 
 {/* < MyMapComponent
    googleMapURL = "https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg&v=3.exp&libraries=geometry,drawing,places"
@@ -64,8 +70,9 @@ class MapContainer extends React.PureComponent {
          nearbyPlaces: []
       };
 
-   // this.delayedShowMarker = this.delayedShowMarker.bind(this);
-   // this.handleMarkerClick = this.handleMarkerClick.bind(this);
+   this.delayedShowMarker = this.delayedShowMarker.bind(this);
+   this.handleMarkerClick = this.handleMarkerClick.bind(this);
+   this.handleClick = this.handleClick.bind(this);
    }
 
    componentDidMount() {
@@ -81,6 +88,10 @@ class MapContainer extends React.PureComponent {
    handleMarkerClick() {
       this.setState({ isMarkerShown: false });
       this.delayedShowMarker();
+   }
+
+   handleClick() {
+      console.log('button clicked');
    }
 
    componentWillReceiveProps(props) {
@@ -103,11 +114,7 @@ class MapContainer extends React.PureComponent {
             
             isMarkerShown={this.state.isMarkerShown}
             onMarkerClick={this.handleMarkerClick}
-
-            googleMapURL = "https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg&v=3.exp&libraries=geometry,drawing,places"
-            loadingElement = {< div style = {{ height: `100%` }} />}
-            containerElement = {< div style = {{ height: `400px` }} />}
-            mapElement = {< div style = {{ height: `100%` }} />}
+            handleClick={this.handleClick}
          />
       );
    }
