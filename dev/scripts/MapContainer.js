@@ -20,15 +20,15 @@ const MyMapComponent = compose(
    </GoogleMap>
 )
 
-class MyFancyComponent extends React.PureComponent {
+class MapContainer extends React.PureComponent {
    constructor() {
       super()
-      state = {
+      this.state = {
          isMarkerShown: false,
       }
 
-      this.delayedShowMarker = this.delayedShowMarker.bind(this);
-      this.handleMarkerClick = this.handleMarkerClick.bind(this);
+      // this.delayedShowMarker = this.delayedShowMarker.bind(this);
+      // this.handleMarkerClick = this.handleMarkerClick.bind(this);
    }
 
    componentDidMount() {
@@ -56,4 +56,4 @@ class MyFancyComponent extends React.PureComponent {
    }
 }
 
-export default MyMapComponent;
+export default MapContainer;
