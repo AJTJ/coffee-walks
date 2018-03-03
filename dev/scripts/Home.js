@@ -5,7 +5,7 @@ import MyWalks from "./MyWalks.js";
 import MapContainer from "./MapContainer.js";
 import Directions from "./Directions.js";
 import Header from "./Header.js";
-// import Login from "./Login.js";
+import Login from "./Login.js";
 
 class Home extends React.Component {
    constructor() {
@@ -50,7 +50,7 @@ class Home extends React.Component {
                <img className="header__logo" src="/assets/noun_59078_cc.svg" alt=""/>
             </header> */}
             <Header />
-            {/* <Login /> */}
+            <Login />
             {/* exact states that the path has to state the path EXACTLY to render in the specific component */}
             <MyWalks getNearbyPlaces={this.getNearbyPlaces} getUserAreaLocation={this.getUserAreaLocation} />
             <Directions />
