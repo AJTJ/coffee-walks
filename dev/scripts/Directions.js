@@ -3,6 +3,12 @@ import ReactDOM from 'react-dom';
 import axios from "axios";
 import Qs from 'qs';
 
+let key1 = "AIzaSyCqAPO1t-7KMYt8f0YU2Pi4z2j-SWPvykg"
+let key2 = "AIzaSyAX858sfNr7KcSp6NdszHBoxH8ZDix-nf8"
+let key3 = "AIzaSyA3iTZwH8cw1ZHEDOOykYqzrPK-7WBzJgA"
+let key4 = "AIzaSyAmlAUFOnmBXKDuYmCTVFbEKejUPCZOQBg"
+let key5 = "AIzaSyDPIDnwygCBYYAxcjXu4S8aeogRkWAYXDI"
+
 class Directions extends React.Component {
    constructor() {
       super()
@@ -22,7 +28,7 @@ class Directions extends React.Component {
          params: {
             reqUrl: "https://maps.googleapis.com/maps/api/directions/json",
             params: {
-               key: "AIzaSyCqAPO1t-7KMYt8f0YU2Pi4z2j-SWPvykg",
+               key: key2,
                origin: "43.6687987, -79.3912515",
                destination: "43.650662, -79.358266",
                mode: "walking",
