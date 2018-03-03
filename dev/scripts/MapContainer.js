@@ -1,129 +1,59 @@
-import React from 'react';
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import React from "react"
+import { compose, withProps } from "recompose"
+import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
 
-class MapContainer extends React.Component {
+const MyMapComponent = compose(
+   withProps({
+      googleMapURL: "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places",
+      loadingElement: <div style={{ height: `100%` }} />,
+      containerElement: <div style={{ height: `400px` }} />,
+      mapElement: <div style={{ height: `100%` }} />,
+   }),
+   withScriptjs,
+   withGoogleMap
+)((props) =>
+   <GoogleMap
+      defaultZoom={8}
+      defaultCenter={{ lat: -34.397, lng: 150.644 }}
+   >
+      {props.isMarkerShown && <Marker position={{ lat: -34.397, lng: 150.644 }} onClick={props.onMarkerClick} />}
+   </GoogleMap>
+)
 
+class MyFancyComponent extends React.PureComponent {
    constructor() {
       super()
-
-      this.state = {
-         showingInfoWindow: false,
-         activeMarker: {},
-         selectedPlace: {},
-         areaLat: '',
-         areaLng: '',
+      state = {
+         isMarkerShown: false,
       }
 
-      this.onMarkerClick = this.onMarkerClick.bind(this);
-      this.onMapClicked = this.onMapClicked.bind(this);
-      this.murderFish = this.murderFish.bind(this); 
+      this.delayedShowMarker = this.delayedShowMarker.bind(this);
+      this.handleMarkerClick = this.handleMarkerClick.bind(this);
    }
 
-   onMarkerClick(props,marker, e) {
-      //This is just an onclick.
-      console.log("clicked")
-      this.setState({
-         selectedPlace: props,
-         activeMarker: marker,
-         showingInfoWindow: true
-      });
+   componentDidMount() {
+      this.delayedShowMarker()
    }
 
-   onMapClicked(props) {
-      if (this.state.showingInfoWindow) {
-         this.setState({
-            showingInfoWindow: false,
-            activeMarker: {}
-         })
-      }
+   delayedShowMarker() {
+      setTimeout(() => {
+         this.setState({ isMarkerShown: true })
+      }, 3000)
    }
 
-   componentWillReceiveProps(props) {
-      this.setState({
-         areaLat: this.props.areaLat,
-         areaLng: this.props.areaLng,
-      }, () => this.render());
+   handleMarkerClick() {
+      this.setState({ isMarkerShown: false })
+      this.delayedShowMarker()
    }
 
-   murderFish() {
-      console.log("haaay");
-   }
-
-
-   render(props) {
+   render() {
       return (
-         //currently sets the Map somewhere when rendered.
-         <Map 
-            onClick={this.onMapClicked}
-            google={this.props.google} 
-            zoom={15}
-            center={{
-               lat: this.state.areaLat,
-               lng: this.state.areaLng
-            }}
-         >
-            {/* Adding a marker based on specific lag and lng */}
-            <Marker 
-               onClick={this.onMarkerClick}
-               // GIVE THIS A UNIQUE STYLE
-               zoom={14}
-               position= {{
-                  lat: this.state.areaLat,
-                  lng: this.state.areaLng
-               }} 
-               name={'starting location'} 
-            />
-            <Marker 
-               className="initialCafes"
-               onClick={this.onMarkerClick}
-               zoom={14}
-               position= {{
-                  lat: 43.6687987,
-                  lng: -79.3978587
-               }} 
-               name={'starting location'}  
-            />
-
-            {this.props.nearbyPlaces.map((place) => {
-               return (
-                  <Marker key={place.place_id}
-                     onClick={this.onMarkerClick}
-                     name={place.name}
-                     position= {{
-                        lat: place.geometry.location.lat,
-                        lng: place.geometry.location.lng
-                     }}
-                     icon={{
-                        url: this.icon
-                     }}
-                  />
-               )
-            })}
-            <InfoWindow 
-               onOpen={this.windowHasOpened}
-               onClose={this.onInfoWindowClose}
-               visible={this.state.showingInfoWindow}
-               onClick={this.murderFish}
-            >
-               <div>
-                  <h1 className="placeText">     
-                     {this.state.selectedPlace.name}
-                  </h1>
-                  <button>Click Me</button>
-               </div>
-            </InfoWindow>
-         </Map>
-      );
+         <MyMapComponent
+            isMarkerShown={this.state.isMarkerShown}
+            onMarkerClick={this.handleMarkerClick}
+         />
+      )
    }
 }
 
-export default GoogleApiWrapper({ apiKey: ('AIzaSyAX858sfNr7KcSp6NdszHBoxH8ZDix-nf8') })(MapContainer)
-
-// props, marker, e
-
-// onInfoWindowClose() {
-//    this.setState({
-//      showingInfoWindow: false,
-//      activeMarker: null
-//    })
-//  }
+export default MyMapComponent;

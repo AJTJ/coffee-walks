@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Qs from 'qs';
 import axios from "axios";
 import MyWalks from "./MyWalks.js";
-import MapContainer from './MapContainer.js';
+import MyMapComponent from './MapContainer.js';
 import Directions from './Directions.js';
 import {
    BrowserRouter as Router,
@@ -52,7 +52,7 @@ class App extends React.Component {
           {/* exact states that the path has to state the path EXACTLY to render in the specific component */}
           <MyWalks getNearbyPlaces={this.getNearbyPlaces} getUserAreaLocation={this.getUserAreaLocation} />
           <Directions />
-          <MapContainer nearbyPlaces={this.state.nearbyPlaces} areaLat={this.state.lat} areaLng={this.state.lng} confirmStart={this.confirmStart}  />
+          <MyMapComponent nearbyPlaces={this.state.nearbyPlaces} areaLat={this.state.lat} areaLng={this.state.lng} confirmStart={this.confirmStart}   />
 
         </div>
     )
