@@ -1,3 +1,97 @@
+import React from "react"
+import { compose, withProps } from "recompose"
+import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
+
+const MyMapComponent = compose(
+   withProps({
+      googleMapURL: "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places",
+      loadingElement: <div style={{ height: `100%` }} />,
+      containerElement: <div style={{ height: `80vh` }} />,
+      mapElement: <div style={{ height: `100%` }} />,
+   }),
+   withScriptjs,
+   withGoogleMap
+)((props) =>
+   <GoogleMap
+      defaultZoom={14}
+      defaultCenter={{ 
+         lat: props.areaLat, 
+         lng: props.areaLng 
+      }}
+   >
+      {props.isMarkerShown && <Marker 
+         position={{ lat: props.areaLat, lng: props.areaLng }} 
+         onClick={props.onMarkerClick} 
+      />}
+      {props.isMarkerShown && 
+      props.nearbyPlaces.map((place) => {
+         console.log(place);
+         <Marker 
+            position={{ lat: place.geometry.location.lat, lng: place.geometry.location.lng }} 
+            onClick={props.onMarkerClick} 
+         />
+      })}
+
+   </GoogleMap>
+)
+
+class MapContainer extends React.PureComponent {
+   constructor() {
+      super();
+      this.state = {
+         isMarkerShown: false,
+         areaLat: "",
+         areaLng: "",
+         nearbyPlaces: []
+      };
+
+   // this.delayedShowMarker = this.delayedShowMarker.bind(this);
+   // this.handleMarkerClick = this.handleMarkerClick.bind(this);
+   }
+
+   componentDidMount() {
+      this.delayedShowMarker();
+   }
+
+   delayedShowMarker() {
+      setTimeout(() => {
+         this.setState({ isMarkerShown: true });
+      }, 3000);
+   }
+
+   handleMarkerClick() {
+      this.setState({ isMarkerShown: false });
+      this.delayedShowMarker();
+   }
+
+   componentWillReceiveProps(props) {
+      this.setState(
+         {
+            areaLat: props.areaLat,
+            areaLng: props.areaLng,
+            nearbyPlaces: props.nearbyPlaces
+         },
+         () => this.render()
+      );
+   }
+
+  render() {
+      return (
+         <MyMapComponent
+            areaLat={this.state.areaLat}
+            areaLng={this.state.areaLng}
+            nearbyPlaces={this.state.nearbyPlaces}
+            
+            isMarkerShown={this.state.isMarkerShown}
+            onMarkerClick={this.handleMarkerClick}
+         />
+      );
+   }
+}
+
+export default MapContainer;
+
+
 // import React from "react"
 // import { compose, withProps, lifecycle } from "recompose"
 // import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
@@ -77,86 +171,3 @@
 // }
 
 // export default MapContainer;
-
-
-
-
-import React from "react"
-import { compose, withProps } from "recompose"
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
-
-const MyMapComponent = compose(
-   withProps({
-      googleMapURL: "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places",
-      loadingElement: <div style={{ height: `100%` }} />,
-      containerElement: <div style={{ height: `80vh` }} />,
-      mapElement: <div style={{ height: `100%` }} />,
-   }),
-   withScriptjs,
-   withGoogleMap
-)((props) =>
-   <GoogleMap
-      defaultZoom={14}
-      defaultCenter={{ 
-         lat: props.areaLat, 
-         lng: props.areaLng 
-      }}
-   >
-      {props.isMarkerShown && <Marker 
-         position={{ lat: props.areaLat, lng: props.areaLng }} 
-         onClick={props.onMarkerClick} 
-      />}
-   </GoogleMap>
-)
-
-class MapContainer extends React.PureComponent {
-  constructor() {
-    super();
-    this.state = {
-      isMarkerShown: false,
-      areaLat: "",
-      areaLng: ""
-    };
-
-    // this.delayedShowMarker = this.delayedShowMarker.bind(this);
-    // this.handleMarkerClick = this.handleMarkerClick.bind(this);
-  }
-
-  componentDidMount() {
-    this.delayedShowMarker();
-  }
-
-  delayedShowMarker() {
-    setTimeout(() => {
-      this.setState({ isMarkerShown: true });
-    }, 3000);
-  }
-
-  handleMarkerClick() {
-    this.setState({ isMarkerShown: false });
-    this.delayedShowMarker();
-  }
-
-  componentWillReceiveProps(props) {
-    this.setState(
-      {
-        areaLat: props.areaLat,
-        areaLng: props.areaLng
-      },
-      () => this.render()
-    );
-  }
-
-  render() {
-    return (
-      <MyMapComponent
-        areaLat={this.state.areaLat}
-        areaLng={this.state.areaLng}
-        isMarkerShown={this.state.isMarkerShown}
-        onMarkerClick={this.handleMarkerClick}
-      />
-    );
-  }
-}
-
-export default MapContainer;
