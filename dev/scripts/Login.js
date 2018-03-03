@@ -22,15 +22,17 @@ class Login extends React.Component {
       this.signOut = this.signOut.bind(this);
       this.handleChange = this.handleChange.bind(this);
       this.addText = this.addText.bind(this);
-  }
+   }
 
-  signIn() {
+   signIn() {
+
       console.log("sign In");
       //new instance of a google auth provider
       const provider = new firebase.auth.GoogleAuthProvider();
 
       //prompts user to select their acconut
       provider.setCustomParameters({
+
       prompt: "select_account"
       });
 
@@ -38,14 +40,14 @@ class Login extends React.Component {
       //the pop up will accept a promise
       //go into authentication on firebase, and enable the provider you plan on using
       firebase
+
       .auth()
       .signInWithPopup(provider)
       .then(user => {
          console.log(user);
       });
    }
-
-  signOut() {
+   signOut() {
       console.log("sign out");
       firebase.auth().signOut();
 
@@ -53,14 +55,16 @@ class Login extends React.Component {
       // this.setState({
       //   loggedIn:false
       // })
-  }
+   }
 
-  handleChange(e) {
+   handleChange(e) {
+
       console.log(e.target.value);
       this.setState({
          [e.target.id]: e.target.value
       });
-  }
+   }
+
 
   addText(e) {
       e.preventDefault();
