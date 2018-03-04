@@ -18,7 +18,8 @@ class Home extends React.Component {
          lng: "",
          testing: false,
          firstChoice: [],
-         endChoice: []
+         endChoice: [],
+         choices: false
       }
       this.getNearbyPlaces = this.getNearbyPlaces.bind(this);
       this.getUserAreaLocation = this.getUserAreaLocation.bind(this);
@@ -58,23 +59,22 @@ class Home extends React.Component {
    handleEndCafeClick(place) {
       console.log('button clicked');
       this.setState({
-         endChoice: place
+         endChoice: place,
+         choices:true
       }),() => console.log(this.state.endChoice);
    }
 
    render() {
       return (
          <div className="wrapper">
-             <Login />
-   
              {/* exact states that the path has to state the path EXACTLY to render in the specific component */}
              <MyWalks getNearbyPlaces={this.getNearbyPlaces} getUserAreaLocation={this.getUserAreaLocation} />
    
              {/* FIRST DESTINATION */}
              {this.state.lat !== "" && <MapContainer nearbyPlaces={this.state.nearbyPlaces} areaLat={this.state.lat} areaLng={this.state.lng} confirmStart={this.confirmStart} handleEndCafeClick={this.handleEndCafeClick} handleStartCafeClick={this.handleStartCafeClick} />}
    
-             {this.state.firstChoice !== [] & this.state.endChoice !== []
-               ? <Link to="/Directions">Lets Find Your Route</Link>
+             {this.state.choices
+               ? (<Link to="/Directions">Lets Find Your Route</Link>)
                : null}
              {/* FINAL DESTINATION
                {this.state.firstChoice !== [] && <FinalDestinationContainer firstChoice={this.state.firstChoice} />} */}

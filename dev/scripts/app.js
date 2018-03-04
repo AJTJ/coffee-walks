@@ -7,6 +7,7 @@ import MapContainer from './MapContainer.js';
 import Directions from './Directions.js';
 import Header from "./Header.js";
 import Home from "./Home.js";
+import Login from "./Login.js";
 import {
    BrowserRouter as Router,
    Route,
@@ -20,6 +21,7 @@ class App extends React.Component {
          <div>
             <header>
                <Header />
+               <Login />
                <Link to="/Home">Home</Link>
             </header>
             <Route path="/Home" exact component={Home} />
