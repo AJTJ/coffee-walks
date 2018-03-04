@@ -29,20 +29,24 @@ const MyMapComponent = compose(
    <Marker 
       position={{ lat: props.areaLat, lng: props.areaLng }} 
       onClick={props.onToggleOpen}
-      defaultOpacity={0.5}
+
+      defaultOpacity= {0.5}
+
       // onClick={props.onMarkerClick} 
    >
       {props.isOpen && 
       <InfoWindow onCloseClick={props.onToggleOpen}>
          <div>
             <p>{props.nearbyPlaces[0].name}</p>
-            <button onClick={props.handleClick} 
-            >MurdahFISH</button>
+
+            <button onClick={props.handleClick}>Confirm Cafe</button>
+
          </div>
       </InfoWindow>}
    </Marker>
 
    {props.nearbyPlaces.map((place, i) => {
+
       console.log(place)
          return (
          <Marker 
@@ -59,12 +63,13 @@ const MyMapComponent = compose(
                </div>
             </InfoWindow>}
          </Marker>
-
       )
    })}
    </GoogleMap>
 
 );
+
+
 
 {/* <FaAnchor /> */}
 
@@ -146,82 +151,51 @@ class MapContainer extends React.PureComponent {
 export default MapContainer;
 
 
-// import React from "react"
-// import { compose, withProps, lifecycle } from "recompose"
-// import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
 
-// const { compose, withProps, lifecycle } = require("recompose");
-// const {
-//    withScriptjs,
-//    withGoogleMap,
-//    GoogleMap,
-//    DirectionsRenderer,
-// } = require("react-google-maps");
 
-// const MapWithADirectionsRenderer = compose(
-//    withProps({
-//       googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg&v=3.exp&libraries=geometry,drawing,places",
-//       loadingElement: <div style={{ height: `100%` }} />,
-//       containerElement: <div style={{ height: `400px` }} />,
-//       mapElement: <div style={{ height: `100%` }} />,
-//    }),
-//    withScriptjs,
-//    withGoogleMap,
-//    lifecycle({
-//       componentDidMount(props) {
-//          const DirectionsService = new google.maps.DirectionsService();
+class RestaurantMarker extends React.Component {
 
-//          DirectionsService.route({
-//             origin: new google.maps.LatLng(41.8507300, -87.6512600),
-//             destination: new google.maps.LatLng(41.8525800, -87.6514100),
-//             travelMode: google.maps.TravelMode.DRIVING,
-//          }, (result, status) => {
-//             if (status === google.maps.DirectionsStatus.OK) {
-//                this.setState({
-//                   directions: result,
-//                });
-//             } else {
-//                console.error(`error fetching directions ${result}`);
-//             }
-//          });
-//       }
-//    })
-// )(props =>
-//    <GoogleMap
-//       defaultZoom={7}
-//       defaultCenter={new google.maps.LatLng(41.8507300, -87.6512600)}
-//    >
-//       {props.directions && <DirectionsRenderer directions={props.directions} />}
-//    </GoogleMap>
-// );
+   constructor(props) {
+      super(props)
 
-// class MapContainer extends React.PureComponent {
-//    constructor() {
-//       super()
-//       this.state = {
-//          isMarkerShown: false,
-//       }
+      this.state = {
+         open: false
+      }
+   }
 
-//       // this.delayedShowMarker = this.delayedShowMarker.bind(this);
-//       // this.handleMarkerClick = this.handleMarkerClick.bind(this);
-//    }
+   render() {
 
-//    delayedShowMarker() {
-//       setTimeout(() => {
-//          this.setState({ isMarkerShown: true })
-//       }, 3000)
-//    }
+      const {
+         name,
+         latitude,
+         longitude
+      } = this.props;
 
-//    handleMarkerClick() {
-//       this.setState({ isMarkerShown: false })
-//       this.delayedShowMarker()
-//    }
 
-//    render() {
-//       return (
-//          <MapWithADirectionsRenderer />
-//       )
-//    }
-// }
-
-// export default MapContainer;
+      // Return Restaurant Marker Component.
+      return (
+         <Marker key={name} position={{ lat: latitude, lng: longitude }}>
+            {this.state.open ? (
+               <InfoWindow onClick={() => this.setState({ open: !this.state.open })}> 
+                  <div>
+                     <p>{name}</p> 
+                  </div>
+               </InfoWindow>
+            ) : ''}
+         </Marker>
+         // <Marker
+         //    position={{ lat: geometry.location.lat, lng: geometry.location.lng }}
+         //    onClick={() => { props.onToggleOpen(place.id); }}
+         //    key={name}
+         // >
+         // {props.isOpen &&
+         //    <InfoWindow onCloseClick={props.onToggleOpen}>
+         //       <div>
+         //          <p>{props.nearbyPlaces[i].name}</p>
+         //          <button onClick={props.handleClick} >MurdahFISH</button>
+         //       </div>
+         //    </InfoWindow>}
+         // </Marker>
+      )
+   }
+}
