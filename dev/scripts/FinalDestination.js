@@ -1,0 +1,151 @@
+import React from "react"
+import { compose, withProps, withStateHandlers } from "recompose"
+import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps"
+
+const MyMapComponent = compose(
+   withProps({
+      googleMapURL: "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places",
+      loadingElement: <div style={{ height: `100%` }} />,
+      containerElement: <div style={{ height: `80vh` }} />,
+      mapElement: <div style={{ height: `100%` }} />,
+   }),
+   withStateHandlers(() => ({
+      isOpen: false,
+   }), {
+         onToggleOpen: ({ isOpen }) => () => ({
+            isOpen: !isOpen,
+         })
+      }),
+   withScriptjs,
+   withGoogleMap
+)((props) =>
+   <GoogleMap
+      defaultZoom={14}
+      defaultCenter={{
+         lat: props.areaLat,
+         lng: props.areaLng
+      }}
+   >
+      <Marker
+         position={{ lat: props.areaLat, lng: props.areaLng }}
+         onClick={props.onToggleOpen}
+
+         defaultOpacity={0.5}
+
+      // onClick={props.onMarkerClick} 
+      >
+         {props.isOpen &&
+            <InfoWindow onCloseClick={props.onToggleOpen}>
+               <div>
+                  <p>{props.nearbyPlaces[0].name}</p>
+
+                  <button onClick={props.handleClick}>Confirm Cafe</button>
+
+               </div>
+            </InfoWindow>}
+      </Marker>
+
+      {props.nearbyPlaces.map((place, i) => {
+
+         console.log(place)
+         return (
+            <Marker
+               position={{ lat: place.geometry.location.lat, lng: place.geometry.location.lng }}
+               onClick={props.onToggleOpen}
+               key={place.id}
+            >
+               {props.isOpen &&
+                  <InfoWindow onCloseClick={props.onToggleOpen}>
+                     <div>
+                        <p>{props.nearbyPlaces[i].name}</p>
+                        <button className="startingDest" onClick={() => props.handleClick(place)} >MurdahFISH</button>
+
+                     </div>
+                  </InfoWindow>}
+            </Marker>
+         )
+      })}
+   </GoogleMap>
+
+);
+
+
+
+{/* <FaAnchor /> */ }
+
+{/* < MyMapComponent
+   googleMapURL = "https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg&v=3.exp&libraries=geometry,drawing,places"
+   loadingElement = {< div style = {{ height: `100%` }} />}
+   containerElement = {< div style = {{ height: `400px` }} />}
+   mapElement = {< div style = {{ height: `100%` }} />}
+/> */}
+
+class FinalDestinationContainer extends React.PureComponent {
+   constructor() {
+      super();
+      this.state = {
+         isMarkerShown: false,
+         areaLat: "",
+         areaLng: "",
+         nearbyPlaces: [],
+         firstChoice: []
+      };
+
+      this.delayedShowMarker = this.delayedShowMarker.bind(this);
+      this.handleMarkerClick = this.handleMarkerClick.bind(this);
+      this.handleClick = this.handleClick.bind(this);
+   }
+
+   componentDidMount() {
+      this.delayedShowMarker();
+   }
+
+   delayedShowMarker() {
+      setTimeout(() => {
+         this.setState({ isMarkerShown: true });
+      }, 3000);
+   }
+
+   handleMarkerClick(e) {
+      e.preventDefault();
+      this.setState({ isMarkerShown: false });
+      this.delayedShowMarker();
+
+   }
+
+   handleClick(place) {
+      console.log('button clicked');
+      this.setState({
+         firstChoice: place
+      })
+
+   }
+
+   componentWillReceiveProps(props) {
+      this.setState(
+         {
+            areaLat: props.areaLat,
+            areaLng: props.areaLng,
+            nearbyPlaces: props.nearbyPlaces,
+
+         },
+         () => this.render()
+      );
+   }
+
+   render() {
+      return (
+         <MyMapComponent
+            areaLat={this.state.areaLat}
+            areaLng={this.state.areaLng}
+            nearbyPlaces={this.state.nearbyPlaces}
+
+            isMarkerShown={this.state.isMarkerShown}
+            onMarkerClick={this.handleMarkerClick}
+            handleClick={this.handleClick}
+         />
+      );
+   }
+}
+
+export default FinalDestinationContainer;

@@ -46,9 +46,8 @@ const MyMapComponent = compose(
    </Marker>
 
    {props.nearbyPlaces.map((place, i) => {
-
       console.log(place)
-         return (
+      return (
          <Marker 
          position={{ lat: place.geometry.location.lat, lng: place.geometry.location.lng }}
          onClick={props.onToggleOpen}
@@ -58,7 +57,7 @@ const MyMapComponent = compose(
             <InfoWindow onCloseClick={props.onToggleOpen}>
                <div>
                   <p>{props.nearbyPlaces[i].name}</p>
-                     <button className="startingDest" onClick={() => props.handleClick(place)} >MurdahFISH</button>
+                     <button className="startingDest" onClick={() => props.handleStartCafeClick(place)} >Confirm Starting Cafe</button>
                      
                </div>
             </InfoWindow>}
@@ -88,12 +87,10 @@ class MapContainer extends React.PureComponent {
          areaLat: "",
          areaLng: "",
          nearbyPlaces: [],
-         firstChoice: []
       };
 
    this.delayedShowMarker = this.delayedShowMarker.bind(this);
    this.handleMarkerClick = this.handleMarkerClick.bind(this);
-   this.handleClick = this.handleClick.bind(this);
    }
 
    componentDidMount() {
@@ -113,13 +110,6 @@ class MapContainer extends React.PureComponent {
    
    }
 
-   handleClick(place) {
-      console.log('button clicked');
-      this.setState({
-         firstChoice: place
-      })
-      
-   }
 
    componentWillReceiveProps(props) {
       this.setState(
@@ -143,6 +133,7 @@ class MapContainer extends React.PureComponent {
             isMarkerShown={this.state.isMarkerShown}
             onMarkerClick={this.handleMarkerClick}
             handleClick={this.handleClick}
+            handleStartCafeClick={this.handleStartCafeClick}
          />
       );
    }
@@ -153,49 +144,49 @@ export default MapContainer;
 
 
 
-class RestaurantMarker extends React.Component {
+// class RestaurantMarker extends React.Component {
 
-   constructor(props) {
-      super(props)
+//    constructor(props) {
+//       super(props)
 
-      this.state = {
-         open: false
-      }
-   }
+//       this.state = {
+//          open: false
+//       }
+//    }
 
-   render() {
+//    render() {
 
-      const {
-         name,
-         latitude,
-         longitude
-      } = this.props;
+//       const {
+//          name,
+//          latitude,
+//          longitude
+//       } = this.props;
 
 
-      // Return Restaurant Marker Component.
-      return (
-         <Marker key={name} position={{ lat: latitude, lng: longitude }}>
-            {this.state.open ? (
-               <InfoWindow onClick={() => this.setState({ open: !this.state.open })}> 
-                  <div>
-                     <p>{name}</p> 
-                  </div>
-               </InfoWindow>
-            ) : ''}
-         </Marker>
-         // <Marker
-         //    position={{ lat: geometry.location.lat, lng: geometry.location.lng }}
-         //    onClick={() => { props.onToggleOpen(place.id); }}
-         //    key={name}
-         // >
-         // {props.isOpen &&
-         //    <InfoWindow onCloseClick={props.onToggleOpen}>
-         //       <div>
-         //          <p>{props.nearbyPlaces[i].name}</p>
-         //          <button onClick={props.handleClick} >MurdahFISH</button>
-         //       </div>
-         //    </InfoWindow>}
-         // </Marker>
-      )
-   }
-}
+//       // Return Restaurant Marker Component.
+//       return (
+//          <Marker key={name} position={{ lat: latitude, lng: longitude }}>
+//             {this.state.open ? (
+//                <InfoWindow onClick={() => this.setState({ open: !this.state.open })}> 
+//                   <div>
+//                      <p>{name}</p> 
+//                   </div>
+//                </InfoWindow>
+//             ) : ''}
+//          </Marker>
+//          // <Marker
+//          //    position={{ lat: geometry.location.lat, lng: geometry.location.lng }}
+//          //    onClick={() => { props.onToggleOpen(place.id); }}
+//          //    key={name}
+//          // >
+//          // {props.isOpen &&
+//          //    <InfoWindow onCloseClick={props.onToggleOpen}>
+//          //       <div>
+//          //          <p>{props.nearbyPlaces[i].name}</p>
+//          //          <button onClick={props.handleClick} >MurdahFISH</button>
+//          //       </div>
+//          //    </InfoWindow>}
+//          // </Marker>
+//       )
+//    }
+// }
