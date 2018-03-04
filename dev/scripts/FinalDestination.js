@@ -1,6 +1,14 @@
 import React from "react"
 import { compose, withProps, withStateHandlers } from "recompose"
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps"
+import axios from "axios";
+import Qs from "qs";
+
+let key1 = "AIzaSyCqAPO1t-7KMYt8f0YU2Pi4z2j-SWPvykg";
+let key2 = "AIzaSyAX858sfNr7KcSp6NdszHBoxH8ZDix-nf8";
+let key3 = "AIzaSyA3iTZwH8cw1ZHEDOOykYqzrPK-7WBzJgA";
+let key4 = "AIzaSyAmlAUFOnmBXKDuYmCTVFbEKejUPCZOQBg";
+let key5 = "AIzaSyDPIDnwygCBYYAxcjXu4S8aeogRkWAYXDI";
 
 // const MyMapComponent = compose(
 //    withProps({
@@ -75,27 +83,7 @@ class FinalDestinationContainer extends React.PureComponent {
          nearbyPlaces: [],
          firstChoice: []
       };
-
-      this.delayedShowMarker = this.delayedShowMarker.bind(this);
-      this.handleMarkerClick = this.handleMarkerClick.bind(this);
       this.handleClick = this.handleClick.bind(this);
-   }
-
-   componentDidMount() {
-      this.delayedShowMarker();
-   }
-
-   delayedShowMarker() {
-      setTimeout(() => {
-         this.setState({ isMarkerShown: true });
-      }, 3000);
-   }
-
-   handleMarkerClick(e) {
-      e.preventDefault();
-      this.setState({ isMarkerShown: false });
-      this.delayedShowMarker();
-
    }
 
    handleClick(place) {
@@ -107,49 +95,53 @@ class FinalDestinationContainer extends React.PureComponent {
    }
 
    componentWillReceiveProps(props) {
-      this.setState(
-         {
-            areaLat: props.firstChoice.geometry.location.lat,
-            areaLng: props.firstChoice.geometry.location.lng,
-         },
-         () => this.nearbySearch()
-      );
+      console.log(props)
+      this.setState({
+         firstChoice: props.firstChoice
+      }, () => this.nearbySearch())
    }
 
    nearbySearch() {
-      console.log("nearby search")
-      console.log(this.state.lat, this.state.lng)
-      axios({
-         method:'GET',
-         url: 'http://proxy.hackeryou.com',
-         dataResponse:'json',
-         paramsSerializer: function(params) {
-               return Qs.stringify(params, {arrayFormat: 'brackets'})
-         },
-         params: {
-            reqUrl: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
-            params: {
-               key: key3,
-               location: `${this.state.areaLat},${this.state.areaLng}`,
-               radius: 5000,
-               type: "cafe"
-            }, 
-            proxyHeaders: {
-               'header_params': 'value'
-            },
-               xmlToJSON: false
-         }
-      }).then(({data}) => {
-         console.log(data);
-         this.setState({
-            nearbyPlaces: data.results
-         }, () => console.log('callback too'))
-      });
+      console.log(this.state.firstChoice)
+      // console.log(this.state.lat, this.state.lng)
+      // axios({
+      //   method: "GET",
+      //   url: "http://proxy.hackeryou.com",
+      //   dataResponse: "json",
+      //   paramsSerializer: function(params) {
+      //     return Qs.stringify(params, { arrayFormat: "brackets" });
+      //   },
+      //   params: {
+      //     reqUrl:
+      //       "https://maps.googleapis.com/maps/api/place/nearbysearch/json",
+      //     params: {
+      //       key: key1,
+      //       location: `${this.state.firstChoice.geometry.location.lat},${
+      //         this.state.firstChoice.geometry.location.lng}`,
+      //       radius: 5000,
+      //       type: "cafe"
+      //     },
+      //     proxyHeaders: {
+      //       header_params: "value"
+      //     },
+      //     xmlToJSON: false
+      //   }
+      // }).then(({ data }) => {
+      //   console.log(data);
+      // //   this.setState(
+      // //     {
+      // //       nearbyPlaces: data.results
+      // //     },
+      // //     () => console.log("callback too")
+      // //   );
+      // });
    }  
 
    render() {
       return (
-         <div></div>
+         <div>
+
+         </div>
          // <MyMapComponent
 
          //    firstChoice={this.state.firstChoice}
