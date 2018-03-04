@@ -43,7 +43,7 @@ class MyWalks extends React.Component {
          params: {
             reqUrl: 'https://maps.googleapis.com/maps/api/place/textsearch/json',
             params: {
-               key: key1,
+               key: key5,
                query: this.state.location
             }, 
             proxyHeaders: {
@@ -70,7 +70,7 @@ class MyWalks extends React.Component {
          params: {
             reqUrl: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
             params: {
-               key: key1,
+               key: key5,
                location: `${this.state.lat},${this.state.lng}`,
                radius: 5000,
                type: "cafe"

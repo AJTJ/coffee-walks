@@ -56,12 +56,12 @@ const MapWithADirectionsRenderer = compose(
 
 
 class Directions extends React.PureComponent {
-   constructor() {
-      super()
+   constructor(props) {
+      super(props)
       this.state = {
          isMarkerShown: false,
       }
-
+      console.log(props.location.state);
       // this.delayedShowMarker = this.delayedShowMarker.bind(this);
       // this.handleMarkerClick = this.handleMarkerClick.bind(this);
    }
