@@ -6,6 +6,7 @@ import MapContainer from "./MapContainer.js";
 import Directions from "./Directions.js";
 import Header from "./Header.js";
 import Login from "./Login.js";
+import FinalDestinationContainer from "./FinalDestination.js";
 
 class Home extends React.Component {
    constructor() {
@@ -14,11 +15,13 @@ class Home extends React.Component {
          nearbyPlaces: [],
          lat: "",
          lng: "",
-         testing: false
+         testing: false,
+         firstChoice: []
       }
       this.getNearbyPlaces = this.getNearbyPlaces.bind(this);
       this.getUserAreaLocation = this.getUserAreaLocation.bind(this);
       this.confirmStart = this.confirmStart.bind(this);
+      this.handleStartCafeClick = this.handleStartCafeClick.bind(this);
    }
 
    getNearbyPlaces(nearbyPlaces) {
@@ -42,6 +45,13 @@ class Home extends React.Component {
       // })
    }
 
+   handleStartCafeClick(place) {
+      console.log('button clicked');
+      this.setState({
+         firstChoice: place
+      })
+   }
+
    render() {
       return (
          <div className="wrapper">
@@ -54,7 +64,9 @@ class Home extends React.Component {
             {/* exact states that the path has to state the path EXACTLY to render in the specific component */}
             <MyWalks getNearbyPlaces={this.getNearbyPlaces} getUserAreaLocation={this.getUserAreaLocation} />
             {this.state.lat !== "" 
-            && <MapContainer nearbyPlaces={this.state.nearbyPlaces} areaLat={this.state.lat} areaLng={this.state.lng} confirmStart={this.confirmStart}/>}
+            && <MapContainer nearbyPlaces={this.state.nearbyPlaces} areaLat={this.state.lat} areaLng={this.state.lng} confirmStart={this.confirmStart} handleStartCafeClick={this.handleStartCafeClick}/>}
+            {/* <FinalDestinationContainer /> */}
+            <Directions />
          </div>
       )
    }
