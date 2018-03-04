@@ -10,10 +10,12 @@ const MyMapComponent = compose(
       mapElement: <div style={{ height: `100%` }} />,
    }),
    withStateHandlers(() => ({
-     isOpen: false,
+      isOpen: false, 
+      selectedID: '',
    }), {
-     onToggleOpen: ({ isOpen }) => () => ({
-       isOpen: !isOpen,
+   onToggleOpen: ({ isOpen, selectedID }) => (selectedID) => ({
+      isOpen: !isOpen,
+      selectedID,
      })
    }),
    withScriptjs,
@@ -26,7 +28,7 @@ const MyMapComponent = compose(
          lng: props.areaLng 
       }}
    >
-   <Marker 
+   {/* <Marker 
       position={{ lat: props.areaLat, lng: props.areaLng }} 
       onClick={props.onToggleOpen}
 
@@ -43,23 +45,22 @@ const MyMapComponent = compose(
 
          </div>
       </InfoWindow>}
-   </Marker>
+   </Marker> */}
 
    {props.nearbyPlaces.map((place, i) => {
       console.log(place)
       return (
          <Marker 
          position={{ lat: place.geometry.location.lat, lng: place.geometry.location.lng }}
-         onClick={props.onToggleOpen}
+         onClick={() => props.onToggleOpen(place.id)}
          key={place.id}
          >
-         {props.isOpen &&
-            <InfoWindow onCloseClick={props.onToggleOpen}>
+         {props.isOpen && props.selectedID === place.id &&
+            <InfoWindow onCloseClick={() => props.onToggleOpen(place.id)}>
                <div>
                   <p>{props.nearbyPlaces[i].name}</p>
-                     <button className="startingDest" onClick={() => props.handleStartCafeClick(place)}>Confirm Starting Cafe</button>
-                     <button className="endingDest" onClick={() => props.handleEndCafeClick(place)}>Confirm Ending Cafe</button>
-                     
+                  <button className="startingDest" onClick={() => props.handleStartCafeClick(place)}>Confirm Starting Cafe</button>
+                  <button className="endingDest" onClick={() => props.handleEndCafeClick(place)}>Confirm Ending Cafe</button>
                </div>
             </InfoWindow>}
          </Marker>
