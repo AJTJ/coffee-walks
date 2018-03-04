@@ -74,7 +74,10 @@ class Home extends React.Component {
             {this.state.lat !== "" && <MapContainer nearbyPlaces={this.state.nearbyPlaces} areaLat={this.state.lat} areaLng={this.state.lng} confirmStart={this.confirmStart} handleEndCafeClick={this.handleEndCafeClick} handleStartCafeClick={this.handleStartCafeClick} />}
 
          
-            {this.state.choices ? (<Link to="/Directions" params={{ firstChoice: this.state.firstChoice, endChoice: this.state.endChoice }}>Lets Find Your Route</Link>) : null}
+            {this.state.choices ? 
+               <Link to={ {pathname: '/Directions', state: { firstChoice: this.state.firstChoice, endChoice: this.state.endChoice } } } >Lets Find Your Route</Link> :
+               null
+            }
             {/* FINAL DESTINATION
             {this.state.firstChoice !== [] && <FinalDestinationContainer firstChoice={this.state.firstChoice} />} */}
          </div>
@@ -82,4 +85,5 @@ class Home extends React.Component {
    }
 }
 
+// to = "/Directions" params = {{ firstChoice: this.state.firstChoice, endChoice: this.state.endChoice }}
 export default Home;
