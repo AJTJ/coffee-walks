@@ -29,36 +29,39 @@ const MyMapComponent = compose(
    <Marker 
       position={{ lat: props.areaLat, lng: props.areaLng }} 
       onClick={props.onToggleOpen}
+      defaultOpacity={0.5}
       // onClick={props.onMarkerClick} 
    >
       {props.isOpen && 
       <InfoWindow onCloseClick={props.onToggleOpen}>
          <div>
             <p>{props.nearbyPlaces[0].name}</p>
-            <button onClick={props.handleClick} >MurdahFISH</button>
+            <button onClick={props.handleClick} 
+            >MurdahFISH</button>
          </div>
       </InfoWindow>}
    </Marker>
 
    {props.nearbyPlaces.map((place, i) => {
+      console.log(place)
          return (
-         <Marker
-            position={{ lat: place.geometry.location.lat, lng: place.geometry.location.lng }}
-            onClick={props.onToggleOpen}
+         <Marker 
+         position={{ lat: place.geometry.location.lat, lng: place.geometry.location.lng }}
+         onClick={props.onToggleOpen}
+         key={place.id}
          >
          {props.isOpen &&
             <InfoWindow onCloseClick={props.onToggleOpen}>
-                  <div>
-                     <p>{props.nearbyPlaces[i].name}</p>
-                     <button onClick={props.handleClick} >MurdahFISH</button>
-                  </div>
-               </InfoWindow>}
+               <div>
+                  <p>{props.nearbyPlaces[i].name}</p>
+                     <button className="startingDest" onClick={() => props.handleClick(place)} >MurdahFISH</button>
+                     
+               </div>
+            </InfoWindow>}
          </Marker>
 
       )
    })}
-   
-   
    </GoogleMap>
 
 );
@@ -79,7 +82,8 @@ class MapContainer extends React.PureComponent {
          isMarkerShown: false,
          areaLat: "",
          areaLng: "",
-         nearbyPlaces: []
+         nearbyPlaces: [],
+         firstChoice: []
       };
 
    this.delayedShowMarker = this.delayedShowMarker.bind(this);
@@ -97,13 +101,19 @@ class MapContainer extends React.PureComponent {
       }, 3000);
    }
 
-   handleMarkerClick() {
+   handleMarkerClick(e) {
+      e.preventDefault(); 
       this.setState({ isMarkerShown: false });
       this.delayedShowMarker();
+   
    }
 
-   handleClick() {
+   handleClick(place) {
       console.log('button clicked');
+      this.setState({
+         firstChoice: place
+      })
+      
    }
 
    componentWillReceiveProps(props) {
@@ -111,7 +121,8 @@ class MapContainer extends React.PureComponent {
          {
             areaLat: props.areaLat,
             areaLng: props.areaLng,
-            nearbyPlaces: props.nearbyPlaces
+            nearbyPlaces: props.nearbyPlaces,
+
          },
          () => this.render()
       );
