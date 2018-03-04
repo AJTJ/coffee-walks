@@ -53,7 +53,6 @@ class Home extends React.Component {
             <Login />
             {/* exact states that the path has to state the path EXACTLY to render in the specific component */}
             <MyWalks getNearbyPlaces={this.getNearbyPlaces} getUserAreaLocation={this.getUserAreaLocation} />
-            <Directions />
             {this.state.lat !== "" 
             && <MapContainer nearbyPlaces={this.state.nearbyPlaces} areaLat={this.state.lat} areaLng={this.state.lng} confirmStart={this.confirmStart}/>}
          </div>
