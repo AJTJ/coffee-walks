@@ -77,6 +77,10 @@ class Directions extends React.PureComponent {
       this.delayedShowMarker()
    }
 
+   componentWillReceiveProps(props) {
+      console.log(props);
+   }
+
    render() {
       return (
          <MapWithADirectionsRenderer />

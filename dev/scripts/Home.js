@@ -67,18 +67,17 @@ class Home extends React.Component {
    render() {
       return (
          <div className="wrapper">
-             {/* exact states that the path has to state the path EXACTLY to render in the specific component */}
-             <MyWalks getNearbyPlaces={this.getNearbyPlaces} getUserAreaLocation={this.getUserAreaLocation} />
-   
-             {/* FIRST DESTINATION */}
-             {this.state.lat !== "" && <MapContainer nearbyPlaces={this.state.nearbyPlaces} areaLat={this.state.lat} areaLng={this.state.lng} confirmStart={this.confirmStart} handleEndCafeClick={this.handleEndCafeClick} handleStartCafeClick={this.handleStartCafeClick} />}
-   
-             {this.state.choices
-               ? (<Link to="/Directions">Lets Find Your Route</Link>)
-               : null}
-             {/* FINAL DESTINATION
-               {this.state.firstChoice !== [] && <FinalDestinationContainer firstChoice={this.state.firstChoice} />} */}
-           </div>
+            {/* exact states that the path has to state the path EXACTLY to render in the specific component */}
+            <MyWalks getNearbyPlaces={this.getNearbyPlaces} getUserAreaLocation={this.getUserAreaLocation} />
+
+            {/* FIRST DESTINATION */}
+            {this.state.lat !== "" && <MapContainer nearbyPlaces={this.state.nearbyPlaces} areaLat={this.state.lat} areaLng={this.state.lng} confirmStart={this.confirmStart} handleEndCafeClick={this.handleEndCafeClick} handleStartCafeClick={this.handleStartCafeClick} />}
+
+         
+            {this.state.choices ? (<Link to="/Directions" params={{ firstChoice: this.state.firstChoice, endChoice: this.state.endChoice }}>Lets Find Your Route</Link>) : null}
+            {/* FINAL DESTINATION
+            {this.state.firstChoice !== [] && <FinalDestinationContainer firstChoice={this.state.firstChoice} />} */}
+         </div>
       )
    }
 }
