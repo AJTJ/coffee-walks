@@ -64,7 +64,6 @@ class Home extends React.Component {
 
    render() {
       return (
-      <Router>
          <div className="wrapper">
              <Login />
    
@@ -80,7 +79,6 @@ class Home extends React.Component {
              {/* FINAL DESTINATION
                {this.state.firstChoice !== [] && <FinalDestinationContainer firstChoice={this.state.firstChoice} />} */}
            </div>
-      </Router>
       )
    }
 }
