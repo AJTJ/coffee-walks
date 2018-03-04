@@ -28,7 +28,7 @@ const MyMapComponent = compose(
    >
    <Marker 
       position={{ lat: props.areaLat, lng: props.areaLng }} 
-      onClick={props.onToggleOpen} 
+      onClick={props.onToggleOpen}
       // onClick={props.onMarkerClick} 
    >
       {props.isOpen && 
@@ -40,15 +40,27 @@ const MyMapComponent = compose(
       </InfoWindow>}
    </Marker>
 
-      {/* {props.isMarkerShown && 
-      props.nearbyPlaces.map((place) => {
-         // console.log(place);
-         <Marker 
-            position={{ lat: place.geometry.location.lat, lng: place.geometry.location.lng }} 
-            onClick={props.onMarkerClick} 
-         />
-      })} */}
+   {props.nearbyPlaces.map((place, i) => {
+         return (
+         <Marker
+            position={{ lat: place.geometry.location.lat, lng: place.geometry.location.lng }}
+            onClick={props.onToggleOpen}
+         >
+         {props.isOpen &&
+            <InfoWindow onCloseClick={props.onToggleOpen}>
+                  <div>
+                     <p>{props.nearbyPlaces[i].name}</p>
+                     <button onClick={props.handleClick} >MurdahFISH</button>
+                  </div>
+               </InfoWindow>}
+         </Marker>
+
+      )
+   })}
+   
+   
    </GoogleMap>
+
 );
 
 {/* <FaAnchor /> */}
