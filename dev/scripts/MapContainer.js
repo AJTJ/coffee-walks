@@ -58,6 +58,7 @@ const MyMapComponent = compose(
                <div>
                   <p>{props.nearbyPlaces[i].name}</p>
                      <button className="startingDest" onClick={() => props.handleStartCafeClick(place)}>Confirm Starting Cafe</button>
+                     <button className="endingDest" onClick={() => props.handleEndCafeClick(place)}>Confirm Ending Cafe</button>
                      
                </div>
             </InfoWindow>}
@@ -138,6 +139,7 @@ class MapContainer extends React.PureComponent {
             onMarkerClick={this.handleMarkerClick}
             handleClick={this.handleClick}
             handleStartCafeClick={this.props.handleStartCafeClick}
+            handleEndCafeClick={this.props.handleEndCafeClick}
          />
       );
    }

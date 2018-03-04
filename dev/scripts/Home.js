@@ -7,6 +7,7 @@ import Directions from "./Directions.js";
 import Header from "./Header.js";
 import Login from "./Login.js";
 import FinalDestinationContainer from "./FinalDestination.js";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class Home extends React.Component {
    constructor() {
@@ -16,12 +17,14 @@ class Home extends React.Component {
          lat: "",
          lng: "",
          testing: false,
-         firstChoice: []
+         firstChoice: [],
+         endChoice: []
       }
       this.getNearbyPlaces = this.getNearbyPlaces.bind(this);
       this.getUserAreaLocation = this.getUserAreaLocation.bind(this);
       this.confirmStart = this.confirmStart.bind(this);
       this.handleStartCafeClick = this.handleStartCafeClick.bind(this);
+      this.handleEndCafeClick = this.handleEndCafeClick.bind(this);
    }
 
    getNearbyPlaces(nearbyPlaces) {
@@ -52,25 +55,32 @@ class Home extends React.Component {
       }),() => console.log(this.state.firstChoice);
    }
 
+   handleEndCafeClick(place) {
+      console.log('button clicked');
+      this.setState({
+         endChoice: place
+      }),() => console.log(this.state.endChoice);
+   }
+
    render() {
       return (
+      <Router>
          <div className="wrapper">
-            <Header />
-            <Login />
-
-            {/* exact states that the path has to state the path EXACTLY to render in the specific component */}
-            <MyWalks getNearbyPlaces={this.getNearbyPlaces} getUserAreaLocation={this.getUserAreaLocation} />
-
-            {/* FIRST DESTINATION */}
-            {this.state.lat !== "" 
-            && <MapContainer nearbyPlaces={this.state.nearbyPlaces} areaLat={this.state.lat} areaLng={this.state.lng} confirmStart={this.confirmStart} handleStartCafeClick={this.handleStartCafeClick}/>}
-
-            {/* FINAL DESTINATION */}
-            {this.state.firstChoice !== [] && <FinalDestinationContainer firstChoice={this.state.firstChoice} />}
-
-            {/* DIRECTIONS BETWEEN CHOICES */}
-            <Directions />
-         </div>
+             <Login />
+   
+             {/* exact states that the path has to state the path EXACTLY to render in the specific component */}
+             <MyWalks getNearbyPlaces={this.getNearbyPlaces} getUserAreaLocation={this.getUserAreaLocation} />
+   
+             {/* FIRST DESTINATION */}
+             {this.state.lat !== "" && <MapContainer nearbyPlaces={this.state.nearbyPlaces} areaLat={this.state.lat} areaLng={this.state.lng} confirmStart={this.confirmStart} handleEndCafeClick={this.handleEndCafeClick} handleStartCafeClick={this.handleStartCafeClick} />}
+   
+             {this.state.firstChoice !== [] & this.state.endChoice !== []
+               ? <Link to="/Directions">Lets Find Your Route</Link>
+               : null}
+             {/* FINAL DESTINATION
+               {this.state.firstChoice !== [] && <FinalDestinationContainer firstChoice={this.state.firstChoice} />} */}
+           </div>
+      </Router>
       )
    }
 }

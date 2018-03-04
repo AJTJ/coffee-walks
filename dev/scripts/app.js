@@ -5,6 +5,7 @@ import axios from "axios";
 import MyWalks from "./MyWalks.js";
 import MapContainer from './MapContainer.js';
 import Directions from './Directions.js';
+import Header from "./Header.js";
 import Home from "./Home.js";
 import {
    BrowserRouter as Router,
@@ -18,12 +19,11 @@ class App extends React.Component {
       <Router>
          <div>
             <header>
-               {/* to style and add classnames */}
-               <Link to="/">Home</Link>
-               <Link to="/about">About</Link>
-               <Link to="/contact">Contact</Link>
+               <Header />
+               <Link to="/Home">Home</Link>
             </header>
-            <Route path="/" exact component={Home} />
+            <Route path="/Home" exact component={Home} />
+            <Route path="/Directions" exact component={Directions} />
             {/* <Route path="/about" exact component={About} />
             <Route path="/contact/:name" exact component={Contact} /> */}
         </div>
