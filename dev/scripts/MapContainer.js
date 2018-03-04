@@ -57,7 +57,7 @@ const MyMapComponent = compose(
             <InfoWindow onCloseClick={props.onToggleOpen}>
                <div>
                   <p>{props.nearbyPlaces[i].name}</p>
-                     <button className="startingDest" onClick={() => props.handleStartCafeClick(place)} >Confirm Starting Cafe</button>
+                     <button className="startingDest" onClick={() => props.handleStartCafeClick(place)}>Confirm Starting Cafe</button>
                      
                </div>
             </InfoWindow>}
@@ -97,6 +97,10 @@ class MapContainer extends React.PureComponent {
       this.delayedShowMarker();
    }
 
+   cafeClick() {
+      console.log('newStyle')
+   }
+
    delayedShowMarker() {
       setTimeout(() => {
          this.setState({ isMarkerShown: true });
@@ -133,7 +137,7 @@ class MapContainer extends React.PureComponent {
             isMarkerShown={this.state.isMarkerShown}
             onMarkerClick={this.handleMarkerClick}
             handleClick={this.handleClick}
-            handleStartCafeClick={this.handleStartCafeClick}
+            handleStartCafeClick={this.props.handleStartCafeClick}
          />
       );
    }

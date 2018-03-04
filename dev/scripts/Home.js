@@ -49,23 +49,26 @@ class Home extends React.Component {
       console.log('button clicked');
       this.setState({
          firstChoice: place
-      })
+      }),() => console.log(this.state.firstChoice);
    }
 
    render() {
       return (
          <div className="wrapper">
-            {/* <header className="header clearfix">
-               <h1 className="header__title">Coffee Walks</h1>
-               <img className="header__logo" src="/assets/noun_59078_cc.svg" alt=""/>
-            </header> */}
             <Header />
             <Login />
+
             {/* exact states that the path has to state the path EXACTLY to render in the specific component */}
             <MyWalks getNearbyPlaces={this.getNearbyPlaces} getUserAreaLocation={this.getUserAreaLocation} />
+
+            {/* FIRST DESTINATION */}
             {this.state.lat !== "" 
             && <MapContainer nearbyPlaces={this.state.nearbyPlaces} areaLat={this.state.lat} areaLng={this.state.lng} confirmStart={this.confirmStart} handleStartCafeClick={this.handleStartCafeClick}/>}
-            {/* <FinalDestinationContainer /> */}
+
+            {/* FINAL DESTINATION */}
+            {this.state.firstChoice !== [] && <FinalDestinationContainer firstChoice={this.state.firstChoice} />}
+
+            {/* DIRECTIONS BETWEEN CHOICES */}
             <Directions />
          </div>
       )
