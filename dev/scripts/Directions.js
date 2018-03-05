@@ -6,7 +6,7 @@ import config from "./config"
 
 
 //WRAPPER COMPONENT FOR OUR DIRECTIONS RENDERER
-class Map extends React.Component {
+class Map extends React.PureComponent {
    constructor(props) {
       super(props)
    }
@@ -74,11 +74,14 @@ class Directions extends React.PureComponent {
          isMarkerShown: false,
          firstChoice: [],
          endChoice: [],
-         startTime: null,
-         user: null
+         user: null,
+         startTimeChosen: false,
+         startTime: ''
       }
       console.log(props.location.state);
       this.saveWalk = this.saveWalk.bind(this);
+      this.handleChange = this.handleChange.bind(this);
+      this.submitStartTime = this.submitStartTime.bind(this);
    }
 
 
@@ -86,13 +89,10 @@ class Directions extends React.PureComponent {
       console.log(e.target.value);
       this.setState({
          [e.target.id]: e.target.value
-      });
+      }); 
    }
 
-   saveWalk() {
-      // e.preventDefault();
-      console.log("Button called");
-
+   saveWalk(e) {
       //must reference our current database
       //create a reference in firebase using the UID in the user  object
 
@@ -100,10 +100,19 @@ class Directions extends React.PureComponent {
 
       //this is to push your information into the database
       dbRef.push({
-        start: this.state.firstChoice, 
-        end: this.state.endChoice
-      });
+         start: this.props.location.state.firstChoice, 
+         end: this.props.location.state.endChoice,
+         startTime: this.state.startTime
+      })
 
+   }
+
+   submitStartTime(e) {
+      e.preventDefault();
+      this.setState({
+         startTimeChosen: true,
+      })
+      
    }
 
    render(props) {
@@ -111,15 +120,19 @@ class Directions extends React.PureComponent {
       const { lat: startLat, lng: startLng} = firstChoice.geometry.location;
       const { lat: endLat, lng: endLng } = endChoice.geometry.location;
 
-      this.setState({
-         firstChoice: firstChoice,
-         endChoice: endChoice,
-         user: this.props.user
-      })
-
       return (
          <div>
-            <button onClick={this.saveWalk}>Save this walk!</button>
+            {this.state.startTimeChosen ? (
+               <button type="button" onClick={this.saveWalk}>Save this walk!</button>
+            ) : (
+               <div>
+                  <form action="" onSubmit={this.submitStartTime}>
+                     <label htmlFor="">Insert your start time</label>
+                     <input onChange={this.handleChange} value={this.state.startTime} type="text" id="startTime" />
+                     <input type="submit" value="Confirm Start Time"/>
+                  </form>
+               </div>
+            )}
             <Map
                startLat={startLat}
                startLng={startLng}
