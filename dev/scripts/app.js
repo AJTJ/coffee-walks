@@ -59,7 +59,7 @@ class App extends React.Component {
                      <Login loggedInCheck={this.loggedInCheck} loggedIn={this.state.loggedIn} user={this.state.user} />
                      <Link to="/Home">Home</Link>
                      <Route path="/Home" exact component={Home} />
-                     <Route path="/Directions" exact component={Directions} />
+                     <Route user={this.state.user} path="/Directions" exact component={Directions} />
                   </div>
                ) : (
                   <div>

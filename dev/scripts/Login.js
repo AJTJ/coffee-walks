@@ -26,7 +26,7 @@ class Login extends React.Component {
 
    signIn() {
 
-      console.log("sign In");
+      // console.log("sign In");
       //new instance of a google auth provider
       const provider = new firebase.auth.GoogleAuthProvider();
 
@@ -44,11 +44,11 @@ class Login extends React.Component {
       .auth()
       .signInWithPopup(provider)
       .then(user => {
-         console.log(user);
+         // console.log(user);
       });
    }
    signOut() {
-      console.log("sign out");
+      // console.log("sign out");
       firebase.auth().signOut();
 
       //you can set the state to false explicitly, but componentDidMount watches for the changes in user thus, updating it
@@ -58,8 +58,7 @@ class Login extends React.Component {
    }
 
    handleChange(e) {
-
-      console.log(e.target.value);
+      // console.log(e.target.value);
       this.setState({
          [e.target.id]: e.target.value
       });
@@ -68,7 +67,7 @@ class Login extends React.Component {
 
   addText(e) {
       e.preventDefault();
-      console.log("form submitted");
+      // console.log("form submitted");
 
       //must reference our current database
       //create a reference in firebase using the UID in the user  object
@@ -85,19 +84,8 @@ class Login extends React.Component {
    componentDidMount(props) {
       //this will check for a user object which we will call res
       firebase.auth().onAuthStateChanged(res => {
-         console.log(res);
+         // console.log(res);
          this.props.loggedInCheck(res)
-         // if (res) {
-         //    this.setState({
-         //       loggedIn: true,
-         //       user: res
-         //    });
-         //    } else {
-         //    this.setState({
-         //       loggedIn: false,
-         //       user: {}
-         //    });
-         // }
       });
    }
 
@@ -108,23 +96,12 @@ class Login extends React.Component {
       })
    }
 
-
-
    render() {
       return (
          <div>
             {this.state.loggedIn ? (
             <div>
                <h2>Welcome, {this.state.user.displayName}</h2>
-               <form action="" onSubmit={this.addText}>
-               <input
-                  onChange={this.handleChange}
-                  value={this.state.userText}
-                  type="text"
-                  id="userText"
-               />
-               <input type="submit" />
-               </form>
                <button onClick={this.signOut}>Sign Out</button>
             </div>
          ) : (
