@@ -36,15 +36,6 @@ const MyMapComponent = compose(
 
       // onClick={props.onMarkerClick} 
    >
-      {/* {props.isOpen && 
-      <InfoWindow onCloseClick={props.onToggleOpen}>
-         <div>
-            <p>{props.nearbyPlaces[0].name}</p>
-
-            <button onClick={props.handleClick}>Confirm Cafe</button>
-
-         </div>
-      </InfoWindow>} */}
    </Marker>
 
    {props.nearbyPlaces.map((place, i) => {
@@ -76,17 +67,6 @@ const MyMapComponent = compose(
    })}
    </GoogleMap>
 );
-
-
-
-{/* <FaAnchor /> */}
-
-{/* < MyMapComponent
-   googleMapURL = "https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg&v=3.exp&libraries=geometry,drawing,places"
-   loadingElement = {< div style = {{ height: `100%` }} />}
-   containerElement = {< div style = {{ height: `400px` }} />}
-   mapElement = {< div style = {{ height: `100%` }} />}
-/> */}
 
 class MapContainer extends React.PureComponent {
    constructor() {
@@ -124,7 +104,7 @@ class MapContainer extends React.PureComponent {
    
    }
 
-
+   //KEEP THIS ONE FOR REFERENCE
    // componentWillReceiveProps(nextProps) {
    //    console.log(nextProps, this.props);
 

@@ -75,10 +75,6 @@ class MyWalks extends React.Component {
                radius: 5000,
                type: "cafe"
             }, 
-            proxyHeaders: {
-               'header_params': 'value'
-            },
-               xmlToJSON: false
          }
       }).then(({data}) => {
          console.log(data);

@@ -2,10 +2,11 @@
 import React from "react"
 import { compose, withProps, lifecycle } from "recompose"
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, DirectionsRenderer } from "react-google-maps"
+import config from "./config"
 
 
 //WRAPPER COMPONENT FOR OUR DIRECTIONS RENDERER
-class Map extends React.Component {
+class Map extends React.PureComponent {
    constructor(props) {
       super(props)
    }
@@ -15,7 +16,7 @@ class Map extends React.Component {
 
       const MapWithADirectionsRenderer = compose(
          withProps({
-            googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg&v=3.exp&libraries=geometry,drawing,places",
+            googleMapURL: `https://maps.googleapis.com/maps/api/js?key=${config.key5}&v=3.exp&libraries=geometry,drawing,places`,
             loadingElement: <div style={{ height: `100%` }} />,
             containerElement: <div style={{ height: `400px` }} />,
             mapElement: <div style={{ height: `100%` }} />,
@@ -73,11 +74,14 @@ class Directions extends React.PureComponent {
          isMarkerShown: false,
          firstChoice: [],
          endChoice: [],
-         startTime: null,
-         user: null
+         user: null,
+         startTimeChosen: false,
+         startTime: ''
       }
       console.log(props.location.state);
       this.saveWalk = this.saveWalk.bind(this);
+      this.handleChange = this.handleChange.bind(this);
+      this.submitStartTime = this.submitStartTime.bind(this);
    }
 
 
@@ -85,13 +89,10 @@ class Directions extends React.PureComponent {
       console.log(e.target.value);
       this.setState({
          [e.target.id]: e.target.value
-      });
+      }); 
    }
 
-   saveWalk() {
-      // e.preventDefault();
-      console.log("Button called");
-
+   saveWalk(e) {
       //must reference our current database
       //create a reference in firebase using the UID in the user  object
 
@@ -99,10 +100,19 @@ class Directions extends React.PureComponent {
 
       //this is to push your information into the database
       dbRef.push({
-        start: this.state.firstChoice, 
-        end: this.state.endChoice
-      });
+         start: this.props.location.state.firstChoice, 
+         end: this.props.location.state.endChoice,
+         startTime: this.state.startTime
+      })
 
+   }
+
+   submitStartTime(e) {
+      e.preventDefault();
+      this.setState({
+         startTimeChosen: true,
+      })
+      
    }
 
    render(props) {
@@ -110,14 +120,20 @@ class Directions extends React.PureComponent {
       const { lat: startLat, lng: startLng} = firstChoice.geometry.location;
       const { lat: endLat, lng: endLng } = endChoice.geometry.location;
 
-      this.setState({
-         firstChoice: firstChoice,
-         endChoice: endChoice,
-         user: this.props.user
-      })
-
       return (
          <div>
+
+            {this.state.startTimeChosen ? (
+               <button type="button" onClick={this.saveWalk}>Save this walk!</button>
+            ) : (
+               <div>
+                  <form action="" onSubmit={this.submitStartTime}>
+                     <label htmlFor="">Insert your start time</label>
+                     <input onChange={this.handleChange} value={this.state.startTime} type="text" id="startTime" />
+                     <input type="submit" value="Confirm Start Time"/>
+                  </form>
+               </div>
+            )}
             <Map
                startLat={startLat}
                startLng={startLng}
