@@ -3,6 +3,8 @@ import React from "react"
 import { compose, withProps, lifecycle } from "recompose"
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, DirectionsRenderer } from "react-google-maps"
 
+
+//WRAPPER COMPONENT FOR OUR DIRECTIONS RENDERER
 class Map extends React.Component {
    constructor(props) {
       super(props)
@@ -52,6 +54,7 @@ class Map extends React.Component {
             defaultCenter={new google.maps.LatLng(41.8507300, -87.6512600)}
          >
             {props.directions && <DirectionsRenderer directions={props.directions} />}
+            
          </GoogleMap>
       );
       
@@ -61,45 +64,68 @@ class Map extends React.Component {
    }
 }
 
+//OUR DIRECTIONS COMPONENT
 
 class Directions extends React.PureComponent {
    constructor(props) {
       super(props)
       this.state = {
          isMarkerShown: false,
+         firstChoice: [],
+         endChoice: [],
+         startTime: null,
+         user: null
       }
       console.log(props.location.state);
-      // this.delayedShowMarker = this.delayedShowMarker.bind(this);
-      // this.handleMarkerClick = this.handleMarkerClick.bind(this);
+      this.saveWalk = this.saveWalk.bind(this);
    }
 
-   delayedShowMarker() {
-      setTimeout(() => {
-         this.setState({ isMarkerShown: true })
-      }, 3000)
+
+   handleChange(e) {
+      console.log(e.target.value);
+      this.setState({
+         [e.target.id]: e.target.value
+      });
    }
 
-   handleMarkerClick() {
-      this.setState({ isMarkerShown: false })
-      this.delayedShowMarker()
+   saveWalk() {
+      // e.preventDefault();
+      console.log("Button called");
+
+      //must reference our current database
+      //create a reference in firebase using the UID in the user  object
+
+      const dbRef = firebase.database().ref(`users/${firebase.auth().currentUser.uid}`);
+
+      //this is to push your information into the database
+      dbRef.push({
+        start: this.state.firstChoice, 
+        end: this.state.endChoice
+      });
+
    }
 
-   componentWillReceiveProps(props) {
-      console.log(props);
-   }
-
-   render() {
+   render(props) {
       const { firstChoice, endChoice } = this.props.location.state;
       const { lat: startLat, lng: startLng} = firstChoice.geometry.location;
       const { lat: endLat, lng: endLng } = endChoice.geometry.location;
 
+      this.setState({
+         firstChoice: firstChoice,
+         endChoice: endChoice,
+         user: this.props.user
+      })
+
       return (
-         <Map
-            startLat={startLat}
-            startLng={startLng}
-            endLat={endLat}
-            endLng={endLng}
-         />
+         <div>
+            <button onClick={this.saveWalk}>Save this walk!</button>
+            <Map
+               startLat={startLat}
+               startLng={startLng}
+               endLat={endLat}
+               endLng={endLng}
+            />
+         </div>
       )
    }
 }

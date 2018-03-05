@@ -62,29 +62,24 @@ class App extends React.Component {
     return (
       <Router>
         <div>
-          <header>
-            <Header />
-          </header>
-          {this.state.loggedIn ? (
-            <div>
-              <Login
-                loggedInCheck={this.loggedInCheck}
-                loggedIn={this.state.loggedIn}
-                user={this.state.user}
-              />
-              <Link to="/Home">Home</Link>
-              <Link to="/SavedWalks">Saved Walks</Link>
-              <Route path="/Home" exact component={Home} />
-              <Route path="/Directions" exact component={Directions} />
-              <Route path="/SavedWalks" exact component={SavedWalks} />
-            </div>
-          ) : (
-            <div>
-              <Login
-                loggedInCheck={this.loggedInCheck}
-                loggedIn={this.state.loggedIn}
-                user={this.state.user}
-              />
+               <header>
+                  <Header />
+               </header>
+               {this.state.loggedIn ? (
+                  <div className="wrapper logins">
+                     <Login loggedInCheck={this.loggedInCheck} loggedIn={this.state.loggedIn} user={this.state.user} />
+                     <Link to="/Home">Home</Link>
+                      <Link to="/SavedWalks">Saved Walks</Link>
+                     <Route path="/Home" exact component={Home} />
+                     <Route user={this.state.user} path="/Directions" exact component={Directions} />
+                     <Route path="/SavedWalks" exact component={SavedWalks} />
+              
+                  </div>
+               ) : (
+                  <div>
+                     <Login loggedInCheck={this.loggedInCheck} loggedIn={this.state.loggedIn} user={this.state.user} />
+                  </div>
+               )}
             </div>
           )}
         </div>

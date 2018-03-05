@@ -9,10 +9,28 @@ $color4: #e6ded2;
 h1, h2, h3, h4 {
    margin: 0;
    font-family: $headerFont;
-   color: $color1;
+   color: $color3;
 }
 
 p {
    font-family: $bodyFont;
    color: $color1;
 }
+
+a {
+   text-decoration: none;
+   color: $color3;
+}
+
+button {
+   color: $color1;
+   background: $color4;
+   font-family: $bodyFont;
+}
+
+input {
+   color: $color1;
+   background: $color4;
+   font-family: $bodyFont;
+}
+
