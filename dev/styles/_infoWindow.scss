@@ -1,0 +1,26 @@
+.infoWindowContainer {
+   background-color: #fdfdfd;
+}
+
+.infoWindows {
+   font-family: 'Roboto', sans-serif;
+}
+
+.infoWindow_header {
+   font-weight: 700;
+   font-size: 16px;
+}
+
+.optionButton {
+   padding: 5px;
+   button:focus {outline:0;};
+   border: 1px solid $color1;
+   background-color: $color4;
+}
+
+// .startingDest {
+// }
+
+// .optionButton {
+
+// }

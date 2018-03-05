@@ -98,7 +98,7 @@ class Login extends React.Component {
 
    render() {
       return (
-         <div>
+         <div className="wrapper">
             {this.state.loggedIn ? (
             <div>
                <h2>Welcome, {this.state.user.displayName}</h2>

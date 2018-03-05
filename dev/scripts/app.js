@@ -55,7 +55,7 @@ class App extends React.Component {
                   <Header />
                </header>
                {this.state.loggedIn ? (
-                  <div>
+                  <div className="wrapper logins">
                      <Login loggedInCheck={this.loggedInCheck} loggedIn={this.state.loggedIn} user={this.state.user} />
                      <Link to="/Home">Home</Link>
                      <Route path="/Home" exact component={Home} />

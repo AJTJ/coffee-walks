@@ -22,13 +22,13 @@ const MyMapComponent = compose(
    withGoogleMap
 )((props) =>
    <GoogleMap
-      defaultZoom={14}
+      defaultZoom={13}
       defaultCenter={{ 
          lat: props.areaLat, 
          lng: props.areaLng 
       }}
    >
-   {/* <Marker 
+   <Marker 
       position={{ lat: props.areaLat, lng: props.areaLng }} 
       onClick={props.onToggleOpen}
 
@@ -36,7 +36,7 @@ const MyMapComponent = compose(
 
       // onClick={props.onMarkerClick} 
    >
-      {props.isOpen && 
+      {/* {props.isOpen && 
       <InfoWindow onCloseClick={props.onToggleOpen}>
          <div>
             <p>{props.nearbyPlaces[0].name}</p>
@@ -44,11 +44,11 @@ const MyMapComponent = compose(
             <button onClick={props.handleClick}>Confirm Cafe</button>
 
          </div>
-      </InfoWindow>}
-   </Marker> */}
+      </InfoWindow>} */}
+   </Marker>
 
    {props.nearbyPlaces.map((place, i) => {
-      // console.log(place)
+      console.log(place)
       return (
          <Marker 
          position={{ lat: place.geometry.location.lat, lng: place.geometry.location.lng }}
@@ -56,18 +56,24 @@ const MyMapComponent = compose(
          key={place.id}
          >
          {props.isOpen && props.selectedID === place.id &&
-            <InfoWindow onCloseClick={() => props.onToggleOpen(place.id)}>
-               <div>
-                  <p>{props.nearbyPlaces[i].name}</p>
-                  <button className="startingDest" onClick={() => props.handleStartCafeClick(place)}>Confirm Starting Cafe</button>
-                  <button className="endingDest" onClick={() => props.handleEndCafeClick(place)}>Confirm Ending Cafe</button>
+            <InfoWindow className="infoWindowContainer" onCloseClick={() => props.onToggleOpen(place.id)}>
+               <div className="infoWindows">
+                  <p className="infoWindow_header">{props.nearbyPlaces[i].name}</p>
+                  <p>{props.nearbyPlaces[i].vicinity}</p>
+                  <p>{props.nearbyPlaces[i].rating}</p>
+                  {/* <p>{props.nearbyPlaces[i].opening_hours.open_now}</p> */}
+                  
+                  {/* <img src={props.nearbyPlaces[i].photos[1]} /> */}
+                  <button className="optionButton startingDest" onClick={() => props.handleStartCafeClick(place)}>Confirm Starting Cafe</button>
+                  <button className="optionButton endingDest" onClick={() => props.handleEndCafeClick(place)}>Confirm Ending Cafe</button>
                </div>
+               
             </InfoWindow>}
+            
          </Marker>
       )
    })}
    </GoogleMap>
-
 );
 
 
