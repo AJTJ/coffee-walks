@@ -1,18 +1,32 @@
 // * {
-//    border: 1px red solid;
+//    border: 1px #e6ded2 solid;
 // }
+
+@import 'typographyColors';
+
+.headerBG{
+   background-color:rgba(71, 57, 48, 0.75);
+   // background-image: url("./../../assets/beans_brown_coffee_roasted-998779.jpg");
+
+}
 
 .header {
    width: 270px;
    margin: 0 auto;
+   // border: 1px #e6ded2 solid;
 
    .header__title {
+      padding: 5px;
       float: left;
       margin: 10px 0;
+      color: $color2;
    }
 
    .header__logo {
       float: left;
       max-width: 50px;
+      color: $color3;
+      stroke: $color3;
+      fill: white;
    }
 }
