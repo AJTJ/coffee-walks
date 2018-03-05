@@ -75,7 +75,11 @@ class Home extends React.Component {
 
             {/* DIRECTIONS AND SAVE */}
             {this.state.choices ? 
-               <Link to={ {pathname: '/Directions', state: { firstChoice: this.state.firstChoice, endChoice: this.state.endChoice } } } >Lets Find Your Route</Link> :
+               <Link  to={ {pathname: '/Directions', state: { firstChoice: this.state.firstChoice, endChoice: this.state.endChoice } } } >
+     
+                    <button className="findRoute"> Lets Find Your Route</button>
+            
+               </Link> :
                null
             }
          </div>

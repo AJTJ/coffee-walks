@@ -122,6 +122,7 @@ class Directions extends React.PureComponent {
 
       return (
          <div>
+
             {this.state.startTimeChosen ? (
                <button type="button" onClick={this.saveWalk}>Save this walk!</button>
             ) : (
@@ -139,6 +140,7 @@ class Directions extends React.PureComponent {
                endLat={endLat}
                endLng={endLng}
             />
+            <button onClick={this.saveWalk}>Save this walk!</button>
          </div>
       )
    }

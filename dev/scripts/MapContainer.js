@@ -6,7 +6,7 @@ const MyMapComponent = compose(
    withProps({
       googleMapURL: "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places",
       loadingElement: <div style={{ height: `100%` }} />,
-      containerElement: <div style={{ height: `80vh` }} />,
+      containerElement: <div style={{ height: `400px` }} />,
       mapElement: <div style={{ height: `100%` }} />,
    }),
    withStateHandlers(() => ({
@@ -47,6 +47,7 @@ const MyMapComponent = compose(
          key={place.id}
          >
          {props.isOpen && props.selectedID === place.id &&
+         
             <InfoWindow className="infoWindowContainer" onCloseClick={() => props.onToggleOpen(place.id)}>
                <div className="infoWindows">
                   <p className="infoWindow_header">{props.nearbyPlaces[i].name}</p>

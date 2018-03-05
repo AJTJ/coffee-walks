@@ -88,8 +88,8 @@ class MyWalks extends React.Component {
       return (
          <div>
             <form action="" onSubmit={this.setLocation}>
-               <input type="text" value={this.state.location} onChange={this.handleChange} id="location"/>
-               <input type="submit" value="coffee time"/>
+               <input type="text" placeholder="ex. 483 Queen St. West" value={this.state.location} onChange={this.handleChange} id="location"/>
+               <input type="submit" value="Coffee Time"/>
             </form>
          </div>
       )
