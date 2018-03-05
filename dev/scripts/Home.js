@@ -6,7 +6,6 @@ import MapContainer from "./MapContainer.js";
 import Directions from "./Directions.js";
 import Header from "./Header.js";
 import Login from "./Login.js";
-import FinalDestinationContainer from "./FinalDestination.js";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import SavedWalks from "./SavedWalks.js";
 
