@@ -48,7 +48,7 @@ const MyMapComponent = compose(
    </Marker> */}
 
    {props.nearbyPlaces.map((place, i) => {
-      console.log(place)
+      // console.log(place)
       return (
          <Marker 
          position={{ lat: place.geometry.location.lat, lng: place.geometry.location.lng }}
