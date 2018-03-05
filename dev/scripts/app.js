@@ -15,23 +15,64 @@ import {
 } from "react-router-dom";
 
 class App extends React.Component {
-  render() {
-    return (
-      <Router>
-         <div>
-            <header>
-               <Header />
-               <Login />
-               <Link to="/Home">Home</Link>
-            </header>
-            <Route path="/Home" exact component={Home} />
-            <Route path="/Directions" exact component={Directions} />
-            {/* <Route path="/about" exact component={About} />
-            <Route path="/contact/:name" exact component={Contact} /> */}
-        </div>
-      </Router>
-    );
-  }
+   constructor() {
+      super();
+      this.state = {
+         loggedIn: false,
+         user: null,
+      }
+
+      this.loggedInCheck = this.loggedInCheck.bind(this);
+   }
+
+   loggedInCheck(res) {
+      console.log('res',res)
+      if (res) {
+         this.setState({
+            loggedIn: true,
+            user: res
+         });
+         } else {
+         this.setState({
+            loggedIn: false,
+            user: {}
+         });
+      }
+   }
+
+   componentDidMount() {
+      console.log(this.state.loggedIn);
+   }
+
+   
+
+
+   render() {
+      return (
+         <Router>
+            <div>
+               <header>
+                  <Header />
+               </header>
+               {this.state.loggedIn ? (
+                  <div>
+                     <Login loggedInCheck={this.loggedInCheck} loggedIn={this.state.loggedIn} user={this.state.user} />
+                     <Link to="/Home">Home</Link>
+                     <Route path="/Home" exact component={Home} />
+                     <Route path="/Directions" exact component={Directions} />
+                  </div>
+               ) : (
+                  <div>
+                     <Login loggedInCheck={this.loggedInCheck} loggedIn={this.state.loggedIn} user={this.state.user} />
+                  </div>
+               )}
+            </div>
+         </Router>
+      );
+   }
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
+
+{/* <Route path="/about" exact component={About} />
+<Route path="/contact/:name" exact component={Contact} /> */}

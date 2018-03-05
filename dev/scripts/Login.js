@@ -80,28 +80,37 @@ class Login extends React.Component {
       this.setState({
       userText: ""
       });
-  }
+   }
 
-   componentDidMount() {
+   componentDidMount(props) {
       //this will check for a user object which we will call res
       firebase.auth().onAuthStateChanged(res => {
          console.log(res);
-
-         if (res) {
-            this.setState({
-               loggedIn: true,
-               user: res
-            });
-            } else {
-            this.setState({
-               loggedIn: false,
-               user: {}
-            });
-         }
+         this.props.loggedInCheck(res)
+         // if (res) {
+         //    this.setState({
+         //       loggedIn: true,
+         //       user: res
+         //    });
+         //    } else {
+         //    this.setState({
+         //       loggedIn: false,
+         //       user: {}
+         //    });
+         // }
       });
-  }
+   }
 
-  render() {
+   componentWillReceiveProps(props) {
+      this.setState({
+         loggedIn: props.loggedIn,
+         user: props.user
+      })
+   }
+
+
+
+   render() {
       return (
          <div>
             {this.state.loggedIn ? (
