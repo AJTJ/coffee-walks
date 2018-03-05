@@ -85,6 +85,7 @@ class MapContainer extends React.PureComponent {
    constructor() {
       super();
       this.state = {
+         // loadMap: false,
          isMarkerShown: false,
          areaLat: "",
          areaLng: "",
@@ -117,83 +118,37 @@ class MapContainer extends React.PureComponent {
    }
 
 
-   componentWillReceiveProps(props) {
-      this.setState(
-         {
-            areaLat: props.areaLat,
-            areaLng: props.areaLng,
-            nearbyPlaces: props.nearbyPlaces,
+   // componentWillReceiveProps(nextProps) {
+   //    console.log(nextProps, this.props);
 
-         },
-         () => this.render()
-      );
-   }
+   //    if (
+   //       nextProps.areaLat !== this.props.areaLat && 
+   //       nextProps.areaLng !== this.props.areaLng && 
+   //       nextProps.nearbyPlaces !== this.props.nearbyPlaces
+   //    ) {
+   //       this.setState({ loadMap: true });
+   //    }
+   // }
 
   render() {
+      const { loadMap } = this.state;
+      const { areaLat, areaLng, nearbyPlaces } = this.props;
+
       return (
          <MyMapComponent
-            areaLat={this.state.areaLat}
-            areaLng={this.state.areaLng}
-            nearbyPlaces={this.state.nearbyPlaces}
-            
+            areaLat={areaLat}
+            areaLng={areaLng}
+            nearbyPlaces={nearbyPlaces}
+
             isMarkerShown={this.state.isMarkerShown}
             onMarkerClick={this.handleMarkerClick}
             handleClick={this.handleClick}
             handleStartCafeClick={this.props.handleStartCafeClick}
             handleEndCafeClick={this.props.handleEndCafeClick}
-         />
+         />  
+
       );
    }
 }
 
 export default MapContainer;
-
-
-
-
-// class RestaurantMarker extends React.Component {
-
-//    constructor(props) {
-//       super(props)
-
-//       this.state = {
-//          open: false
-//       }
-//    }
-
-//    render() {
-
-//       const {
-//          name,
-//          latitude,
-//          longitude
-//       } = this.props;
-
-
-//       // Return Restaurant Marker Component.
-//       return (
-//          <Marker key={name} position={{ lat: latitude, lng: longitude }}>
-//             {this.state.open ? (
-//                <InfoWindow onClick={() => this.setState({ open: !this.state.open })}> 
-//                   <div>
-//                      <p>{name}</p> 
-//                   </div>
-//                </InfoWindow>
-//             ) : ''}
-//          </Marker>
-//          // <Marker
-//          //    position={{ lat: geometry.location.lat, lng: geometry.location.lng }}
-//          //    onClick={() => { props.onToggleOpen(place.id); }}
-//          //    key={name}
-//          // >
-//          // {props.isOpen &&
-//          //    <InfoWindow onCloseClick={props.onToggleOpen}>
-//          //       <div>
-//          //          <p>{props.nearbyPlaces[i].name}</p>
-//          //          <button onClick={props.handleClick} >MurdahFISH</button>
-//          //       </div>
-//          //    </InfoWindow>}
-//          // </Marker>
-//       )
-//    }
-// }
