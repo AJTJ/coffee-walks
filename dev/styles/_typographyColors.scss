@@ -26,11 +26,35 @@ button {
    color: $color1;
    background: $color4;
    font-family: $bodyFont;
+   border-radius: 3px;
+   &:focus{
+      outline: none;
+   }
+   &:hover {
+      transform: scale(.98);
+   }
+   &:active{
+      background-color: #afa9a1;
+   }
+   
+   
 }
 
 input {
    color: $color1;
    background: $color4;
    font-family: $bodyFont;
+   border-radius: 3px;
+   &:focus {
+      outline: none;
+   }
+   &:hover {
+      transform: scale(.98);
+   }
+   &:active{
+      background-color: #afa9a1;
+   }
+
+   
 }
 

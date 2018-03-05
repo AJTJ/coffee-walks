@@ -1,9 +1,11 @@
 .infoWindowContainer {
    background-color: #fdfdfd;
+   max-width: 200px;
 }
 
 .infoWindows {
    font-family: 'Roboto', sans-serif;
+   text-align: left;
 }
 
 .infoWindow_header {
@@ -13,10 +15,22 @@
 
 .optionButton {
    padding: 5px;
-   button:focus {outline:0;};
+   margin: 5px;
+   // button:focus {outline:0;};
    border: 1px solid $color1;
    background-color: $color4;
+   // &:focus{
+   //    outline: none;
+   // }
+   // &:hover {
+   //    transform: scale(.98);
+   // }
+   // &:active{
+   //    background-color: #afa9a1;
+   // }
 }
+
+
 
 // .startingDest {
 // }

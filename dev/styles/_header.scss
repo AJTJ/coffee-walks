@@ -16,17 +16,21 @@
    // border: 1px #e6ded2 solid;
 
    .header__title {
-      padding: 5px;
+      font-size: 27px;
+      padding: 8px 0 0;
       float: left;
       margin: 10px 0;
-      color: $color2;
+      color: $color3;
+      letter-spacing: .25px;
+      text-transform: uppercase;
    }
 
    .header__logo {
       float: left;
       max-width: 50px;
-      color: $color3;
-      stroke: $color3;
-      fill: white;
+      padding-top: 5px;
+   //    color: $color3;
+   //    stroke: $color3;
+   //    fill: white;
    }
 }

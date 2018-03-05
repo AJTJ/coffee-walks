@@ -118,13 +118,13 @@ class Directions extends React.PureComponent {
 
       return (
          <div>
-            <button onClick={this.saveWalk}>Save this walk!</button>
             <Map
                startLat={startLat}
                startLng={startLng}
                endLat={endLat}
                endLng={endLng}
             />
+            <button onClick={this.saveWalk}>Save this walk!</button>
          </div>
       )
    }
