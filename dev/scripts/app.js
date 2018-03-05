@@ -16,52 +16,51 @@ import {
 } from "react-router-dom";
 
 class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      loggedIn: false,
-      user: null
-    };
+   constructor() {
+      super();
+      this.state = {
+         loggedIn: false,
+         user: null
+      };
+      this.loggedInCheck = this.loggedInCheck.bind(this);
+   }
 
-    this.loggedInCheck = this.loggedInCheck.bind(this);
-  }
-
-  loggedInCheck(res) {
-    console.log("res", res);
-    if (res) {
-      this.setState({
-        loggedIn: true,
-        user: res
-      });
-    } else {
-      this.setState({
-        loggedIn: false,
-        user: {}
-      });
-    }
-  }
-
-  componentDidMount() {
-    const dbref = firebase.database().ref("/recipes");
-    dbref.on("value", snapshot => {
-      console.log(snapshot.val());
-      const data = snapshot.val();
-      const state = [];
-      for (let key in data) {
-        data[key].key = key;
-        state.push(data[key]);
+   loggedInCheck(res) {
+      console.log("res", res);
+      if (res) {
+         this.setState({
+         loggedIn: true,
+         user: res
+         });
+      } else {
+         this.setState({
+         loggedIn: false,
+         user: {}
+         });
       }
-      console.log(state);
-      this.setState({
-        recipes: state
+   }
+
+   componentDidMount() {
+      const dbref = firebase.database().ref("/recipes");
+      dbref.on("value", snapshot => {
+         console.log(snapshot.val());
+         const data = snapshot.val();
+         const state = [];
+         for (let key in data) {
+         data[key].key = key;
+         state.push(data[key]);
+         }
+         console.log(state);
+         this.setState({
+         recipes: state
+         });
       });
-    });
-  }
+   }
 
   render() {
-    return (
-      <Router>
-        <div>
+      return (
+         <Router>
+            <div>
                <header>
                   <Header />
                </header>
@@ -69,11 +68,10 @@ class App extends React.Component {
                   <div className="wrapper logins">
                      <Login loggedInCheck={this.loggedInCheck} loggedIn={this.state.loggedIn} user={this.state.user} />
                      <Link to="/Home">Home</Link>
-                      <Link to="/SavedWalks">Saved Walks</Link>
+                     <Link to="/SavedWalks">Saved Walks</Link>
                      <Route path="/Home" exact component={Home} />
                      <Route user={this.state.user} path="/Directions" exact component={Directions} />
                      <Route path="/SavedWalks" exact component={SavedWalks} />
-              
                   </div>
                ) : (
                   <div>
@@ -81,11 +79,9 @@ class App extends React.Component {
                   </div>
                )}
             </div>
-          )}
-        </div>
-      </Router>
-    );
-  }
+         </Router>
+      );
+   }
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
