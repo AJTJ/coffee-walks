@@ -107,18 +107,18 @@ class Login extends React.Component {
 
    render() {
       return (
-         <div className="wrapper">
+         <React.Fragment>
             {this.state.loggedIn ? (
-               <div>
-                  <h2>Welcome, {this.state.user.displayName}</h2>
-                  <button className="lrgButton" onClick={this.signOut}>Sign Out</button>
-               </div>
+               <React.Fragment>
+                  {/* <h2>Welcome, {this.state.user.displayName}</h2> */}
+                  <button className="smlButton logOutButton" onClick={this.signOut}>Sign Out</button>
+               </React.Fragment>
             ) : (
-               <div>
+               <React.Fragment>
                   <button className="lrgButton" onClick={this.signIn}><FaGoogle className="googleIcon" />Sign in with Google</button>
-               </div>
+               </React.Fragment>
             )}
-         </div>
+         </React.Fragment>
       );
    }
 }

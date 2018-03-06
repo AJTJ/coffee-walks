@@ -1,5 +1,5 @@
 body {
-      background-image: url("./../../assets/pexels-photo-434231-cropped.jpg");
+      background: linear-gradient(to right, rgba(43, 35, 29, 0.529), rgba(43, 35, 29, 0.529)), url("./../../assets/pexels-photo-434231-cropped.jpg");
       max-width: 100%;
       background-size: cover;
       height: 100vh;
@@ -8,15 +8,10 @@ body {
 
 @media (min-width: 500px){
    body {
-      background-image: url("./../../assets/pexels-photo-434231.jpeg");
+      background: linear-gradient(to right, rgba(43, 35, 29, 0.529), rgba(43, 35, 29, 0.529)), url("./../../assets/pexels-photo-434231.jpeg");
       max-width: 100%;
       background-size: cover;
       height: 100vh;
       background-repeat: no-repeat;
    }
-}
-
-
-.logins{
-   text-align: center;
 }

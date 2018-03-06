@@ -4,7 +4,7 @@ import axios from "axios";
 import MyWalks from "./MyWalks.js";
 import MapContainer from "./MapContainer.js";
 import Directions from "./Directions.js";
-import Header from "./Header.js";
+import TitleLogo from "./TitleLogo.js";
 import Login from "./Login.js";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import SavedWalks from "./SavedWalks.js";

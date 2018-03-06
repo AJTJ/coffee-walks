@@ -9,7 +9,8 @@
    height: 100px;
    font-family: $bodyFont;
    transition: all 0.2s;
-   margin: 0 auto;
+   margin: 5px auto;
+   text-align: center;
 
    &:hover {
       background-color: #afa9a1;
@@ -20,15 +21,17 @@
 }
 
 .smlButton {
-   display: block;
+   // display: block;
+   // float: left;
    border-radius: 5px;
    background: $color1;
-   padding: 15px 10px 25px;
+   padding: 7px 10px 10px;
    border: 1px solid $color2;
    color: $color4;
-   width: 100px;
-   height: 50px;
+   width: 85px;
+   height: 30px;
    font-family: $bodyFont;
+   font-size: 13px;
 
    &:hover {
       background-color: #afa9a1;

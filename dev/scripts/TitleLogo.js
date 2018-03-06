@@ -1,14 +1,14 @@
 import React from "react";
 
-const Header = () => {
+const TitleLogo = () => {
    return (
-      <div className="headerBG">
-         <header className="header clearfix">
+      <React.Fragment>
+         <div className="header__titleLogo clearfix">
             <h1 className="header__title">Coffee Walks</h1>
             <img className="header__logo" src="/assets/coffee-mug.svg" alt=""/>
-         </header>
-      </div>
+         </div>
+      </React.Fragment>
    )
 }
 
-export default Header;
+export default TitleLogo;
