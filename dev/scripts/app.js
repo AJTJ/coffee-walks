@@ -47,28 +47,28 @@ class App extends React.Component {
                {this.state.loggedIn ? (
                   <div>
                      <header>
-                        <div className="clearfix headerDiv">
+                        <Link to="/Home" className="clearfix headerDiv">
                            <TitleLogo />
                            <Login loggedInCheck={this.loggedInCheck} loggedIn={this.state.loggedIn} user={this.state.user} />
-                        </div>
+                        </Link >
                      </header>
                      <div className="wrapper">
-                        <Link className="lrgButton" to="/Home">Make a Walk!</Link>
+                        <Link className="smlButton" to="/SavedWalks">Saved Walks</Link>
+                        <Link className="walkButton" to="/Home">Make a Walk!</Link>
+                        <Link className="smlButton" to="/PublicWalks">Public Walks</Link>
                         <Route path="/Home" exact component={Home} />
-                        <Link className="lrgButton" to="/SavedWalks">Saved Walks</Link>
-                        <Route path="/SavedWalks" exact component={SavedWalks} />
                         <Route user={this.state.user} path="/Directions" exact component={Directions} />
-                        <Link className="lrgButton" to="/PublicWalks">Public Walks</Link>
+                        <Route path="/SavedWalks" exact component={SavedWalks} />
                         <Route path="/PublicWalks" exact component={PublicWalks} />
-                        <Route path="/Directions/:id" exact component={Directions} />
+                        <Route path="/Directions/:id" exact component={Directions} />                       
                      </div>
                   </div>
                ) : (
                   <div>
                      <header>
-                        <div className="clearfix headerDiv">
+                        <Link to="/Home" className="clearfix headerDiv">
                            <TitleLogo />
-                        </div>
+                        </Link >
                      </header>
                      <div className="wrapper">
                         <Login loggedInCheck={this.loggedInCheck} loggedIn={this.state.loggedIn} user={this.state.user} />
