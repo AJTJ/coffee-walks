@@ -1,11 +1,20 @@
 .infoWindowContainer {
-   background-color: #fdfdfd;
+   background-color: $color1;
    max-width: 200px;
 }
 
 .infoWindows {
    font-family: 'Roboto', sans-serif;
    text-align: left;
+   // background-color: $color1;
+   
+
+} 
+
+.infoWindows p {
+   text-align: left;
+   // display: block;
+   // width: 100%;
 }
 
 .infoWindow_header {
@@ -16,29 +25,33 @@
 .optionButton {
    padding: 5px;
    margin: 5px;
-   // button:focus {outline:0;};
-   border: 1px solid $color1;
-   background-color: $color4;
-   // &:focus{
-   //    outline: none;
-   // }
-   // &:hover {
-   //    transform: scale(.98);
-   // }
-   // &:active{
-   //    background-color: #afa9a1;
-   // }
+   color: #e3c59a;
+   border: 1px solid #e3c59a;
+   background-color: $color1;
+   &:focus{
+      outline: none;
+   }
+   &:hover {
+      background-color: #442c1c;
+   }
+   &:active{
+      transform: scale(.98);
+   }
 }
+
 
 
 
 .startingDest {
    display: block;
-   width: 95%;
+   width: 100%;
+   margin: 0;
+   margin-bottom: 4px;
 }
 
 .endingDest {
-   width: 95%;
+   width: 100%;
    display: block;
    float: left;
+   margin: 0;
 }

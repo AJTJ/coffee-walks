@@ -3,6 +3,7 @@
    // position: relative;
    border-radius: 5px;
    background: $color1;
+   border: 1px solid $color5;
    // padding: 40px 20px 50px;
    // border: 1px solid $color2;
    color: $color4;
@@ -12,7 +13,11 @@
    // transition: all 0.2s;
    margin: 0 auto;
    margin-bottom: 5px;
-}  p {
+   text-align: center;
+   margin: 0 5px 5px;
+}  
+
+.routeContainer p {
    font-size: 10px;
    padding: 0;
    margin: 0;
@@ -23,13 +28,19 @@
    float: left;
    // border: 1px solid $color2;
    min-height: 75px;
-   padding: 10px 0 20px;
-   // border-right: 1px solid red;
-} h4 {
+   padding: 20px 0 20px;
+} 
+
+.route h4 {
    margin: 5px;
+   font-family: $bodyFont;
 }
 
-.deleteWalk{
+.routeEnd {
+   border-left: 1px solid $color5;
+}
+
+.deleteWalk {
    display: inline-block;
    width: 100%;
    // float: right;
@@ -38,11 +49,13 @@
    // z-index: 2;
    // position: absolute;
    // top: 100px;
-} p {
-   background: white;
-   width: 10px;
-   text-align: center;
-} 
+// .deleteWalk p {
+//    background: white;
+//    font-size: 10px;
+//    text-align: center;
+// } 
+}
+
 
 // .deleteWalk:hover {
 //    background: transparent;

@@ -43,7 +43,7 @@ class MyWalks extends React.Component {
          params: {
             reqUrl: 'https://maps.googleapis.com/maps/api/place/textsearch/json',
             params: {
-               key: key1,
+               key: 'AIzaSyBjO03NjG4133czcPIqYEC_3vPszHKoVB8',
                query: this.state.location
             }, 
             proxyHeaders: {
@@ -70,7 +70,7 @@ class MyWalks extends React.Component {
          params: {
             reqUrl: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
             params: {
-               key: key1,
+               key: 'AIzaSyBjO03NjG4133czcPIqYEC_3vPszHKoVB8',
                location: `${this.state.lat},${this.state.lng}`,
                radius: 5000,
                type: "cafe"
@@ -88,8 +88,8 @@ class MyWalks extends React.Component {
       return (
          <div>
             <form action="" onSubmit={this.setLocation}>
-               <input type="text" placeholder="ex. 483 Queen St. West" value={this.state.location} onChange={this.handleChange} id="location"/>
-               <input type="submit" value="Coffee Time"/>
+               <input className="walkButtonInput" type="text" placeholder="ex. 483 Queen St. West" value={this.state.location} onChange={this.handleChange} id="location"/>
+               <input className="walkButton" type="submit" value="Start Search"/>
             </form>
          </div>
       )

@@ -71,8 +71,9 @@ class App extends React.Component {
                         </Link >
                      </header>
                      <div className="wrapper">
+                        
                         <Login loggedInCheck={this.loggedInCheck} loggedIn={this.state.loggedIn} user={this.state.user} />
-                        <Link className="lrgButton" to="/PublicWalks">Public Walks</Link>
+                        <Link className="smlButtonRight" to="/PublicWalks">Public Walks</Link>
                         <Route path="/PublicWalks" exact component={PublicWalks} />
                         <Route path="/Directions/:id" exact component={Directions} />
                      </div>
