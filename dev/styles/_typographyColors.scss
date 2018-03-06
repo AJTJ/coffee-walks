@@ -31,10 +31,10 @@ button {
       outline: none;
    }
    &:hover {
-      transform: scale(.98);
+      background-color: #afa9a1;
    }
    &:active{
-      background-color: #afa9a1;
+      transform: scale(.98);
    }
    
    
@@ -49,10 +49,10 @@ input {
       outline: none;
    }
    &:hover {
-      transform: scale(.98);
+      background-color: #afa9a1;
    }
    &:active{
-      background-color: #afa9a1;
+      transform: scale(.98);
    }
 
    

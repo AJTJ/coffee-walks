@@ -23,7 +23,6 @@ class Home extends React.Component {
       }
       this.getNearbyPlaces = this.getNearbyPlaces.bind(this);
       this.getUserAreaLocation = this.getUserAreaLocation.bind(this);
-      this.confirmStart = this.confirmStart.bind(this);
       this.handleStartCafeClick = this.handleStartCafeClick.bind(this);
       this.handleEndCafeClick = this.handleEndCafeClick.bind(this);
    }
@@ -39,14 +38,6 @@ class Home extends React.Component {
          lat: lat,
          lng: lng
       })
-   }
-
-   confirmStart() {
-      // console.log(e);
-      console.log("Murder Fish");
-      // this.setState({
-      //   testing: true
-      // })
    }
 
    handleStartCafeClick(place) {

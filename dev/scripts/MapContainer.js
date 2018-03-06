@@ -1,6 +1,8 @@
 import React from "react"
 import { compose, withProps, withStateHandlers } from "recompose"
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps"
+import FaIconPack from 'react-icons/lib/fa'
+import FaCoffee from 'react-icons/lib/fa/coffee'
 
 const MyMapComponent = compose(
    withProps({
@@ -52,7 +54,8 @@ const MyMapComponent = compose(
                <div className="infoWindows">
                   <p className="infoWindow_header">{props.nearbyPlaces[i].name}</p>
                   <p>{props.nearbyPlaces[i].vicinity}</p>
-                  <p>{props.nearbyPlaces[i].rating}</p>
+                  <p>{props.nearbyPlaces[i].rating} <FaCoffee /></p>
+                  {/* <img src={props.nearbyPlaces[i].icon}/> */}
                   {/* <p>{props.nearbyPlaces[i].opening_hours.open_now}</p> */}
                   
                   {/* <img src={props.nearbyPlaces[i].photos[1]} /> */}
