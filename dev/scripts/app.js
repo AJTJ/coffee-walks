@@ -54,15 +54,17 @@ class App extends React.Component {
                {this.state.loggedIn ? (
                   <div className="wrapper logins">
                      <Login loggedInCheck={this.loggedInCheck} loggedIn={this.state.loggedIn} user={this.state.user} />
-                     <Link to="/Home">Home</Link>
-                     <Link to="/SavedWalks">Saved Walks</Link>
+                     <Link className="lrgButton" to="/Home">Make a Walk!</Link>
                      <Route path="/Home" exact component={Home} />
+                     <Link className="lrgButton" to="/SavedWalks">Saved Walks</Link>
                      <Route path="/SavedWalks" exact component={SavedWalks} />
                      <Route user={this.state.user} path="/Directions" exact component={Directions} />
+                     <Link className="lrgButton" to="/PublicWalks">Public Walks</Link>
                   </div>
                ) : (
                   <div>
                      <Login loggedInCheck={this.loggedInCheck} loggedIn={this.state.loggedIn} user={this.state.user} />
+                     <Link className="lrgButton" to="/PublicWalks">Public Walks</Link>
                   </div>
                )}
             </div>

@@ -109,15 +109,15 @@ class Login extends React.Component {
       return (
          <div className="wrapper">
             {this.state.loggedIn ? (
-            <div>
-               <h2>Welcome, {this.state.user.displayName}</h2>
-               <button onClick={this.signOut}>Sign Out</button>
-            </div>
-         ) : (
-            <div>
-                     <button onClick={this.signIn}><FaGoogle />Sign in with Google</button>
-            </div>
-         )}
+               <div>
+                  <h2>Welcome, {this.state.user.displayName}</h2>
+                  <button className="lrgButton" onClick={this.signOut}>Sign Out</button>
+               </div>
+            ) : (
+               <div>
+                  <button className="lrgButton" onClick={this.signIn}><FaGoogle className="googleIcon" />Sign in with Google</button>
+               </div>
+            )}
          </div>
       );
    }
