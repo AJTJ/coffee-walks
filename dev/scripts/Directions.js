@@ -13,11 +13,10 @@ class Map extends React.PureComponent {
 
    render() {
       const { startLat, startLng, endLat, endLng } = this.props;
-      console.log(startLat, startLng, endLat, endLng);
 
       const MapWithADirectionsRenderer = compose(
          withProps({
-            googleMapURL: `https://maps.googleapis.com/maps/api/js?key=AIzaSyCB6ewg_SZe6JWSzF16dV2d3e3HNBGmcHc&v=3.exp&libraries=geometry,drawing,places`,
+            googleMapURL: `https://maps.googleapis.com/maps/api/js?key=${config.key3}&v=3.exp&libraries=geometry,drawing,places`,
             loadingElement: <div style={{ height: `100%` }} />,
             containerElement: <div style={{ height: `400px` }} />,
             mapElement: <div style={{ height: `100%` }} />,
@@ -56,11 +55,11 @@ class Map extends React.PureComponent {
             defaultCenter={new google.maps.LatLng(41.8507300, -87.6512600)}
          >
             {props.directions && <DirectionsRenderer directions={props.directions} />}
-
+            
          </GoogleMap>
       );
-
-      return (
+      
+      return(
          <MapWithADirectionsRenderer />
       );
    }
@@ -90,7 +89,7 @@ class Directions extends React.PureComponent {
       console.log(e.target.value);
       this.setState({
          [e.target.id]: e.target.value
-      });
+      }); 
    }
 
 
@@ -116,7 +115,7 @@ class Directions extends React.PureComponent {
                end: this.props.location.state.endChoice,
                startTime: this.state.startTime
             });
-         });
+         }); 
    }
 
    submitStartTime(e) {
@@ -126,53 +125,31 @@ class Directions extends React.PureComponent {
       })
    }
 
-   componentDidMount() {
-      //Get the params from teh url and use that key to connect to FB and get the data
-      const url = this.props.match.url;
-      const urlKey = url.split("/")[2];
+   render(props) {
+      const { firstChoice, endChoice } = this.props.location.state;
+      const { lat: startLat, lng: startLng} = firstChoice.geometry.location;
+      const { lat: endLat, lng: endLng } = endChoice.geometry.location;
 
-      const dbRef = firebase.database().ref(`/public/`);
-      dbRef.on('value', (data) => {
-         const dest = data.val();
-
-         console.log(dest[urlKey])
-         const walk = dest[urlKey];
-         this.setState({
-            firstChoice: walk.start,
-            endChoice: walk.end,
-            startTime: walk.startTime
-         });
-      })
-   }
-
-
-   render() {
-      console.log(this.state, 'in render')
-      // const { firstChoice, endChoice } = this.props.location.state;
-      // const { lat: startLat, lng: startLng } = firstChoice.geometry.location;
-      // const { lat: endLat, lng: endLng } = endChoice.geometry.location;
       return (
          <div>
+
             {this.state.startTimeChosen ? (
                <button type="button" onClick={this.saveWalk}>Save this walk!</button>
             ) : (
-                  <div>
-                     <form action="" onSubmit={this.submitStartTime}>
-                        <label htmlFor="">Insert your start time</label>
-                        <input onChange={this.handleChange} value={this.state.startTime} type="text" id="startTime" />
-                        <input type="submit" value="Confirm Start Time" />
-                     </form>
-                  </div>
-               )}
-            {this.state.firstChoice.geometry !== undefined ?
-               <Map
-                  startLat={this.state.firstChoice.geometry.location.lat}
-                  startLng={this.state.firstChoice.geometry.location.lng}
-                  endLat={this.state.endChoice.geometry.location.lat}
-                  endLng={this.state.endChoice.geometry.location.lat}
-               />
-               : null}
-               
+               <div>
+                  <form action="" onSubmit={this.submitStartTime}>
+                     <label htmlFor="">Insert your start time</label>
+                     <input onChange={this.handleChange} value={this.state.startTime} type="text" id="startTime" />
+                     <input type="submit" value="Confirm Start Time"/>
+                  </form>
+               </div>
+            )}
+            <Map
+               startLat={startLat}
+               startLng={startLng}
+               endLat={endLat}
+               endLng={endLng}
+            />
          </div>
       )
    }
