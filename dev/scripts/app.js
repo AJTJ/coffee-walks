@@ -5,6 +5,7 @@ import axios from "axios";
 import MyWalks from "./MyWalks.js";
 import MapContainer from './MapContainer.js';
 import Directions from './Directions.js';
+import DirectionsShare from './DirectionsShare';
 import TitleLogo from "./TitleLogo.js";
 import Home from "./Home.js";
 import Login from "./Login.js";
@@ -60,7 +61,7 @@ class App extends React.Component {
                         <Route user={this.state.user} path="/Directions" exact component={Directions} />
                         <Route path="/SavedWalks" exact component={SavedWalks} />
                         <Route path="/PublicWalks" exact component={PublicWalks} />
-                        <Route path="/Directions/:id" exact component={Directions} />                       
+                        <Route path="/DirectionsShare/:id" exact component={DirectionsShare} />                       
                      </div>
                   </div>
                ) : (
@@ -75,7 +76,7 @@ class App extends React.Component {
                         <Login loggedInCheck={this.loggedInCheck} loggedIn={this.state.loggedIn} user={this.state.user} />
                         <Link className="smlButtonRight" to="/PublicWalks">Public Walks</Link>
                         <Route path="/PublicWalks" exact component={PublicWalks} />
-                        <Route path="/Directions/:id" exact component={Directions} />
+                        <Route path="/DirectionsShare/:id" exact component={DirectionsShare} />
                      </div>
                   </div>
                )}
