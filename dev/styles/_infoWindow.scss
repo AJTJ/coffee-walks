@@ -32,9 +32,13 @@
 
 
 
-// .startingDest {
-// }
+.startingDest {
+   display: block;
+   width: 95%;
+}
 
-// .optionButton {
-
-// }
+.endingDest {
+   width: 95%;
+   display: block;
+   float: left;
+}
