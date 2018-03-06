@@ -1,0 +1,39 @@
+.lrgButton {
+   display: block;
+   border-radius: 5px;
+   background: $color1;
+   padding: 40px 20px 50px;
+   border: 1px solid $color2;
+   color: $color4;
+   width: 250px;
+   height: 100px;
+   font-family: $bodyFont;
+   transition: all 0.2s;
+   margin: 0 auto;
+
+   &:hover {
+      background-color: #afa9a1;
+   }
+   &:active{
+      transform: scale(.98);
+   }
+}
+
+.smlButton {
+   display: block;
+   border-radius: 5px;
+   background: $color1;
+   padding: 15px 10px 25px;
+   border: 1px solid $color2;
+   color: $color4;
+   width: 100px;
+   height: 50px;
+   font-family: $bodyFont;
+
+   &:hover {
+      background-color: #afa9a1;
+   }
+   &:active{
+      transform: scale(.98);
+   }
+}
