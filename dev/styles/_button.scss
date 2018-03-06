@@ -20,6 +20,28 @@
    }
 }
 
+.walkButton {
+   display: block;
+   border-radius: 5px;
+   background: #2e251f;
+   padding: 15px 10px 25px;
+   border: 1px solid #e3c59a;
+   color: #e3c59a;
+   width: 175px;
+   height: 50px;
+   font-family: $bodyFont;
+   transition: all 0.2s;
+   margin: 5px auto;
+   text-align: center;
+
+   &:hover {
+      background-color: #afa9a1;
+   }
+   &:active{
+      transform: scale(.98);
+   }
+}
+
 .smlButton {
    // display: block;
    // float: left;
