@@ -9,6 +9,10 @@ import Header from "./Header.js";
 import Home from "./Home.js";
 import Login from "./Login.js";
 import SavedWalks from "./SavedWalks.js"
+// import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+// import { faGoogle } from '@fortawesome/fontawesome-free-solid';
+// import brands from '@fortawesome/fontawesome-free-brands'
+
 import {
    BrowserRouter as Router,
    Route,

@@ -1,5 +1,14 @@
 import React from "react";
 
+import FaIconPack from 'react-icons/lib/fa'
+import FaGoogle from 'react-icons/lib/fa/google'
+
+
+
+
+
+
+
 // Initialize Firebase
 var config = {
   apiKey: "AIzaSyAKx7F81JukRaS7nTCRAQOvg-FNndk8NfM",
@@ -106,7 +115,7 @@ class Login extends React.Component {
             </div>
          ) : (
             <div>
-               <button onClick={this.signIn}>Sign in with Google</button>
+                     <button onClick={this.signIn}><FaGoogle />Sign in with Google</button>
             </div>
          )}
          </div>
