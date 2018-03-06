@@ -1,19 +1,20 @@
 .lrgButton {
    display: block;
    border-radius: 5px;
-   background: $color1;
+   background: #2e251f;
    padding: 40px 20px 50px;
-   border: 1px solid $color2;
-   color: $color4;
+   border: 1px solid $color5;
+   color: $color5;
    width: 250px;
    height: 100px;
    font-family: $bodyFont;
    transition: all 0.2s;
    margin: 5px auto;
    text-align: center;
+   margin-bottom: 15px;
 
    &:hover {
-      background-color: #afa9a1;
+      background-color: #442c1c;
    }
    &:active{
       transform: scale(.98);
@@ -35,10 +36,28 @@
    text-align: center;
 
    &:hover {
-      background-color: #afa9a1;
+      background-color: #442c1c;
    }
    &:active{
       transform: scale(.98);
+   }
+}
+
+.walkButtonInput {
+   display: block;
+   border-radius: 5px;
+   background: $color6;
+   // padding: 15px 10px 25px;
+   border: 1px solid #e3c59a;
+   color: #e3c59a;
+   width: 175px;
+   height: 30px;
+   font-family: $bodyFont;
+   transition: all 0.2s;
+   margin: 5px auto;
+   text-align: center;
+   &:hover {
+      background-color: #442c1c;
    }
 }
 
@@ -46,19 +65,55 @@
    // display: block;
    // float: left;
    border-radius: 5px;
-   background: $color1;
+   background: $color6;
    padding: 7px 10px 10px;
-   border: 1px solid $color2;
-   color: $color4;
+   border: 1px solid $color5;
+   color: $color5;
    width: 85px;
    height: 30px;
    font-family: $bodyFont;
    font-size: 13px;
 
    &:hover {
-      background-color: #afa9a1;
+      background-color: #442c1c;
    }
    &:active{
       transform: scale(.98);
    }
+}
+
+.smlButtonRight {
+   float: left;
+}
+
+.insideButton {
+   // display: block;
+   // float: left;
+   padding: 5px;
+   margin: 5px;
+   color: $color5;
+   border: 1px solid $color5;
+   background-color: $color6;
+   border-radius: 5px;
+   // background: $color1;
+   // padding: 7px 10px 10px;
+   // border: 1px solid $color2;
+   // color: $color4;
+   // width: 85px;
+   // height: 30px;
+   // font-family: $bodyFont;
+   // font-size: 13px;
+
+   &:hover {
+      background-color: #442c1c;
+   }
+   &:active{
+      transform: scale(.98);
+   }
+}
+
+.logOutButton {
+   border: 1px solid $color3;
+   color: $color3;
+   background-color: rgba(71, 57, 48, 0.75);
 }

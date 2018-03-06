@@ -16,9 +16,11 @@ class Map extends React.PureComponent {
 
       const MapWithADirectionsRenderer = compose(
          withProps({
-            googleMapURL: `https://maps.googleapis.com/maps/api/js?key=${config.key3}&v=3.exp&libraries=geometry,drawing,places`,
+           
+            googleMapURL: `https://maps.googleapis.com/maps/api/js?key=${config.key6}&v=3.exp&libraries=geometry,drawing,places`,
+
             loadingElement: <div style={{ height: `100%` }} />,
-            containerElement: <div style={{ height: `400px` }} />,
+            containerElement: <div style={{ height: `55vh` }} />,
             mapElement: <div style={{ height: `100%` }} />,
 
          }),
@@ -134,13 +136,13 @@ class Directions extends React.PureComponent {
          <div>
 
             {this.state.startTimeChosen ? (
-               <button type="button" onClick={this.saveWalk}>Save this walk!</button>
+               <button className="walkButton" type="button" onClick={this.saveWalk}>Save this walk!</button>
             ) : (
                <div>
                   <form action="" onSubmit={this.submitStartTime}>
-                     <label htmlFor="">Insert your start time</label>
-                     <input onChange={this.handleChange} value={this.state.startTime} type="text" id="startTime" />
-                     <input type="submit" value="Confirm Start Time"/>
+                     <label htmlFor=""></label>
+                        <input className="walkButtonInput" placeholder="Insert Start Time" onChange={this.handleChange} value={this.state.startTime} type="text" id="startTime" />
+                     <input type="submit" className="walkButton" value="Confirm Start Time"/>
                   </form>
                </div>
             )}
