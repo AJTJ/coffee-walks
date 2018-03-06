@@ -37,7 +37,7 @@ class RouteCard extends React.PureComponent {
             <button onClick={() => this.props.removeWalk(this.props.data)}>
                Remove This Route
             </button>
-            <Link to={{ pathname: `/Directions/${this.props.data.key}`, state: { firstChoice: this.props.data.start, endChoice: this.props.data.end } }}>
+            <Link to={{ pathname: `/DirectionsShare/${this.props.data.key}` }}>
                <button className="findRoute"> Lets Find Your Route</button>
             </Link>
          </section>
