@@ -9,7 +9,7 @@ import TitleLogo from "./TitleLogo.js";
 import Home from "./Home.js";
 import Login from "./Login.js";
 import SavedWalks from "./SavedWalks.js"
-
+import PublicWalks from "./PublicWalks.js"
 import {
    BrowserRouter as Router,
    Route,
@@ -59,6 +59,8 @@ class App extends React.Component {
                         <Route path="/SavedWalks" exact component={SavedWalks} />
                         <Route user={this.state.user} path="/Directions" exact component={Directions} />
                         <Link className="lrgButton" to="/PublicWalks">Public Walks</Link>
+                        <Route path="/PublicWalks" exact component={PublicWalks} />
+                        <Route path="/Directions/:id" exact component={Directions} />
                      </div>
                   </div>
                ) : (
@@ -71,6 +73,8 @@ class App extends React.Component {
                      <div className="wrapper">
                         <Login loggedInCheck={this.loggedInCheck} loggedIn={this.state.loggedIn} user={this.state.user} />
                         <Link className="lrgButton" to="/PublicWalks">Public Walks</Link>
+                        <Route path="/PublicWalks" exact component={PublicWalks} />
+                        <Route path="/Directions/:id" exact component={Directions} />
                      </div>
                   </div>
                )}
