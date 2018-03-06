@@ -96,15 +96,24 @@ class Directions extends React.PureComponent {
       //must reference our current database
       //create a reference in firebase using the UID in the user  object
 
-      const dbRef = firebase.database().ref(`users/${firebase.auth().currentUser.uid}`);
+      const dbRefUser = firebase.database().ref(`users/${firebase.auth().currentUser.uid}`);
 
       //this is to push your information into the database
-      dbRef.push({
-         start: this.props.location.state.firstChoice, 
-         end: this.props.location.state.endChoice,
-         startTime: this.state.startTime
-      })
-
+      dbRefUser
+        .push({
+          start: this.props.location.state.firstChoice,
+          end: this.props.location.state.endChoice,
+          startTime: this.state.startTime
+        })
+        .then((data) => {
+          const dbRefPublic = firebase.database().ref(`/public/${data.ref.key}`);
+          console.log(dbRefPublic);
+          dbRefPublic.update({
+            start: this.props.location.state.firstChoice,
+            end: this.props.location.state.endChoice,
+            startTime: this.state.startTime
+          });
+        }); 
    }
 
    submitStartTime(e) {
