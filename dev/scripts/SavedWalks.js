@@ -20,8 +20,9 @@ class SavedWalks extends React.Component {
   constructor() {
     super();
     this.state = {
-       savedWalks: []
-    };
+      savedWalks: []
+    }
+    this.removeWalk = this.removeWalk.bind(this);
   }
 
   componentDidMount() {
@@ -37,19 +38,29 @@ class SavedWalks extends React.Component {
         state.push(data[key]);
       }
       this.setState({
-         savedWalks: state
+        savedWalks: state
       });
-   });
+    });
+  }
+
+  removeWalk(route) {
+    // console.log("button Clicked")
+    // console.log(route.key)
+    let removeId = route.key;
+    console.log("remove Recipe");
+    this.setState({ recipeIndex: undefined });
+    firebase
+      .database()
+      .ref(`users/${firebase.auth().currentUser.uid}/${removeId}`)
+      .remove();
   }
 
   render() {
-     console.log(this.state.savedWalks)
+    console.log(this.state.savedWalks);
     return (
       <div>
-        {this.state.savedWalks.map((route) => {
-           return (
-            <RouteCard data={route} key={route.key} />
-           )
+        {this.state.savedWalks.map(route => {
+          return <RouteCard data={route} key={route.key} removeWalk={this.removeWalk}/>;
         })}
       </div>
     );

@@ -9,7 +9,7 @@ import Header from "./Header.js";
 import Home from "./Home.js";
 import Login from "./Login.js";
 import SavedWalks from "./SavedWalks.js"
-
+import PublicWalks from "./PublicWalks.js"
 import {
    BrowserRouter as Router,
    Route,
@@ -42,31 +42,37 @@ class App extends React.Component {
    }
 
   render() {
-      return (
-         <Router>
-            <div>
-               <header>
-                  <Header />
-               </header>
-               {this.state.loggedIn ? (
-                  <div className="wrapper logins">
-                     <Login loggedInCheck={this.loggedInCheck} loggedIn={this.state.loggedIn} user={this.state.user} />
-                     <Link className="lrgButton" to="/Home">Make a Walk!</Link>
-                     <Route path="/Home" exact component={Home} />
-                     <Link className="lrgButton" to="/SavedWalks">Saved Walks</Link>
-                     <Route path="/SavedWalks" exact component={SavedWalks} />
-                     <Route user={this.state.user} path="/Directions" exact component={Directions} />
-                     <Link className="lrgButton" to="/PublicWalks">Public Walks</Link>
-                  </div>
-               ) : (
-                  <div>
-                     <Login loggedInCheck={this.loggedInCheck} loggedIn={this.state.loggedIn} user={this.state.user} />
-                     <Link className="lrgButton" to="/PublicWalks">Public Walks</Link>
-                  </div>
-               )}
-            </div>
-         </Router>
-      );
+      return <Router>
+          <div>
+            <header>
+              <Header />
+            </header>
+            {this.state.loggedIn ? <div className="wrapper logins">
+                <Login loggedInCheck={this.loggedInCheck} loggedIn={this.state.loggedIn} user={this.state.user} />
+                <Link className="lrgButton" to="/Home">
+                  Make a Walk!
+                </Link>
+                <Route path="/Home" exact component={Home} />
+                <Link className="lrgButton" to="/SavedWalks">
+                  Saved Walks
+                </Link>
+                <Route path="/SavedWalks" exact component={SavedWalks} />
+                <Route user={this.state.user} path="/Directions" exact component={Directions} />
+                <Link className="lrgButton" to="/PublicWalks">
+                  Public Walks
+                </Link>
+                <Route path="/PublicWalks" exact component={PublicWalks} />
+                <Route path="/Directions/:id" exact component={Directions} />
+              </div> : <div>
+                <Login loggedInCheck={this.loggedInCheck} loggedIn={this.state.loggedIn} user={this.state.user} />
+                <Link className="lrgButton" to="/PublicWalks">
+                  Public Walks
+                </Link>
+                <Route path="/PublicWalks" exact component={PublicWalks} />
+                <Route path="/Directions/:id" exact component={Directions} />
+              </div>}
+          </div>
+        </Router>;
    }
 }
 
