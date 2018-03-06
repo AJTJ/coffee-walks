@@ -4,15 +4,27 @@
 
 @import 'typographyColors';
 
-.headerBG{
+header{
    background-color:rgba(71, 57, 48, 0.75);
+   padding: 20px 0 30px;
+   width: 100%;
+   height: 100px;
+   text-align: center;
    // background-image: url("./../../assets/beans_brown_coffee_roasted-998779.jpg");
-
 }
 
-.header {
+.headerDiv {
+   display: inline-block;
+   margin: 0 auto;
+   // width: 100%;
+   // text-align: center;
+   // padding-left: 50px;
+}
+
+.header__titleLogo {
    width: 270px;
-   margin: 0 auto 30px;
+   margin: 0 auto;
+   float: left;
    // border: 1px #e6ded2 solid;
 
    .header__title {
@@ -29,6 +41,7 @@
       float: left;
       max-width: 50px;
       padding-top: 5px;
+      margin-left: 10px;
    //    color: $color3;
    //    stroke: $color3;
    //    fill: white;
