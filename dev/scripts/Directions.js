@@ -167,7 +167,7 @@ class Directions extends React.PureComponent {
                />
             </div>
 
-            {this.state.savedWalk ? (<div className="walkSaved"><h1>Your Walk Has Been Saved</h1></div>) : null}
+            {/* {this.state.savedWalk ? (<div className="walkSaved"><h1>Your Walk Has Been Saved</h1></div>) : null} */}
          </div>
       )
    }

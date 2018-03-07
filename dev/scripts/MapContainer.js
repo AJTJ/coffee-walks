@@ -126,17 +126,19 @@ class MapContainer extends React.PureComponent {
 
       return (
         <div>
-            <MyMapComponent
-               areaLat={areaLat}
-               areaLng={areaLng}
-               nearbyPlaces={nearbyPlaces}
-   
-               isMarkerShown={this.state.isMarkerShown}
-               onMarkerClick={this.handleMarkerClick}
-               handleClick={this.handleClick}
-               handleStartCafeClick={this.props.handleStartCafeClick}
-               handleEndCafeClick={this.props.handleEndCafeClick}
-            />  
+            <div className="walkContainer">
+               <MyMapComponent
+                  areaLat={areaLat}
+                  areaLng={areaLng}
+                  nearbyPlaces={nearbyPlaces}
+      
+                  isMarkerShown={this.state.isMarkerShown}
+                  onMarkerClick={this.handleMarkerClick}
+                  handleClick={this.handleClick}
+                  handleStartCafeClick={this.props.handleStartCafeClick}
+                  handleEndCafeClick={this.props.handleEndCafeClick}
+               /> 
+            </div> 
         </div>
 
       );
