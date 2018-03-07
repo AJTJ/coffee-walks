@@ -60,16 +60,17 @@ class Home extends React.Component {
             {/* exact states that the path has to state the path EXACTLY to render in the specific component */}
             <MyWalks getNearbyPlaces={this.getNearbyPlaces} getUserAreaLocation={this.getUserAreaLocation} />
 
-            {/* FIRST AND FINALDESTINATION */}
-            {this.state.lat !== "" && <MapContainer nearbyPlaces={this.state.nearbyPlaces} areaLat={this.state.lat} areaLng={this.state.lng} confirmStart={this.confirmStart} handleEndCafeClick={this.handleEndCafeClick} handleStartCafeClick={this.handleStartCafeClick} />}
-
             {/* DIRECTIONS AND SAVE */}
             {this.state.choices ? 
                <Link  to={ {pathname: '/Directions', state: { firstChoice: this.state.firstChoice, endChoice: this.state.endChoice } } } >
-                  <button className="findRoute"> Lets Find Your Route</button>
+                  <button className="walkButton"> Let's Find Your Walk</button>
                </Link> :
                null
             }
+
+            {/* FIRST AND FINALDESTINATION */}
+            {this.state.lat !== "" && <MapContainer nearbyPlaces={this.state.nearbyPlaces} areaLat={this.state.lat} areaLng={this.state.lng} confirmStart={this.confirmStart} handleEndCafeClick={this.handleEndCafeClick} handleStartCafeClick={this.handleStartCafeClick} />}
+
          </div>
       )
    }

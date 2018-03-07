@@ -29,11 +29,16 @@
    // border: 1px solid $color2;
    min-height: 75px;
    padding: 20px 0 20px;
+   position: relative;
 } 
 
 .route h4 {
-   margin: 5px;
+   margin: 15px 5px;
    font-family: $bodyFont;
+}
+
+.route h3 {
+   font-size: 20px;
 }
 
 .routeEnd {
