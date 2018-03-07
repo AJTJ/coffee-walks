@@ -44,8 +44,6 @@ class SavedWalks extends React.Component {
   }
 
   removeWalk(route) {
-    // console.log("button Clicked")
-    // console.log(route.key)
     let removeId = route.key;
     console.log("remove Recipe");
     this.setState({ recipeIndex: undefined });

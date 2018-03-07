@@ -11,3 +11,20 @@
    border-radius: 3px;
    border: solid 1px $color6;
 }
+
+.walkSaved {
+   position: absolute;
+    bottom: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 25;
+    background: #473930;
+    padding: 20px 25px;
+    border-radius: 3px;
+    box-shadow: 3px 1px 3px #2e251f;
+
+    h1 {
+       color: #e9e7e3;
+       font-family: 'Roboto', sans-serif;
+    }
+}
