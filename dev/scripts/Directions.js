@@ -86,7 +86,8 @@ class Directions extends React.PureComponent {
          endChoice: [],
          user: null,
          startTimeChosen: false,
-         startTime: ''
+         startTime: '',
+         savedWalk: false
       }
       console.log(props.location.state);
       this.saveWalk = this.saveWalk.bind(this);
@@ -125,7 +126,10 @@ class Directions extends React.PureComponent {
                end: this.props.location.state.endChoice,
                startTime: this.state.startTime
             });
-         }); 
+         });
+         this.setState({
+            savedWalk: true
+         }) 
    }
 
    submitStartTime(e) {
@@ -154,12 +158,16 @@ class Directions extends React.PureComponent {
                   </form>
                </div>
             )}
-            <Map
-               startLat={startLat}
-               startLng={startLng}
-               endLat={endLat}
-               endLng={endLng}
-            />
+            <div className="walkContainer">
+               <Map
+                  startLat={startLat}
+                  startLng={startLng}
+                  endLat={endLat}
+                  endLng={endLng}
+               />
+            </div>
+
+            {this.state.savedWalk ? (<div className="walkSaved"><h1>Your Walk Has Been Saved</h1></div>) : null}
          </div>
       )
    }
