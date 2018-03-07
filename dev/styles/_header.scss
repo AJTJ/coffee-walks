@@ -51,8 +51,11 @@ header{
    }
 }
 
-// @media (max-width: 480px){
-//    .header__title h1 {
-//       font-size: 5px;
-//    }
-// }
+@media (max-width: 376px){
+   .header__titleLogo {
+         .header__title {
+            font-size: 15px;
+      }
+   }
+
+}
