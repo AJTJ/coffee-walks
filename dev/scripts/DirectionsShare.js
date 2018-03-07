@@ -163,9 +163,9 @@ class DirectionsShare extends React.PureComponent {
             ) : (
                   <div>
                      <form action="" onSubmit={this.submitStartTime}>
-                        <label htmlFor="">Insert your start time</label>
-                        <input onChange={this.handleChange} value={this.state.startTime} type="text" id="startTime" />
-                        <input type="submit" value="Confirm Start Time" />
+                        <label htmlFor=""></label>
+                        <input className="walkButtonInput" placeholder="Insert Start Time" onChange={this.handleChange} value={this.state.startTime} type="text" id="startTime" />
+                        <input type="submit" className="walkButton" value="Confirm Start Time" />
                      </form>
                   </div>
                )}
