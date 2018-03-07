@@ -55,9 +55,11 @@ class App extends React.Component {
                         </Link >
                      </header>
                      <div className="wrapper">
-                        <Link className="smlButton" to="/SavedWalks">Saved Walks</Link>
-                        <Link className="walkButton" to="/Home">Make a Walk!</Link>
-                        <Link className="smlButton" to="/PublicWalks">Public Walks</Link>
+                        <div className="walkButtons">
+                           <Link className="smlButton savedWalks" to="/SavedWalks">Saved Walks</Link>
+                           <Link className="walkButton" to="/Home">Make a Walk!</Link>
+                           <Link className="smlButton publicWalks" to="/PublicWalks">Public Walks</Link>
+                        </div>
                         <Route path="/Home" exact component={Home} />
                         <Route user={this.state.user} path="/Directions" exact component={Directions} />
                         <Route path="/SavedWalks" exact component={SavedWalks} />

@@ -90,9 +90,9 @@ class MyWalks extends React.Component {
    render() {
       return (
          <div>
-            <form action="" onSubmit={this.setLocation}>
+            <form className={'searchForm'} action="" onSubmit={this.setLocation}>
                <input className="walkButtonInput" type="text" placeholder="ex. 483 Queen St. West" value={this.state.location} onChange={this.handleChange} id="location"/>
-               <input className="walkButton" type="submit" value="Start Search"/>
+               <input className="medButton startSearch" type="submit" value="Start Search"/>
             </form>
          </div>
       )
