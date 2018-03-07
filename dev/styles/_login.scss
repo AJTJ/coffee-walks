@@ -4,11 +4,20 @@
 
 .logOutButton {
    float: left;
-   margin-top: 17px;
-   margin-left: 25px;
+   margin-top: 18px;
+   margin-left: 12px;
 }
+
 
 .logInIntro {
    text-align: center;
    color: $color2;
+}
+
+@media (max-width: 385px) {
+   .logOutButton{
+      margin-top: 18px;
+      margin-left: 3px;
+      margin-right: 3px;
+   }
 }
