@@ -4,7 +4,6 @@ import axios from "axios";
 import MyWalks from "./MyWalks.js";
 import MapContainer from "./MapContainer.js";
 import Directions from "./Directions.js";
-// import DirectionsCreation from "./DirectionsCreation.js";
 import TitleLogo from "./TitleLogo.js";
 import Login from "./Login.js";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
@@ -69,7 +68,8 @@ class Home extends React.Component {
             }
 
             {/* FIRST AND FINALDESTINATION */}
-            {this.state.lat !== "" && <MapContainer nearbyPlaces={this.state.nearbyPlaces} areaLat={this.state.lat} areaLng={this.state.lng} confirmStart={this.confirmStart} handleEndCafeClick={this.handleEndCafeClick} handleStartCafeClick={this.handleStartCafeClick} />}
+
+            <div className="mapContainer">{this.state.lat !== "" && <MapContainer nearbyPlaces={this.state.nearbyPlaces} areaLat={this.state.lat} areaLng={this.state.lng} confirmStart={this.confirmStart} handleEndCafeClick={this.handleEndCafeClick} handleStartCafeClick={this.handleStartCafeClick} />}</div>
 
          </div>
       )

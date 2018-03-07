@@ -10,6 +10,7 @@
    text-align: center;
    margin: 0 auto 15px;
    max-width: 800px;
+   position: relative;
 
    p {
       margin: 8px 0;
@@ -23,7 +24,7 @@
 }
 
 .innerTitle {
-   margin-right: 3px;
+   margin-right: 5px;
    color: $color5;
 }
 
@@ -75,3 +76,40 @@
    height: 30px;
 }
 
+.cardX {
+   padding: 5px 10px;
+   margin: 1px;
+   color: $color5;
+   border: 1px solid $color5;
+   background-color: $color6;
+   border-radius: 5px;
+   position: absolute;
+   top: 0;
+   right: 0;
+   z-index: 10;
+
+   &:hover {
+      background-color: #442c1c;
+   }
+   &:active{
+      transform: scale(.98);
+   }
+}
+
+@media (max-width: 760px) {
+   .routeContainer {
+      margin: 10px 5px;
+   }
+   .routeStart,
+   .routeEnd {
+      display: block;
+      width: 100%;
+   }
+
+   .routeHeader {
+      h3 {
+         font-size: 16px;
+         padding: 8px;
+      }
+   }
+}

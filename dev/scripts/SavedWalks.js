@@ -2,20 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import RouteCard from "./RouteCard";
 
-// const RouteCard = (props) => {
-//   console.log(props);
-//   return (
-//    <section className="routeContainer">
-//       <div className="route">
-//         <h2>{props.start.name}</h2>
-//       </div>
-//       <div className="route">
-//         <h2>{props.end.name}</h2>
-//       </div>
-//    </section>
-//   )
-// }
-
 class SavedWalks extends React.Component {
   constructor() {
     super();

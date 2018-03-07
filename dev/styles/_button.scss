@@ -121,34 +121,6 @@
    }
 }
 
-.cardButton {
-   padding: 5px 10px;
-   margin: 1px;
-   color: $color5;
-   border: 1px solid $color5;
-   background-color: $color6;
-   border-radius: 5px;
-   // float: right;
-   position: absolute;
-   top: 0;
-   right: 0;
-   // background: $color1;
-   // padding: 7px 10px 10px;
-   // border: 1px solid $color2;
-   // color: $color4;
-   // width: 85px;
-   // height: 30px;
-   // font-family: $bodyFont;
-   // font-size: 13px;
-
-   &:hover {
-      background-color: #442c1c;
-   }
-   &:active{
-      transform: scale(.98);
-   }
-}
-
 .logOutButton {
    border: 1px solid $color3;
    color: $color3;
