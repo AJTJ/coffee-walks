@@ -4,6 +4,14 @@ import { compose, withProps, lifecycle } from "recompose"
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, DirectionsRenderer } from "react-google-maps"
 import config from "./config.js"
 
+let key1 = "AIzaSyCqAPO1t-7KMYt8f0YU2Pi4z2j-SWPvykg";
+let key2 = "AIzaSyAX858sfNr7KcSp6NdszHBoxH8ZDix-nf8";
+let key3 = "AIzaSyA3iTZwH8cw1ZHEDOOykYqzrPK-7WBzJgA";
+let key4 = "AIzaSyAmlAUFOnmBXKDuYmCTVFbEKejUPCZOQBg";
+let key5 = "AIzaSyDPIDnwygCBYYAxcjXu4S8aeogRkWAYXDI";
+let key6 = "AIzaSyBjO03NjG4133czcPIqYEC_3vPszHKoVB8";
+let key7 = "AIzaSyB1ak9DkHT163E0newMhdQNt1g5ZTP6qko";
+
 
 //WRAPPER COMPONENT FOR OUR DIRECTIONS RENDERER
 class Map extends React.PureComponent {
