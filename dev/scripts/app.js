@@ -12,6 +12,7 @@ import Login from "./Login.js";
 import SavedWalks from "./SavedWalks.js";
 import PublicWalks from "./PublicWalks.js";
 import config from "./config.js";
+import Footer from "./Footer.js"
 import {
    BrowserRouter as Router,
    Route,
@@ -54,6 +55,7 @@ class App extends React.Component {
                            <Login loggedInCheck={this.loggedInCheck} loggedIn={this.state.loggedIn} user={this.state.user} />
                         </Link >
                      </header>
+                     <Footer />
                      <div className="wrapper">
                         <Link className="smlButton" to="/SavedWalks">Saved Walks</Link>
                         <Link className="walkButton" to="/Home">Make a Walk!</Link>
@@ -72,6 +74,7 @@ class App extends React.Component {
                            <TitleLogo />
                         </Link >
                      </header>
+                     <Footer />
                      <div className="wrapper">
                         
                         <Login loggedInCheck={this.loggedInCheck} loggedIn={this.state.loggedIn} user={this.state.user} />
