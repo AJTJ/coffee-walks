@@ -3,12 +3,6 @@ import React from "react";
 import FaIconPack from 'react-icons/lib/fa'
 import FaGoogle from 'react-icons/lib/fa/google'
 
-
-
-
-
-
-
 // Initialize Firebase
 var config = {
   apiKey: "AIzaSyAKx7F81JukRaS7nTCRAQOvg-FNndk8NfM",
@@ -61,9 +55,6 @@ class Login extends React.Component {
       firebase.auth().signOut();
 
       //you can set the state to false explicitly, but componentDidMount watches for the changes in user thus, updating it
-      // this.setState({
-      //   loggedIn:false
-      // })
    }
 
    handleChange(e) {

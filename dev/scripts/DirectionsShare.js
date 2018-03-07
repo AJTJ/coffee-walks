@@ -170,12 +170,14 @@ class DirectionsShare extends React.PureComponent {
                   </div>
                )}
             {this.state.firstChoice.geometry !== undefined ?
-               <Map
-                  startLat={this.state.firstChoice.geometry.location.lat}
-                  startLng={this.state.firstChoice.geometry.location.lng}
-                  endLat={this.state.endChoice.geometry.location.lat}
-                  endLng={this.state.endChoice.geometry.location.lng}
-               />
+               <div className="mapContainer">
+                  <Map
+                     startLat={this.state.firstChoice.geometry.location.lat}
+                     startLng={this.state.firstChoice.geometry.location.lng}
+                     endLat={this.state.endChoice.geometry.location.lat}
+                     endLng={this.state.endChoice.geometry.location.lng}
+                  />
+               </div>
                : null}
          </div>
       )

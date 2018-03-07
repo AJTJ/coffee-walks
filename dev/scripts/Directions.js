@@ -158,7 +158,7 @@ class Directions extends React.PureComponent {
                   </form>
                </div>
             )}
-            <div className="walkContainer">
+            <div className="mapContainer">
                <Map
                   startLat={startLat}
                   startLng={startLng}
@@ -166,8 +166,6 @@ class Directions extends React.PureComponent {
                   endLng={endLng}
                />
             </div>
-
-            {/* {this.state.savedWalk ? (<div className="walkSaved"><h1>Your Walk Has Been Saved</h1></div>) : null} */}
          </div>
       )
    }

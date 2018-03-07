@@ -107,18 +107,7 @@ class MapContainer extends React.PureComponent {
    
    }
 
-   //KEEP THIS ONE FOR REFERENCE
-   // componentWillReceiveProps(nextProps) {
-   //    console.log(nextProps, this.props);
 
-   //    if (
-   //       nextProps.areaLat !== this.props.areaLat && 
-   //       nextProps.areaLng !== this.props.areaLng && 
-   //       nextProps.nearbyPlaces !== this.props.nearbyPlaces
-   //    ) {
-   //       this.setState({ loadMap: true });
-   //    }
-   // }
 
   render() {
       const { loadMap } = this.state;
@@ -126,7 +115,7 @@ class MapContainer extends React.PureComponent {
 
       return (
         <div>
-            <div className="walkContainer">
+            <div>
                <MyMapComponent
                   areaLat={areaLat}
                   areaLng={areaLng}
@@ -146,3 +135,16 @@ class MapContainer extends React.PureComponent {
 }
 
 export default MapContainer;
+
+//KEEP THIS ONE FOR REFERENCE
+// componentWillReceiveProps(nextProps) {
+//    console.log(nextProps, this.props);
+
+//    if (
+//       nextProps.areaLat !== this.props.areaLat && 
+//       nextProps.areaLng !== this.props.areaLng && 
+//       nextProps.nearbyPlaces !== this.props.nearbyPlaces
+//    ) {
+//       this.setState({ loadMap: true });
+//    }
+// }

@@ -118,23 +118,6 @@
    }
 }
 
-.cardButton {
-   padding: 5px 10px;
-   margin: 1px;
-   color: $color5;
-   border: 1px solid $color5;
-   background-color: $color6;
-   position: absolute;
-   top: 0;
-   right: 0;
-   &:hover {
-      background-color: #442c1c;
-   }
-   &:active{
-      transform: scale(.98);
-   }
-}
-
 .logOutButton {
    border: 1px solid $color3;
    color: $color3;
