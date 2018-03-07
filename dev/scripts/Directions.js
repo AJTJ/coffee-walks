@@ -2,7 +2,7 @@
 import React from "react"
 import { compose, withProps, lifecycle } from "recompose"
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, DirectionsRenderer } from "react-google-maps"
-import config from "./config"
+import config from "./config.js"
 
 
 //WRAPPER COMPONENT FOR OUR DIRECTIONS RENDERER
@@ -17,7 +17,7 @@ class Map extends React.PureComponent {
       const MapWithADirectionsRenderer = compose(
          withProps({
            
-            googleMapURL: `https://maps.googleapis.com/maps/api/js?key=${config.key6}&v=3.exp&libraries=geometry,drawing,places`,
+            googleMapURL: `https://maps.googleapis.com/maps/api/js?key=${config.key7}&v=3.exp&libraries=geometry,drawing,places`,
 
             loadingElement: <div style={{ height: `100%` }} />,
             containerElement: <div style={{ height: `55vh` }} />,
