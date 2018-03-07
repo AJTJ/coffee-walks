@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+// import FaIconPack from 'react-icons/lib/fa';
+// import FaArrowCircleORight from 'react-icons/lib/fa/arrow-circle-o-right';
 
 class RouteCard extends React.PureComponent {
    constructor() {
@@ -31,6 +33,7 @@ class RouteCard extends React.PureComponent {
                <button className="cardButton" onClick={() => this.props.removeWalk(this.props.data)}>X</button>
                <h4>End</h4>
                <h3>{this.props.data.end.name}</h3>
+               {/* <p><FaArrowCircleORight /></p> */}
 
             </div>
             {/* <button onClick={() => this.props.removeWalk(this.props.data)}>Remove This Route</button> */}
