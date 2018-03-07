@@ -45,7 +45,7 @@ class Map extends React.PureComponent {
                         directions: result,
                      });
                   } else {
-                     console.error(`error fetching directions ${result}`);
+                     console.log(result);
                   }
                });
             }

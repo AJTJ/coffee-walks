@@ -23,27 +23,19 @@ class RouteCard extends React.PureComponent {
    render(props){
       return (
          <section className="routeContainer clearfix">
-{/*           
-            <button className="deleteWalk" onClick={() => this.removeWalk(this.props.data)}><p>X</p></button> */}
             <div className="route routeStart">
                <h3>Starting Location</h3>
                <h4>{this.props.data.start.name}</h4>
-            <button className="insideButton" onClick={() => this.props.removeWalk(this.props.data)}>
-               Remove This Route
-            </button>
+               <button className="insideButton" onClick={() => this.props.removeWalk(this.props.data)}>Remove This Route</button>
             </div>
             <div className="route routeEnd">
                <h3>Ending Location</h3>
                <h4>{this.props.data.end.name}</h4>
             </div>
-            <button onClick={() => this.props.removeWalk(this.props.data)}>
-               Remove This Route
-            </button>
+            <button onClick={() => this.props.removeWalk(this.props.data)}>Remove This Route</button>
             <Link to={{ pathname: `/DirectionsShare/${this.props.data.key}` }}>
                <button className="findRoute"> Lets Find Your Route</button>
             </Link>
-            </div>
-
          </section>
       )
       

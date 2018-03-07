@@ -42,14 +42,12 @@ class Home extends React.Component {
    }
 
    handleStartCafeClick(place) {
-      console.log('button clicked');
       this.setState({
          firstChoice: place
       }),() => console.log(this.state.firstChoice);
    }
 
    handleEndCafeClick(place) {
-      console.log('button clicked');
       this.setState({
          endChoice: place,
          choices:true
