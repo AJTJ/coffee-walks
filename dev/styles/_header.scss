@@ -27,13 +27,12 @@ header{
    width: 270px;
    margin: 0 auto;
    float: left;
-   // border: 1px #e6ded2 solid;
 
    .header__title {
       font-size: 27px;
       padding: 8px 0 0;
       float: left;
-      margin: 10px 0;
+      margin: 8px 0 10px;
       color: $color3;
       letter-spacing: .25px;
       text-transform: uppercase;
@@ -42,19 +41,22 @@ header{
    .header__logo {
       float: left;
       max-width: 50px;
-      padding-top: 5px;
-      margin-left: 10px;
-   //    color: $color3;
-   //    stroke: $color3;
-   //    fill: white;
-
+      padding-top: 3px;
+      margin-left: 11px;
    }
 }
 
-@media (max-width: 376px){
+@media (max-width: 385px) {
    .header__titleLogo {
          .header__title {
-            font-size: 15px;
+            // font-size: 24px;
+      }
+
+      .header__logo {
+         float: left;
+         max-width: 50px;
+         padding-top: 3px;
+         margin-left: 5px;
       }
    }
 
