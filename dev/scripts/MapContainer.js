@@ -125,7 +125,7 @@ class MapContainer extends React.PureComponent {
       const { areaLat, areaLng, nearbyPlaces } = this.props;
 
       return (
-        <div className="walkContainer">
+        <div>
             <MyMapComponent
                areaLat={areaLat}
                areaLng={areaLng}
