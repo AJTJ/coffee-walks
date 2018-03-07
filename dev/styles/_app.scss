@@ -6,11 +6,16 @@ body {
       background-repeat: no-repeat;
    }
 
+   .walkContainer {
+      padding-bottom: 100px;
+      padding-top: 50px;
+   }
+
 @media (min-width: 500px){
    body {
-      background: linear-gradient(to right, rgba(43, 35, 29, 0.529), rgba(43, 35, 29, 0.529)), url("./../../assets/pexels-photo-434231.jpeg");
+      background: linear-gradient(to right, rgba(43, 35, 29, 0.529), rgba(43, 35, 29, 0.529)), url("./../../assets/pexels-photo-434231.jpeg") ;
       max-width: 100%;
-      background-size: cover;
+      background-size: fixed;
       height: 100vh;
       background-repeat: no-repeat;
    }
