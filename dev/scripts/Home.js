@@ -56,14 +56,14 @@ class Home extends React.Component {
 
    render() {
       return (
-         <div className="wrapper">
+         <div className="wrapper map">
             {/* exact states that the path has to state the path EXACTLY to render in the specific component */}
             <MyWalks getNearbyPlaces={this.getNearbyPlaces} getUserAreaLocation={this.getUserAreaLocation} />
 
             {/* DIRECTIONS AND SAVE */}
             {this.state.choices ? 
                <Link  to={ {pathname: '/Directions', state: { firstChoice: this.state.firstChoice, endChoice: this.state.endChoice } } } >
-                  <button className="walkButton"> Let's Find Your Walk</button>
+                  <button className="walkButtonMap">Let's Find Your Walk</button>
                </Link> :
                null
             }

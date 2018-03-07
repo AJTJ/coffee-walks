@@ -33,6 +33,7 @@ class RouteCard extends React.PureComponent {
                <button className="cardButton" onClick={() => this.props.removeWalk(this.props.data)}>X</button>
                <h4>End</h4>
                <h3>{this.props.data.end.name}</h3>
+               
                {/* <p><FaArrowCircleORight /></p> */}
 
             </div>
