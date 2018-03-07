@@ -9,8 +9,9 @@ import DirectionsShare from './DirectionsShare';
 import TitleLogo from "./TitleLogo.js";
 import Home from "./Home.js";
 import Login from "./Login.js";
-import SavedWalks from "./SavedWalks.js"
-import PublicWalks from "./PublicWalks.js"
+import SavedWalks from "./SavedWalks.js";
+import PublicWalks from "./PublicWalks.js";
+import config from "./config.js";
 import {
    BrowserRouter as Router,
    Route,
@@ -74,7 +75,7 @@ class App extends React.Component {
                      <div className="wrapper">
                         
                         <Login loggedInCheck={this.loggedInCheck} loggedIn={this.state.loggedIn} user={this.state.user} />
-                        <Link className="smlButtonRight" to="/PublicWalks">Public Walks</Link>
+                        <Link className="lrgButton" to="/PublicWalks">Public Walks</Link>
                         <Route path="/PublicWalks" exact component={PublicWalks} />
                         <Route path="/DirectionsShare/:id" exact component={DirectionsShare} />
                      </div>

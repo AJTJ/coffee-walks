@@ -2,12 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from "axios";
 import Qs from 'qs';
+import config from "./config.js";
 
-let key1 = "AIzaSyCqAPO1t-7KMYt8f0YU2Pi4z2j-SWPvykg"
-let key2 = "AIzaSyAX858sfNr7KcSp6NdszHBoxH8ZDix-nf8"
-let key3 = "AIzaSyA3iTZwH8cw1ZHEDOOykYqzrPK-7WBzJgA"
-let key4 = "AIzaSyAmlAUFOnmBXKDuYmCTVFbEKejUPCZOQBg"
-let key5 = "AIzaSyDPIDnwygCBYYAxcjXu4S8aeogRkWAYXDI"
+let key1 = "AIzaSyCqAPO1t-7KMYt8f0YU2Pi4z2j-SWPvykg";
+let key2 = "AIzaSyAX858sfNr7KcSp6NdszHBoxH8ZDix-nf8";
+let key3 = "AIzaSyA3iTZwH8cw1ZHEDOOykYqzrPK-7WBzJgA";
+let key4 = "AIzaSyAmlAUFOnmBXKDuYmCTVFbEKejUPCZOQBg";
+let key5 = "AIzaSyDPIDnwygCBYYAxcjXu4S8aeogRkWAYXDI";
+let key6 = "AIzaSyBjO03NjG4133czcPIqYEC_3vPszHKoVB8";
+let key7 = "AIzaSyB1ak9DkHT163E0newMhdQNt1g5ZTP6qko";
 
 class MyWalks extends React.Component {
    constructor() {
@@ -43,7 +46,7 @@ class MyWalks extends React.Component {
          params: {
             reqUrl: 'https://maps.googleapis.com/maps/api/place/textsearch/json',
             params: {
-               key: key3,
+               key: key7,
                query: this.state.location
             }, 
             proxyHeaders: {
@@ -70,7 +73,7 @@ class MyWalks extends React.Component {
          params: {
             reqUrl: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
             params: {
-               key: key3,
+               key: key7,
                location: `${this.state.lat},${this.state.lng}`,
                radius: 5000,
                type: "cafe"
