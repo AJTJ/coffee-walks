@@ -25,7 +25,7 @@ class Map extends React.PureComponent {
 
       const MapWithADirectionsRenderer = compose(
          withProps({
-            googleMapURL: `https://maps.googleapis.com/maps/api/js?key=${config.key7}&v=3.exp&libraries=geometry,drawing,places`,
+            googleMapURL: `https://maps.googleapis.com/maps/api/js?key=${config.key3}&v=3.exp&libraries=geometry,drawing,places`,
             loadingElement: <div style={{ height: `100%` }} />,
             containerElement: <div style={{ height: `400px` }} />,
             mapElement: <div style={{ height: `100%` }} />,
@@ -162,10 +162,10 @@ class DirectionsShare extends React.PureComponent {
                <button type="button" onClick={this.saveWalk}>Save this walk!</button>
             ) : (
                   <div>
-                     <form action="" onSubmit={this.submitStartTime}>
+                     <form className="searchForm" action="" onSubmit={this.submitStartTime}>
                         <label htmlFor=""></label>
                         <input className="walkButtonInput" placeholder="Insert Start Time" onChange={this.handleChange} value={this.state.startTime} type="text" id="startTime" />
-                        <input type="submit" className="walkButton" value="Confirm Start Time" />
+                        <input type="submit" className="medButton" value="Confirm Start Time" />
                      </form>
                   </div>
                )}
