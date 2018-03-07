@@ -28,7 +28,7 @@
    padding: none;
    border: 1px solid $color4;
    color: $color4;
-   width: 125px;
+   // width: 125px;
    height: 50px;
    font-family: $bodyFont;
    transition: all 0.2s;
@@ -42,6 +42,11 @@
    &:active{
       transform: scale(.98);
    }
+}
+
+.saveWalkButton {
+   height: 130px;
+   width: 200px;
 }
 
 .smlButton {
@@ -92,7 +97,7 @@
    padding: 20px 25px;
    border: 1px solid #e3c59a;
    color: #e3c59a;
-   width: 225px;
+   width: 250px;
    height: 30px;
    font-family: $bodyFont;
    transition: all 0.2s;

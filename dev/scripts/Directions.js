@@ -144,13 +144,13 @@ class Directions extends React.PureComponent {
          <div>
 
             {this.state.startTimeChosen ? (
-               <button className="walkButton" type="button" onClick={this.saveWalk}>Save this walk!</button>
+               <button className="medButton saveWalkButton" type="button" onClick={this.saveWalk}>Save this walk!</button>
             ) : (
                <div>
-                  <form action="" onSubmit={this.submitStartTime}>
+                  <form className="searchForm" action="" onSubmit={this.submitStartTime}>
                      <label htmlFor=""></label>
-                        <input className="walkButtonInput" placeholder="Insert Start Time" onChange={this.handleChange} value={this.state.startTime} type="text" id="startTime" />
-                     <input type="submit" className="walkButton" value="Confirm Start Time"/>
+                        <input className="walkButtonInput" placeholder="Ex: Monday, Dec 4th, 3pm" onChange={this.handleChange} value={this.state.startTime} type="text" id="startTime" />
+                     <input type="submit" className="medButton" value="Confirm Start Time"/>
                   </form>
                </div>
             )}
