@@ -58,7 +58,7 @@ class SavedWalks extends React.Component {
   render() {
     console.log(this.state.savedWalks);
     return (
-      <div>
+      <div className="walkContainer">
         {this.state.savedWalks.map(route => {
           return <RouteCard data={route} key={route.key} removeWalk={this.removeWalk}/>;
         })}

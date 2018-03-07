@@ -41,7 +41,7 @@ class PublicWalks extends React.Component {
   render() {
     console.log(this.state.publicWalks);
     return (
-      <div>
+      <div className="walkContainer">
         {this.state.publicWalks.map(route => {
           return <RouteCard data={route} key={route.key} removeWalk={this.removeWalk}/>;
         })}
