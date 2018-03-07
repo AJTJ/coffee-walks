@@ -1,4 +1,12 @@
-// .searchForm {
-//    background: $color5;
+.searchFormDiv {
+   text-align: center;
+}
 
-// }
+.searchForm {
+   background: rgba(71, 57, 48, 0.644);
+   max-width: 400px;
+   margin: 0 auto;
+   padding: 15px 5px;
+   border-radius: 3px;
+   border: solid 1px $color6;
+}

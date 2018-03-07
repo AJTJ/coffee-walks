@@ -115,6 +115,7 @@ class Login extends React.Component {
                </React.Fragment>
             ) : (
                <React.Fragment>
+                  <p className="logInIntro" >Sign-in with Google and map out your next coffee walk!</p>
                   <button className="lrgButton" onClick={this.signIn}><FaGoogle className="googleIcon" />Sign in with Google</button>
                </React.Fragment>
             )}
