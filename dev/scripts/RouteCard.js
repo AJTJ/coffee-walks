@@ -31,8 +31,9 @@ class RouteCard extends React.PureComponent {
                   <h3>{this.props.data.start.name}</h3>
                </div>
                <div className="routeContent">
-                  <h4>{this.props.data.end.vicinity}</h4>
-                  <h4><emphasis>Rating:</emphasis>{this.props.data.start.rating}</h4>
+                  <p><emphasis><span className="innerTitle">Address: </span></emphasis>
+                  {this.props.data.end.vicinity}</p>
+                  <p><emphasis><span className="innerTitle">Cafe Rating:</span></emphasis>{this.props.data.start.rating}</p>
                </div>
             </div>
             <div className="route routeEnd clearfix">
@@ -42,8 +43,10 @@ class RouteCard extends React.PureComponent {
                   <h3>{this.props.data.end.name}</h3>
                </div>
                <div className="routeContent">
-                  <h4>{this.props.data.end.vicinity}</h4>
-                  <h4><emphasis>Rating:</emphasis>{this.props.data.end.rating}</h4>
+                  <p><emphasis><span className="innerTitle">Address:</span></emphasis>
+                  {this.props.data.end.vicinity}</p>
+                  <p><emphasis><span className="innerTitle">Cafe Rating:</span></emphasis>
+                  {this.props.data.end.rating}</p>
                </div>
             </div>
             {/* <button onClick={() => this.props.removeWalk(this.props.data)}>Remove This Route</button> */}

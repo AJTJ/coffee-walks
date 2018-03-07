@@ -1,33 +1,36 @@
 .routeContainer {
    display: block;
-   // position: relative;
    border-radius: 5px;
-   background: $color1;
+   background: rgba(71, 57, 48, 0.819);
    border: 1px solid $color5;
-   // padding: 40px 20px 50px;
-   // border: 1px solid $color2;
    color: $color4;
-   // width: 250px;
-   // height: 100px;
    font-family: $bodyFont;
    transition: all 1s;
    margin: 0 auto;
    text-align: center;
-   margin: 0 5px 15px;
+   margin: 0 auto 15px;
+   max-width: 800px;
+
+   p {
+      margin: 8px 0;
+   }
 }  
 
-.routeContainer p {
-   font-size: 10px;
-   padding: 0;
-   margin: 0;
+.routeHeader {
+   background: $color6;
+   text-align: center;
+   padding-left: 20px;
+}
+
+.innerTitle {
+   margin-right: 3px;
+   color: $color5;
 }
 
 .route {
    width: 50%;
    float: left;
    min-height: 75px;
-   // border: 1px solid $color2;
-   padding: 20px 0 20px;
    position: relative;
    
 } 
@@ -41,13 +44,12 @@
 }
 
 .routeEnd {
-   border-left: 1px solid $color5;
+   border-left: 1px solid $color1;
 }
 
 .deleteWalk {
    display: inline-block;
    width: 100%;
-   // float: right;
    background: $color1;
    border: none;
 }
@@ -57,18 +59,16 @@
       width: 15%;
       float: left;
       color: #e3c59a;
+      padding: 10px 0;
    }
    h3 {
       float: left;
+      padding: 5px 0;
    }
 }
 
 .routeContent {
-   margin-top: 30px;
-
-   h4 {
-      margin: 15px 0;
-   }
+   margin-top: 15px;
 }
 
 .routeContentTitle {
