@@ -71,13 +71,13 @@ class Home extends React.Component {
             <div className="searchResults clearfix">
                <div className="cafe cafeStart">
                   <div>
-                  <h4>Start:</h4>
+                  <h4>Start</h4>
                   <h3>{this.state.firstChoice.name}</h3>
                   </div>
                </div>
                <div className="cafe cafeFinish">
                   <div>
-                     <h4>Finish:</h4>
+                     <h4>Finish</h4>
                      <h3>{this.state.endChoice.name}</h3>
                   </div>
                </div>
