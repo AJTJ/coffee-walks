@@ -41,12 +41,16 @@ header{
    border: none;
    font-size: 12px;
    text-align: center;
+   transition: all 0.2s;
+
 }
 
 .logOutButton {
    padding-bottom: 8px;
    font-size: 11px;
    margin-right: 20px;
+   transition: all 0.2s;
+
 }
 
 .savedWalks {
