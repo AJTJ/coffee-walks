@@ -102,7 +102,7 @@ class Login extends React.Component {
             {this.state.loggedIn ? (
                <React.Fragment>
                   {/* <h2>Welcome, {this.state.user.displayName}</h2> */}
-                  <button className="smlButton logOutButton" onClick={this.signOut}>Sign Out</button>
+                  <button className="smlButton logOutButton titleButton" onClick={this.signOut}>Sign Out</button>
                </React.Fragment>
             ) : (
                <React.Fragment>

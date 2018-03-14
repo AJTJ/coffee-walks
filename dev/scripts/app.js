@@ -50,17 +50,21 @@ class App extends React.Component {
                {this.state.loggedIn ? (
                   <div>
                      <header>
-                        <Link to="/Home" className="clearfix headerDiv">
-                           <TitleLogo />
-                           <Login loggedInCheck={this.loggedInCheck} loggedIn={this.state.loggedIn} user={this.state.user} />
-                        </Link >
+                        <div>
+                           <Link to="/Home" className="clearfix headerDiv"><TitleLogo /></Link >      
+                        </div>
                      </header>
+                     <div className="smallNav" >
+                        <div className="wrapper">
+                           <Login loggedInCheck={this.loggedInCheck} loggedIn={this.state.loggedIn} user={this.state.user} />
+                           <Link className="smlButton savedWalks titleButton" to="/SavedWalks">Saved Walks</Link>
+                           <Link className="smlButton publicWalks titleButton" to="/PublicWalks">Public Walks</Link>
+                        </div>
+                     </div>
                      <Footer />
                      <div className="wrapper">
                         <div className="walkButtons">
-                           <Link className="smlButton savedWalks" to="/SavedWalks">Saved Walks</Link>
                            <Link className="walkButton" to="/Home">Make a Walk!</Link>
-                           <Link className="smlButton publicWalks" to="/PublicWalks">Public Walks</Link>
                         </div>
                         <Route path="/Home" exact component={Home} />
                         <Route user={this.state.user} path="/Directions" exact component={Directions} />
@@ -76,11 +80,14 @@ class App extends React.Component {
                            <TitleLogo />
                         </Link >
                      </header>
+                     <div className="smallNav">
+                        <div className="wrapper">
+                           <Link className="smlButton publicWalks titleButton" to="/PublicWalks">Public Walks</Link>
+                        </div>
+                     </div>
                      <Footer />
                      <div className="wrapper">
-                        
                         <Login loggedInCheck={this.loggedInCheck} loggedIn={this.state.loggedIn} user={this.state.user} />
-                        <Link className="lrgButton" to="/PublicWalks">Public Walks</Link>
                         <Route path="/PublicWalks" exact component={PublicWalks} />
                         <Route path="/DirectionsShare/:id" exact component={DirectionsShare} />
                      </div>
