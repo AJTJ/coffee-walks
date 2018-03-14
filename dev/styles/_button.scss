@@ -70,12 +70,14 @@
 }
 
 .walkButton {
+   display: inline-block;
    background: #2e251f;
-   padding: 15px 10px 15px;
+   padding: 20px 10px 15px;
+   border-radius: 100px;
    border: 1px solid #e3c59a;
    color: #e3c59a;
-   width: 175px;
-   height: 50px;
+   width: 350px;
+   height: 60px;
    font-family: $bodyFont;
    margin: 0 20px;
    text-align: center;
@@ -116,12 +118,6 @@
    &:active{
       transform: scale(.98);
    }
-}
-
-.logOutButton {
-   border: 1px solid $color3;
-   color: $color3;
-   background-color: rgba(71, 57, 48, 0.75);
 }
 
 .walkButtonMap {
