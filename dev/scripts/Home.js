@@ -54,25 +54,51 @@ class Home extends React.Component {
    }
 
    render() {
-      return (
-         <div className="wrapper map">
-            {/* exact states that the path has to state the path EXACTLY to render in the specific component */}
-            <MyWalks getNearbyPlaces={this.getNearbyPlaces} getUserAreaLocation={this.getUserAreaLocation} />
-
-            {/* DIRECTIONS AND SAVE */}
-            {this.state.choices ? 
+      return <div className="wrapper map">
+          {/* exact states that the path has to state the path EXACTLY to render in the specific component */}
+          <MyWalks getNearbyPlaces={this.getNearbyPlaces} getUserAreaLocation={this.getUserAreaLocation} />
+          {/* DIRECTIONS AND SAVE */}
+          {/* {this.state.choices ? 
                <Link  to={ {pathname: '/Directions', state: { firstChoice: this.state.firstChoice, endChoice: this.state.endChoice } } } >
                   <button className="walkButtonMap">Let's Find Your Walk</button>
                </Link> :
                null
-            }
+            } */}
 
-            {/* FIRST AND FINALDESTINATION */}
+          {/* FIRST AND FINALDESTINATION */}
 
-            <div className="mapContainer">{this.state.lat !== "" && <MapContainer nearbyPlaces={this.state.nearbyPlaces} areaLat={this.state.lat} areaLng={this.state.lng} confirmStart={this.confirmStart} handleEndCafeClick={this.handleEndCafeClick} handleStartCafeClick={this.handleStartCafeClick} />}</div>
-
-         </div>
-      )
+          <div className="mapContainer">
+            <div className="searchResults clearfix">
+               <div className="cafe cafeStart">
+                  <div>
+                  <h4>Start:</h4>
+                  <h3>{this.state.firstChoice.name}</h3>
+                  </div>
+               </div>
+               <div className="cafe cafeFinish">
+                  <div>
+                     <h4>Finish:</h4>
+                     <h3>{this.state.endChoice.name}</h3>
+                  </div>
+               </div>
+               <div className="cafe cafeGo">
+                  {this.state.choices ? <Link to={{ pathname: "/Directions", state: { firstChoice: this.state.firstChoice, endChoice: this.state.endChoice } }}>
+                     <button className="walkButtonMap">
+                        Let's Find Your Walk
+                     </button>
+                  </Link> : null}
+               </div>
+            </div>
+            <div className="cafeGoBottom">
+               {this.state.choices ? <Link to={{ pathname: "/Directions", state: { firstChoice: this.state.firstChoice, endChoice: this.state.endChoice } }}>
+                  <button className="walkButtonMap">
+                     Let's Find Your Walk
+                  </button>
+               </Link> : null}
+            </div>
+            {this.state.lat !== "" && <MapContainer nearbyPlaces={this.state.nearbyPlaces} areaLat={this.state.lat} areaLng={this.state.lng} confirmStart={this.confirmStart} handleEndCafeClick={this.handleEndCafeClick} handleStartCafeClick={this.handleStartCafeClick} />}
+          </div>
+        </div>;
    }
 }
 
