@@ -25,7 +25,7 @@ class Map extends React.PureComponent {
       const MapWithADirectionsRenderer = compose(
          withProps({
            
-            googleMapURL: `https://maps.googleapis.com/maps/api/js?key=AIzaSyCJlLjBfK8bBfE-5Q2FwuhwZcSQ5rJ8Tpw&v=3.exp&libraries=geometry,drawing,places`,
+            googleMapURL: `https://maps.googleapis.com/maps/api/js?key=AIzaSyA3iTZwH8cw1ZHEDOOykYqzrPK-7WBzJgA&v=3.exp&libraries=geometry,drawing,places`,
 
             loadingElement: <div style={{ height: `100%` }} />,
             containerElement: <div style={{ height: `55vh` }} />,

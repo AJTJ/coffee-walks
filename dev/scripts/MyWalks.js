@@ -46,7 +46,7 @@ class MyWalks extends React.Component {
          params: {
             reqUrl: 'https://maps.googleapis.com/maps/api/place/textsearch/json',
             params: {
-               key: 'AIzaSyAvXgJSf5N_YSnszZed2EsT8Vor71ZGbhE',
+               key: "AIzaSyCqAPO1t - 7KMYt8f0YU2Pi4z2j-SWPvykg",
                query: this.state.location
             }, 
             proxyHeaders: {
@@ -73,7 +73,7 @@ class MyWalks extends React.Component {
          params: {
             reqUrl: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
             params: {
-               key: 'AIzaSyAvXgJSf5N_YSnszZed2EsT8Vor71ZGbhE',
+               key: "AIzaSyCqAPO1t - 7KMYt8f0YU2Pi4z2j-SWPvykg",
                location: `${this.state.lat},${this.state.lng}`,
                radius: 5000,
                type: "cafe"
