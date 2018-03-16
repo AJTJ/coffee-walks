@@ -8,12 +8,21 @@
    transition: all 1s;
    margin: 0 auto;
    text-align: center;
-   margin: 0 auto 15px;
+   margin: 50px auto 35px;
    max-width: 800px;
    position: relative;
 
    p {
       margin: 8px 0;
+   }
+
+   .titleButton {
+      margin: 0;
+      top:-10%;
+      left: 0;
+      position: absolute;
+      z-index: 11;
+      width: 100%;
    }
 }  
 
@@ -96,9 +105,6 @@
 }
 
 @media (max-width: 760px) {
-   .routeContainer {
-      margin: 10px 5px;
-   }
    .routeStart,
    .routeEnd {
       display: block;

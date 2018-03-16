@@ -11,6 +11,7 @@ let key4 = "AIzaSyAmlAUFOnmBXKDuYmCTVFbEKejUPCZOQBg";
 let key5 = "AIzaSyDPIDnwygCBYYAxcjXu4S8aeogRkWAYXDI";
 let key6 = "AIzaSyBjO03NjG4133czcPIqYEC_3vPszHKoVB8";
 let key7 = "AIzaSyB1ak9DkHT163E0newMhdQNt1g5ZTP6qko";
+let key8 = "AIzaSyBQw1yNEbqb29NURClQ-FFlfuo2mqk0_Ms";
 
 
 //WRAPPER COMPONENT FOR OUR DIRECTIONS RENDERER
@@ -22,52 +23,44 @@ class Map extends React.PureComponent {
    render() {
       const { startLat, startLng, endLat, endLng } = this.props;
 
-      const MapWithADirectionsRenderer = compose(
-         withProps({
-           
-            googleMapURL: `https://maps.googleapis.com/maps/api/js?key=AIzaSyA3iTZwH8cw1ZHEDOOykYqzrPK-7WBzJgA&v=3.exp&libraries=geometry,drawing,places`,
+      const MapWithADirectionsRenderer = compose(withProps({
+          googleMapURL: `https://maps.googleapis.com/maps/api/js?key=AIzaSyCqAPO1t-7KMYt8f0YU2Pi4z2j-SWPvykg&v=3.exp&libraries=geometry,drawing,places`,
 
-            loadingElement: <div style={{ height: `100%` }} />,
-            containerElement: <div style={{ height: `55vh` }} />,
-            mapElement: <div style={{ height: `100%` }} />,
+          loadingElement: <div style={{ height: `100%` }} />,
+          containerElement: <div style={{ height: `55vh` }} />,
+          mapElement: <div style={{ height: `100%` }} />
+        }), withScriptjs, withGoogleMap, lifecycle({ componentDidMount() {
+            const DirectionsService = new google.maps.DirectionsService();
 
-         }),
-         withScriptjs,
-         withGoogleMap,
-         lifecycle({
-            componentDidMount() {
-               const DirectionsService = new google.maps.DirectionsService();
-
-               DirectionsService.route({
-                  origin: new google.maps.LatLng(
-                     startLat, startLng),
-                  destination: new google.maps.LatLng(
-                     endLat, endLng),
-                  travelMode: google.maps.TravelMode.WALKING,
-               }, (result, status) => {
-                  if (status === google.maps.DirectionsStatus.OK) {
-                     console.log(result);
-                     // this is bound not Map's this.setState
-                     // rather withing the compose lifecycle
-                     this.setState({
-                        directions: result,
-                     });
-                  } else {
-                     console.log(result);
-                  }
-               });
-            }
-         })
-
-      )(props =>
-         <GoogleMap
-            defaultZoom={7}
-            defaultCenter={new google.maps.LatLng(41.8507300, -87.6512600)}
-         >
-            {props.directions && <DirectionsRenderer directions={props.directions} />}
-            
-         </GoogleMap>
-      );
+            DirectionsService.route(
+              {
+                origin: new google.maps.LatLng(startLat, startLng),
+                destination: new google.maps.LatLng(endLat, endLng),
+                travelMode: google.maps.TravelMode.WALKING
+              },
+              (result, status) => {
+                if (status === google.maps.DirectionsStatus.OK) {
+                  console.log(result);
+                  // this is bound not Map's this.setState
+                  // rather withing the compose lifecycle
+                  this.setState({
+                    directions: result
+                  });
+                } else {
+                  console.log(result);
+                }
+              }
+            );
+          } }))(props => (
+        <GoogleMap
+          defaultZoom={7}
+          defaultCenter={new google.maps.LatLng(41.85073, -87.65126)}
+        >
+          {props.directions && (
+            <DirectionsRenderer directions={props.directions} />
+          )}
+        </GoogleMap>
+      ));
       
       return(
          <MapWithADirectionsRenderer />
@@ -148,10 +141,23 @@ class Directions extends React.PureComponent {
          <div>
 
             {this.state.startTimeChosen ? (
-               <button className="medButton saveWalkButton" type="button" onClick={this.saveWalk}>Save this walk!</button>
+               <React.Fragment>
+                  <button className="medButton saveWalkButton" type="button" onClick={this.saveWalk}>Save this walk!</button>
+                  {this.state.savedWalk ? (
+                     <p className="logInIntro">
+                        You're Time has been saved! You can share the url by viewing this walk in your saved walks!
+                     </p>
+                  ) : (
+                     null
+                  )}
+               </React.Fragment>
+               
             ) : (
                <div>
                   <form className="searchForm" action="" onSubmit={this.submitStartTime}>
+                     <p className="logInIntro">
+                        Now, let's Enter a time for when you want to make this walk.
+                     </p>
                      <label htmlFor=""></label>
                         <input className="walkButtonInput" placeholder="Ex: Monday, Dec 4th, 3pm" onChange={this.handleChange} value={this.state.startTime} type="text" id="startTime" />
                      <input type="submit" className="medButton" value="Confirm Start Time"/>
