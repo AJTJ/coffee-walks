@@ -92,7 +92,7 @@ class MyWalks extends React.Component {
          <div className="searchFormDiv" >
             <form className='searchForm' action="" onSubmit={this.setLocation}>
                <p className="logInIntro">
-                  Enter Your Current Address below, and we'll populate the closest cafes nearby you to start a walk.
+                  Enter Your current address below, and we'll populate the closest cafes nearby you to start a walk.
                </p>
                <input className="walkButtonInput" type="text" placeholder="ex. 483 Queen St. West, Toronto" value={this.state.location} onChange={this.handleChange} id="location"/>
                <input className="medButton startSearch" type="submit" value="Start Search"/>

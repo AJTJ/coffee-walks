@@ -19,7 +19,7 @@ class RouteCard extends React.PureComponent {
                </div>
                <div className="routeContent">
                   <p><em><span className="innerTitle">Address: </span></em>
-                  {this.props.data.end.vicinity}</p>
+                  {this.props.data.start.vicinity}</p>
                   <p><em><span className="innerTitle">Cafe Rating:</span></em>{this.props.data.start.rating}</p>
                </div>
             </div>

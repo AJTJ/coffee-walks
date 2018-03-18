@@ -44,7 +44,7 @@ class PublicWalks extends React.Component {
       <div className="walkContainer">
          <div className="searchForm">
             <p className="logInIntro">
-               These are the public Walks currently scheduled right now. Feel free to view the walk and even join the meetup!
+               These are the public walks currently scheduled right now. Feel free to view the walk and even join the meetup!
             </p>
          </div>
 

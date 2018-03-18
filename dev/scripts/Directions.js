@@ -145,7 +145,7 @@ class Directions extends React.PureComponent {
                   <button className="medButton saveWalkButton" type="button" onClick={this.saveWalk}>Save this walk!</button>
                   {this.state.savedWalk ? (
                      <p className="logInIntro">
-                        You're Time has been saved! You can share the url by viewing this walk in your saved walks!
+                        Your time has been saved! You can share the url by viewing this walk in your saved walks!
                      </p>
                   ) : (
                      null
