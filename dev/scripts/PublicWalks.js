@@ -42,6 +42,12 @@ class PublicWalks extends React.Component {
     console.log(this.state.publicWalks);
     return (
       <div className="walkContainer">
+         <div className="searchForm">
+            <p className="logInIntro">
+               These are the public walks currently scheduled right now. Feel free to view the walk and even join the meetup!
+            </p>
+         </div>
+
         {this.state.publicWalks.map(route => {
           return <RouteCard data={route} key={route.key} removeWalk={this.removeWalk}/>;
         })}

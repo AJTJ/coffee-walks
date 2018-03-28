@@ -62,7 +62,7 @@ header{
 }
 
 .header__titleLogo {
-   width: 280px;
+   max-width: 280px;
    margin: 0 auto;
    float: left;
 
@@ -95,7 +95,7 @@ header{
    }
 }
 
-@media (max-width: 385px) {
+@media (max-width: 425px) {
    .header__titleLogo {
 
       .header__logo {
@@ -103,7 +103,12 @@ header{
          max-width: 50px;
          padding-top: 3px;
          margin-left: 5px;
+         display: none;
       }
+   }
+
+   .publicWalks {
+      margin-right: 0;
    }
 
 }

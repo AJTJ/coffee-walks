@@ -10,6 +10,7 @@ class RouteCard extends React.PureComponent {
    render(props){
       return (
          <section className="routeContainer clearfix">
+            <p className="titleButton">{this.props.data.startTime}</p>
             <button className="cardX" onClick={() => this.props.removeWalk(this.props.data)}>X</button>
             <div className="route routeStart">
                <div className="routeHeader clearfix">
@@ -18,7 +19,7 @@ class RouteCard extends React.PureComponent {
                </div>
                <div className="routeContent">
                   <p><em><span className="innerTitle">Address: </span></em>
-                  {this.props.data.end.vicinity}</p>
+                  {this.props.data.start.vicinity}</p>
                   <p><em><span className="innerTitle">Cafe Rating:</span></em>{this.props.data.start.rating}</p>
                </div>
             </div>
@@ -35,7 +36,7 @@ class RouteCard extends React.PureComponent {
                </div>
             </div>
             <Link to={{ pathname: `/DirectionsShare/${this.props.data.key}` }}>
-               <button className="insideButton"> Let's Find Your Walk</button>
+               <button className="insideButton"> Let's View Your Walk</button>
             </Link>
          </section>
       )
