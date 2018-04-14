@@ -10,56 +10,56 @@ $color6: #2e251f;
 $color7: #e3c59a3b;
 
 h1, h2, h3, h4 {
-   margin: 0;
-   font-family: $headerFont;
-   color: $color3;
+	margin: 0;
+	font-family: $headerFont;
+	color: $color3;
 }
 
 h3 {
-   font-size: 15px;
+	font-size: 15px;
 }
 
 h4 {
-   font-size: 13px;
+	font-size: 13px;
 }
 
 p {
-   font-family: $bodyFont;
+	font-family: $bodyFont;
 }
 
 a {
-   text-decoration: none;
-   color: $color3;
+	text-decoration: none;
+	color: $color3;
 }
 
 button {
-   color: $color1;
-   background: $color4;
-   font-family: $bodyFont;
-   border-radius: 3px;
-   &:focus{
-      outline: none;
-   }
-   &:hover {
-      background-color: #afa9a1;
-   }
-   &:active{
-      transform: scale(.98);
-   }
+	color: $color1;
+	background: $color4;
+	font-family: $bodyFont;
+	border-radius: 3px;
+	&:focus{
+		outline: none;
+	}
+	&:hover {
+		background-color: #afa9a1;
+	}
+	&:active{
+		transform: scale(.98);
+	}
 }
 
 input {
-   color: $color1;
-   background: $color4;
-   font-family: $bodyFont;
-   border-radius: 3px;
-   &:focus {
-      outline: none;
-   }
-   &:hover {
-      background-color: #afa9a1;
-   }
-   &:active{
-      transform: scale(.98);
-   }  
+	color: $color1;
+	background: $color4;
+	font-family: $bodyFont;
+	border-radius: 3px;
+	&:focus {
+		outline: none;
+	}
+	&:hover {
+		background-color: #afa9a1;
+	}
+	&:active{
+		transform: scale(.98);
+	}  
 }
